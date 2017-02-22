@@ -1,1 +1,61 @@
 # LearnGit
+
+This repository is the shortened version of the book named "[Pro GIT](https://git-scm.com/book/en/v2)"
+
+
+# Index
+
+[Introduction](./00Intro2Git.Rmd)
+
+1. Getting Started
+
+    1.1. [About Version Control](./1.1.VERSION_CONTROL.Rmd)
+    1.2. [A short History of Git](./1.2.HISTORY_OF_GIT.Rmd)
+    1.3. [Git Basics](./1.3.Git_Basics.Rmd)
+    1.4. [The Command Line](./1.4.The_Command_Line.Rmd)
+    1.5. [Installing Git](./1.5.Installing_Git.Rmd)
+    1.6. [First-Time Git Setup](./1.6.First-Time_Git_Setup.Rmd)
+    1.7. [Getting Help](./1.7.Getting_Help.Rmd)
+    1.8. [Summary](./1.8.Summary.Rmd)
+
+2. Git Basics
+
+2.1 Getting a Git Repository
+2.2 Recording Changes to the Repository
+2.3 Viewing the Commit History
+2.4 Undoing Things
+2.5 Working with Remotes
+2.6 Tagging
+2.7 Git Aliases
+2.8 Summary
+
+3. Git Branching
+
+3.1 Branches in a Nutshell
+3.2 Basic Branching and Merging
+3.3 Branch Management
+3.4 Branching Workflows
+3.5 Remote Branches
+3.6 Rebasing
+3.7 Summary
+
+4. Git on the Server
+
+4.1 The Protocols
+4.2 Getting Git on a Server
+4.3 Generating Your SSH Public Key
+4.4 Setting Up the Server
+4.5 Git Daemon
+4.6 Smart HTTP
+4.7 GitWeb
+4.8 GitLab
+4.9 Third Party Hosted Options
+4.10 Summary
+
+5. Distributed Git
+
+5.1 Distributed Workflows
+5.2 Contributing to a Project
+5.3 Maintaining a Project
+5.4 Summary
+
