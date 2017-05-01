@@ -1,0 +1,117 @@
+---
+title: "01LinuxTutorial.Rmd"
+author: "bjkim"
+date: '2017 5 1 '
+output: html_document
+---
+
+# Linux commands
+
+## File/Directory Command
+
+- [ls](./man/ls.md) shows the list of files and directories in the specific directory
+
+```
+ $ ls
+```
+
+- [cd](./man/cd.md) changes the directory
+
+```
+ $ cd ~
+```
+
+- [pwd](./man/pwd.md) shows current path/directory
+
+```
+ $ pwd
+```
+
+- [mkdir](./man/mkdir.md) creating a directory.
+
+```
+ $ mkdir helloYonsei
+```
+- [rmdir](./man/rmdir.md) removing a directory.
+
+```
+ $ rmdir helloYonsei
+```
+
+- [echo](./man/echo.md) print blah ... blah ...
+
+```
+ $ echo $HOME > myHomeDir.txt
+```
+
+- [cat](./man/cat.md)
+
+```
+ $ cat myHomeDir.txt
+```
+
+- [rm](./man/rm.md) delete file
+
+```
+ rm myHomeDir.txt
+```
+
+- [cp](./man/cp.md) copy file file A to file B.
+
+```
+ cp A B
+```
+- [mv](./man/mv.md) rename or move file A to file B
+
+```
+ mv A B
+```
+
+- [ln] create symbolic link and link it to file.
+
+```
+ ln -s A B
+```
+
+- [sort]()
+
+```
+
+```
+
+- [uniq]()
+
+
+```
+
+```
+
+### Reading files
+- [cat](./man/cat)
+
+- [head](./man/head)
+
+- [more](./man/more)
+
+- [tail](./man/tail)
+
+### Search
+
+- [grep]()
+- [find]()
+
+
+## permission
+
+- [chmod]
+- [chown]
+
+
+
+## User/Group management
+
+- You need a admin privilege to manage user/groups
+
+-
+
+## Piping and redirection
