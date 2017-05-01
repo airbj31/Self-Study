@@ -1,0 +1,80 @@
+---
+title: "Introduction of Information Theory"
+author: "bjkim"
+date: "2017년 4월 3일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# What is the Information theory?
+
+-  Information theory studies the quantification of Information :
+    - Compression
+    - Transmission
+    - Error Correction
+    - Gambling (?!)
+
+## Tramsmission of information
+
+- DNA -(     )-> Protein
+- cell phone -(   )-> cell phone
+- 
+    
+## Two Fundametnal Question of communiacation theory
+
+- What is ultimate data `compression` ?
+    - 'the Entropy/Mutual Information`
+
+- What is the ultimate `transmission` rate of communication ? 
+    - `Channel Capacity`
+
+
+
+
+### What is the Entropy
+
+  - Measure of the Quantity of the average uncertainty of a random variable, defined by
+  
+    $$ H(X) = - \sum p(x)log{p(x)} $$
+  
+  - entropy is expressed in bits. 
+  
+    - a faur coin toss is H/T, 1 bit.
+    - in "20 Question" game. we asked Yes/No questions to find the answer.
+
+## What is the Channel Capacity
+
+- Communication channel is a system in which the output depends probabilitically on its input
+
+  
+    
+    
+# Motivation : Casino
+
+- You’re at a casino
+- You can bet on coins, dice, or roulette
+    - Coins = 2 possible outcomes. Pays 2:1
+    - Dice = 6 possible outcomes. Pays 6:1
+    - roulette = 36 possible outcomes. Pays 36:1
+- Suppose you can predict the outcome of a single coin
+toss/dice roll/roulette spin.
+- Which would you choose?
+- Roulette. But why? these are all fair games
+- Answer: Roulette provides us with the most Information
+
+
+# Exercises
+
+## 
+
+## Prediction of horse race
+
+```{r}
+ y = c(1/2,1/4,1/8,1/16,1/64,1/64,1/64) 
+  y = c(y,1-sum(y))
+  entropy(y, method="ML")
+
+```
