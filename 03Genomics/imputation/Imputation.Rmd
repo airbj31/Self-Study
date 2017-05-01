@@ -1,0 +1,24 @@
+---
+title: "Genotype Imputation"
+author: "BJ Kim"
+date: "2017³â 3¿ù 5ÀÏ"
+output: html_document
+---
+
+# What is Imputation ?
+
+
+
+
+
+# Currently Availabe Imputation programs
+
+- BEAGLE
+- IMPUTE/IMPUTE2
+- BIMBAM
+- FAMHAP 
+
+## BEAGLE, 
+
+
+## IMPUTE and MACH

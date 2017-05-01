@@ -1,0 +1,228 @@
+---
+title : Genome-wide association Study and Genome-wide Machine Learning
+Authors : BJ Kim
+bibliography : papers.bib
+output : 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    number_sections: true
+---
+
+# Backgrounds
+
+- Single Nucleotide Variants (SNVs, formally SNPs)
+
+- Copy Number Variations (CNV)
+
+- Structural Variants
+
+- SNPs are by far the most abundant form of genetic variation in the human genome 
+
+# Technical Supports
+
+- Microarrays
+
+- Next Generation Sequencings
+
+# Important Questions in Human genetics
+
+One of central goal of human genetics is to identify genetic risk factors for commom, complex diseases.
+
+# Genome-Wide Association Studies
+
+## What is the Genome-wide association studies ?
+
+[A genome-wide association study](https://www.genome.gov/20019523/) is an approach that involves rapidly scanning markers across the complete sets of DNA, or genomes, of many people to find genetic variations associated with a particular disease and complex traits. 
+
+Once new genetic associations are identified, researchers can use the information to develop better strategies to detect, treat and prevent the disease. Such studies are particularly useful in finding genetic variations that contribute to common, complex diseases, such as asthma, cancer, diabetes, heart disease and mental illnesses. 
+
+## Why are such studies possible now ?
+
+## How will genome-wide association studies benefit human health?
+
+## What have genome-wide association studies found?
+
+[GWAS CATALOG](https://www.ebi.ac.uk/gwas/) [@Welter_index_2013] is major resouce for the result of GWA Studies. As of 2017-02-27, the GWAS catalog contains 2784 publications and 32189 Unique SNP-trait associations and currently mapped to Genome Assembly GRCh37.p7 and dbSNP build 147.
+
+### Disease
+
+- Type II diabetes [@Sladek_index_2007; @Zeggini_index_2007; @Scott_index_2007] 
+
+
+	  Diabetes Genetics Initiative. Genome-wide association analysis identifies loci for type 2 diabetes and triglyceride levels. Science 316, 1331–1336 (2007).
+
+	  Steinthorsdottir, V. et al. A variant in CDKAL1 influences insulin response and risk of type 2 diabetes. Nature Genet. 39, 770–775 (2007).
+
+  	Zeggini, E., Scott, L. J., Saxena, R., Voight, B. & DIAGRAM Consortium. Meta-analysis of genome-wide association data and large-scale replication identifies several additional susceptibility loci for type 2 diabetes.
+Nature Genet. 30 Mar 2008 (doi:10.1038/nrg.120)
+
+- Type I diabetes
+
+    Todd, J. A. et al. Robust associations of four new chromosome regions from genome-wide analyses of type 1 diabetes. Nature Genet. 39, 857–864 (2007).
+	
+    Hakonarson, H. et al. A genome-wide association study identifies KIAA0350 as a type 1 diabetes gene. Nature 448, 591–594 (2007)
+
+- inflammatory Bowel disease
+
+- Prostate Cancer
+
+- Breast Cancer
+
+- Asthma
+
+	Moffatt, M. F. et al. Genetic variants regulating ORMDL3 expression contribute to the risk of childhood asthma. Nature 448, 470–473 (2007).
+
+- Coronary Heart Disease
+
+- Atrial Fibrillation
+
+	Helgadottir, A. et al. A common variant on chromosome 9p21 affects the risk of myocardial infarction. Science 316, 1491–1493 (2007).
+	
+	McPherson, R. et al. A common allele on chromosome 9 associated with coronary heart disease. Science 316, 1488–1491 (2007).
+	
+	Samani, N. J. et al. Genomewide association analysis of coronary artery disease. N. Engl. J. Med. 357, 443–453 (2007).
+
+### common traits
+
+- Lipids
+	Diabetes Genetics Initiative. Genome-wide association analysis identifies loci for type 2 diabetes and triglyceride levels. Science 316, 1331–1336 (2007). 
+	
+	Willer, C. J. et al. Newly identified loci that influence lipid concentrations and risk of coronary artery disease. Nature Genet. 40, 161–169 (2008).
+	
+	Kathiresan, S. et al. Six new loci associated with blood low-density lipoprotein cholesterol, high-density lipoprotein cholesterol or triglycerides in humans. Nature Genet. 40, 189–197 (2008).
+	
+	Kooner, J. S. et al. Genome-wide scan identifies variation in MLXIPL associated with plasma triglycerides. Nature Genet. 40, 149–151 (2008).
+
+
+- Heights
+
+	
+	Weedon, M. N. et al. A common variant of HMGA2 is associated with adult and childhood height in the general population. Nature Genet. 39, 1245–1250 (2007).
+	
+		**This paper demonstrates the power of the GWA approach to identify genes influencing continuous biomedical phenotypes, in this case, height.
+
+	Sanna, S. et al. Common variants in the GDF5-UQCC region are associated with variation in human height. Nature Genet. 40, 198–203 (2008).
+
+	Weedon, M. N. et al. Genome-wide association analysis identifies 20 loci that influence adult height. Nature Genet. (in the press).
+
+	Lettre, G. et al. Genome-wide association studies identify 10 novel loci for height and highlight new biological pathways in human growth. Nature Genet. (in the press)
+
+
+## How are genome-wide association studies conducted?
+
+## How can researchers access data from genome-wide association studies?
+
+## What is NIH doing to support genome-wide association studies?
+
+# Statistical Analysis of Genome-wide association studies
+
+## Calculate the Effect Size
+
+### Odds ratio
+
+## Simple Association Test
+
+### Chi-square
+
+## Structured Association
+
+## Regression Model
+
+### Linear Regression
+
+### Logical Regression
+
+### Generalized Linear-model
+
+### Mixed-Linear-Model
+
+## Multiple testing
+
+# GWAS Study designs
+
+
+## Case-Control design
+
+**Common control** 
+
+ Welcome Trust Case-Control Consortium (WTCCC) study was demonstrate the effectuveness of a 'common control' design in which are 3,000 UK controls.[@Mark_index_2008]
+ 
+ This design is the **potential loss of power** that is associated with the inability to exclude latent diagenoses of the phenotype of interest through intensive screening of controls.
+ 
+### issues about case-control
+
+- Sample-Size 
+- Association is not Caucation.
+
+
+
+## REVIEWS/BIBs
+
+- [Genomewide association Studies for complex traits](http://www.nature.com/nrg/journal/v9/n5/pdf/nrg2344.pdf)
+
+- [Designing Genome-Wide Association Studies: Sample Size, Power, Imputation, and the Choice of Genotyping Chip]()
+
+
+- [Chapter 11: Genome-Wide Association Studies](http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002822)
+
+- [Statistical analysis of Genome-wide association Studies]()
+- [Mixed Linear model Approach adapted for genome-wide-association Studies]
+
+
+
+## METHODOLOGY OF ANALYSIS
+
+Statistical Analysis of Genome-wide association (GWAS_ data)
+- http://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1002822
+
+Statistical analysis for genome-wide association study
+- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4547377/
+
+Statistical power and significance testing in large scale genetic studies
+- http://www.nature.com/nrg/journal/v15/n5/full/nrg3706.html
+
+### QC and QA
+**Genotyping Quality**
+
+**Batch Effect**
+
+**Sample Relatedness**
+
+**Population Structure**
+
+## Issues on GWA Study
+
+- cryptic relatedness by Population stratification and sample relatedness
+
+# Genomewide-Machine Learning Study
+-
+-
+-
+
+## Informations
+
+## Codings
+
+### One Hot-encoding
+
+### 10 digit-encoding
+
+## Machine Learning Algorithms
+
+## kNN
+
+## SVM
+
+## Random Forest
+
+## Deep-Learning
+
+
+# References
+
+
+
+
+

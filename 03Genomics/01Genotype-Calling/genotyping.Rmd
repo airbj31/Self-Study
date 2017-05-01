@@ -1,0 +1,45 @@
+---
+title: "Genotyping"
+author: "bjkim"
+date: "2016년 8월 26일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction to genotyping issues
+
+- A good SNP from Affy 500K.
+
+> Well clustered SNP img.
+> each point - indovodual
+> outside clusters means that common homozygous and rare homozygous
+> center cluster means the heterozygous.
+
+> PTPN22 in the WTCCC
+> Type 1 Diabetes have more rare homozygous allels than controls.
+
+
+## Overview of difficulties
+- A difficulty Affy 500k SNP
+- separation of intensity is not enough.
+- calling genotype between lower intensities are challenging
+- Effect of Copy number variation
+    - Copy number variation (common deletion / )generates noisy like clusters and it inhibits normal clustering
+  
+## Statistical framework
+
+# Calling strategy
+
+# Calling strategy
+
+## One or two dimensional clustering
+
+## Estimation techniques
+
+## Additional refinements
+
+# Differental bias, informative missingness
+

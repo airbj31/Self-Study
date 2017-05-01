@@ -1,0 +1,115 @@
+---
+title: "Matrix"
+author: "bjkim"
+date: '`r format(Sys.time(), "%d %B, %Y")`'
+output:
+  html_document: 
+    toc: TRUE
+    toc_float:
+      collapsed: TRUE
+      smooth_scroll: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Matrix
+
+**Matrix (Matrice)** is a form of rectangular array of number, symbols or expressions, arranged in rows (m) and (n) columns 
+
+## Notation ##
+
+- Matrix is normally written in box brackets or parentheses. if we use box brackets, we can write m x n (m-by-n matrix) matrix as
+
+$$ \begin{bmatrix}
+  x_{11} &x_{12} & x_{13} & \dots &x_{1n} \\  
+  x_{21} &x_{22} & x_{23} & \dots &x_{2n} \\  
+  x_{21} &x_{32} & x_{33} & \dots &x_{3n} \\  
+  \vdots & \vdots & \vdots & \ddots & \vdots \\
+  x_{m1} & x_{m2} & x_{m3} & \dots & x_{mn} 
+  \end{bmatrix}$$ 
+
+- Normally, we used **capitalized letter** for matrix.
+
+- **elements** or **entry** : individual items in a maatrix
+
+# Type of matrix
+
+- **row vector** (1 x n)  
+A matrix with one row, sometimes used to be represent a vector.
+- **column vector** (n x 1)  
+A matrix with one column, sometimes used to represent a vector
+- **square matrix** ( n x n )  
+A matrix with same number of rows and columns. 
+
+# Basic Operation
+
+## Addition  
+
+$$\begin{equation}
+  \left( \begin{array}{cccc}
+  x_{11} &x_{12} & \dots & x_{1n} \\  
+  x_{21} &x_{22} & \dots & x_{2n} \\  
+  \vdots & \vdots & \ddots & \vdots \\
+  x_{m1} & x_{m2} & \dots & x_{mn} 
+  \end{array} \right) +  
+  \left( \begin{array}{cccc}
+  y_{11} &y_{12} & \dots & y_{1n} \\  
+  y_{21} &y_{22} & \dots & y_{2n} \\  
+  \vdots & \vdots & \ddots & \vdots \\
+  y_{m1} & y_{m2} & \dots & y_{mn} 
+  \end{array} \right) 
+  = 
+  \left( \begin{array}{cccc}
+  x_{11} + y_{11} &x_{12} + y_{12} & \dots & x_{1n} + y_{1n}\\  
+  x_{21} + y_{21} &x_{22} + y_{22}& \dots & x_{2n} + y_{2n}\\  
+  \vdots & \vdots & \ddots & \vdots \\
+  x_{m1} + y_{m1} & x_{m2} + y_{m2} & \dots & x_{mn} + y_{mn} 
+  \end{array} \right) 
+  \end{equation}$$
+
+## Scalar Multiplication
+
+$$ \begin{equation} k \times
+  \left( \begin{array}{cccc}
+  x_{11} &x_{12} & \dots & x_{1n} \\  
+  x_{21} &x_{22} & \dots & x_{2n} \\  
+  \vdots & \vdots & \ddots & \vdots \\
+  x_{m1} & x_{m2} & \dots & x_{mn} 
+  \end{array} \right) = 
+  \left( \begin{array}{cccc}
+  k \times x_{11} & k \times x_{12} & \dots & k \times x_{1n} \\  
+  k \times x_{21} & k \times x_{22} & \dots & k \times x_{2n} \\  
+  \vdots & \vdots & \ddots & \vdots \\
+  k \times x_{m1} & k \times x_{m2} & \dots & k \times x_{mn} 
+  \end{array} \right) \, {\text{where,} k \mid k \in N, N \text{is natural number}}
+  \end{equation}$$
+  
+
+
+## Transposition
+
+## Matrix multiplication
+
+## Row Operations
+
+## submatrix
+
+## Linear equations
+
+## Linear transformations
+
+# Square matrix
+
+# Main operations
+
+## Trace
+
+## Determinant
+
+## Eigenvalues and eigenvectors
+
+# Computational aspects
+
+

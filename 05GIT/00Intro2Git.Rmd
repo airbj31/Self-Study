@@ -1,0 +1,143 @@
+---
+title: "Introduction to Git and GitHub"
+author: "Byungju Kim"
+date: "2015년 12월 22일"
+output: html_document
+---
+
+
+
+# What is the version control?
+Version Control is a system that records changes to a file or set of files over time so that you can recall specific versions later.
+
+- Many us constantly create something, save it, change it , then save it again.
+- version (or revision) control is a means of managing this process in a reliable and efficient way.
+- Especially important when collaborating with others
+
+# Git
+
+## What is Git
+- Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency. [http://git-scm.com](http://git-scm.com)
+
+- Created by the same people who developed Linux
+- The most popular implementation of version control today
+- Everything is stored in local repositories on your computer
+- operated from the command line
+
+## Short history  of Git
+http://git-scm.com/book/en/Getting-Started-A-Short-History-of-Git
+
+## Download Git
+- http://git-scm.com/downloads
+- 
+
+## Install Git
+- Unless you really know what you are doing, just go with the default options at each step of the installation
+- Once the install is complete, hit the Finish button 
+    (You may want to uncheck the box next to "Review ReleaseNotes.rff")
+
+## Open Git Bash
+- For windows Users, use Terminal instead of Git bash. Git bash is only available on windows
+- Git Bash is located in the directory into which Git Installed.
+
+## Configure Username and Email
+
+- Each commit to a Git repository will be tagged with the username of the person who made the commit
+- Enter the following commands in Git Bash, one at time, to set your username and email.
+
+```
+$ git config --global user.name ~~~
+$ git config --global user.email ~~~
+
+```
+
+- You'll only have to do this once, but you can always change these down the road using the same commands
+
+- now type the following to confirm your changes (they may be listed toward the bottom)
+
+```
+$ git config --list
+```
+
+``
+$ exit
+
+```
+
+# GitHub
+
+- GitHub is a web-based hosting service for software development projects that use the Git revision control system.
+
+## What is github ?
+- Allows users to "push" and "pull" their local repositories to and from remote repositories on the web
+- Provides users with a homepage that displays their public repositories
+- User' repositories are backed up on the GitHub server in case something happens to the local copies
+- Social aspect allows users to follow one another and share projects
+
+# Set up a GitHub Account
+
+# Navigating GitHub
+- After signing up, you will find yourself on this page, which has several helpful resource for learning more about Git and GitHub.
+- Try clicking on your username in the upper rightand corner of the screen to view your Github profile
+
+# Start a Repository From Scratch
+- Create a name for your Repo and type a brief description of it
+- Select "Public" (Private repos require a paid account)
+- Check the box next to "Initialize this repository with a README"
+- Click the "Create repository" Button
+
+# Copy the repo. 
+
+# Clone the repo
+
+- You now have a copy of the desired repository on your GitHub account
+- 
+
+# WHat Else ?
+
+- https://help.github.com/articles/fork-a-repo
+- http://git-scm.com/book/en/Git-Basics-Getting-a-Git-Repository
+
+
+# Git basic Commands
+
+## Adding 
+- Suppose you add new files to local repository under version control
+- You need to let Git know that they need to be tracked
+
+    - **git add .** adds all new files
+    - **git add -u** updates tracking for files that changed names or were deleted
+    - **git add -A** does both of the previoyus
+
+- You should do it before committing
+
+## Commiting
+- You have changes you want to commit to be saved as an intermediate version
+- You type the command
+    -git commit -m "message" where message is a usefule description of what you did.
+    
+- The only updates your local repo, nmot the remote repo on Github.
+
+## Pushing 
+- You have saved local commits you would like to update on the remote (Github)
+- You tyupe the command
+
+    - git push
+    
+## Branches
+- Sometimes you are working on a project with a version being used by many people
+- You may not want to edit that version
+- So You can create a branch with the command
+    - git checkout -b branchname
+- To see what branch you are on type
+    - git branch
+- To switch back to the master branch type
+    - git checkout master
+    
+
+    
+## Pull requests
+
+
+  
+  

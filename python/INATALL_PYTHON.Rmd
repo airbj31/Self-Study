@@ -1,0 +1,24 @@
+---
+title: "Python"
+author: "BJ Kim"
+date: "2017년 3월 10일"
+output: html_document
+---
+
+
+# Installation
+
+## How to install Python
+
+```
+        ## Download and unarchieve
+        wget https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
+        tar -zxvf Python-3.6.0.tgz
+        
+        ## installation
+        ./configure --prefix=$HOME/local/Python-3.6.0 --enable-optimization
+        ./make
+        ./make install
+        
+
+```

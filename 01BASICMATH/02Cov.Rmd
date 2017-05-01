@@ -1,0 +1,33 @@
+---
+title: "COV"
+author: "bjkim"
+date: "2016년 8월 29일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Set notation
+
+## Variance
+```{r}
+
+  matt<-matrix(c(90,60,90,
+                 90,90,30,
+                 60,60,60,
+                 60,60,90,
+                 30,30,30),ncol=3,byrow=TRUE)
+  ColumnAvg<-colMeans(matt)
+
+  DevMatt<-matt-matrix(rep(ColumnAvg,5),byrow=TRUE,ncol=3)
+  a<-matt*1/5
+  
+  
+  matrix(rep(1,25),ncol=5) %*% matt
+  
+  
+  t(DevMatt) %*% DevMatt
+```
+
