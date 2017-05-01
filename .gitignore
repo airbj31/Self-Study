@@ -1,3 +1,6 @@
-Genomics/GWAS/BIBS
-.pdf
-.Rproj.user
+./Genomics/GWAS/BIBS
+
+*/*.pdf
+*/*.Rproj
+*.user
+.gitignore
