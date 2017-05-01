@@ -1,0 +1,270 @@
+---
+title: "00_INSTALL_AND_HOW_TO_GET_HELP"
+author: "Byungju Kim @ UC berkeley"
+date: "2015년 10월 2일"
+output:
+  html_document:
+    css: RStyle.css
+    toc: yes
+---
+
+# What is the R ?
+
+  - Simply, R is a language and environment for statistical computing and graphics.
+  
+  - R is branched out from **S language**
+
+<div class="db_line_box">
+
+<img src="./Figs/JohnChamber.png" alt="John Chamber, Creater of S language" class="circRect">
+
+  * S is a language developed by John Chamber and others at Bell labs for data analysis, statistical modeling, simulation and graphics.
+  
+  * Originally, S was developed as Fortran library and does not have functions for statistical modeling.
+  
+  * in 1988, S language was rewritten in C and it looks like today's system. (Version 3)
+
+  * Bell lab gave the license of S language to StatSci(Insightful Corp) and sell the S language
+  
+  * in 1998, version 4 of S language was released and it is what we used today.
+  
+</div>
+
+# Why the R language   
+  * de facto statistical language of choice of statistician
+  * free, released under GNU licenses.
+  * Platform independent
+  * Various package easily access and assmeble.
+
+# How to Install R and its related program
+
+## Install R
+
+### 1. open your web browser and go to [ CRAN ](http://cran.r-project.org)
+  
+    CRAN is comprehensive R archive Network. you can download R and its packages from here.
+
+### 2. You can build your own R from Package management program (or Installer) or R source code
+  
+#### 2-1. Installing from Installer (package management program)
+
+  * If you reached to the Cran.r-project.org, You can see the following box on the top of your screen
+  
+<div class="db_line_box">
+
+Precompiled binary distributions of the base system and contributed packages, Windows and Mac users most likely want one of these versions of R:
+
+  * [Download R for Linux](https://cran.r-project.org/bin/linux/)
+  * [Download R for (Mac) OS X](https://cran.r-project.org/bin/macosx/)
+  * [Download R for Windows](https://cran.r-project.org/bin/windows/)
+
+R is part of many Linux distributions, you should check with your Linux package management system in addition to the link above.
+
+</div>
+
+  * choose your OS.
+  * click and download R-\<version\>.\<package-dependent suffix\>
+  * open the downloaded file, Installer
+  * following the description and agree the license
+  * Install it.
+
+  
+#### 2-2. install from source code.
+
+  You can also build R from source code. 
+
+<div class="db_line_box">
+  
+Source Code for all Platforms
+
+Windows and Mac users most likely want to download the precompiled binaries listed in the upper box, not the source code. The sources have to be compiled before you can use them. If you do not know what this means, you probably do not want to do it!
+
+  * The latest release (2015-08-14, Fire Safety) [R-3.2.2.tar.gz](https://cran.r-project.org/src/base/R-3/R-3.2.2.tar.gz), read [what's new](https://cran.r-project.org/doc/manuals/r-release/NEWS.html) in the latest version.
+  * Sources of R alpha and beta releases (daily snapshots, created only in time periods before a planned release).
+  * Daily snapshots of current patched and development versions are available here. Please read about new features and bug fixes before filing corresponding feature requests or bug reports.
+  * Source code of older versions of R is available here.
+  * Contributed extension packages
+  
+</div>
+  
+  Select the nearleast mirror and download the base package for current R.
+    for more detailed procedure, please visit R manual page ( https://cran.r-project.org/manuals.html ) and please read [R Installation and Administration manual]( https://cran.r-project.org/doc/manuals/r-release/R-admin.html ) 
+
+
+
+    
+              tar -zxvf 
+        
+              ./configure
+              make
+
+
+### update R
+
+```{r updateR, echo=FALSE,eval=FALSE}
+
+
+
+
+```
+
+
+### R Studio
+
+  * R studio is an free integrated development environment (IDE) for R
+  
+  * You can download it from www.rstudio.com -> product -> download desktop version.
+
+![](Figs/rstudio.JPG)
+
+  
+
+  * R studio has two edition
+    
+    * Desktop application works as just normal desktop app such as excel, word and powerpoint.
+    
+    * server is designed to work on remte server.
+
+
+
+
+
+
+## 3. Setting the Working Directory
+  
+  * Working Directory is **base directory** where R finds all of your files for reading and writing on your computer
+
+  * You can see your working directory by 
+    
+    ```{r, echo=TRUE, eval=TRUE}
+    getwd()
+    dir()
+    
+    ```
+
+  * The result differ on your computer depending on version, configuration of your OS.
+  
+  * You can change your working directory by
+  
+    clicking file > change directory
+    
+    ```{r, echp=TRUE,eval=FALSE}
+    setwd("/home/bjkim")
+    ```
+
+
+    
+3. 
+
+# Where can I learn ?
+
+  Here I describe several documents needed to learn R.
+  
+  * [ R tutorial ](http://www.cyclismo.org/tutorial/R/)
+  
+  * [ Introduction to R ](https://cran.r-project.org/doc/manuals/R-intro.pdf)
+
+  * [ R reference Card ](https://cran.r-project.org/doc/contrib/Short-refcard.pdf)
+  
+## Coursera/EdX R course
+  *
+  
+# Getting Help ?
+
+## task view
+
+  * [taskview](https://cran.r-project.org/web/views) introduces packages which related to specific area.
+    each of the task view are managed by professionals in each area.
+  
+## Read the package manual
+
+Most of the package includes useful documents and example sources. Indeed, many packages have a tutorials called  "vignettes".
+  
+### Vignette
+  
+  You can see all the vignette installed in your computer by typing vignette()
+
+```{r Vignette}
+  vignette()
+```
+  
+  
+    ```{r CallPackageManual, eval=FALSE}
+    ??ggplot2
+    vignette("Affymetrix")
+    ```
+        
+### Get help from command line
+
+You can also get the answers from those commands.
+      
+e.g)
+
+```{r manuals, FALSE}
+    help(mean)     # call the manual for the package, function
+    help(package="reshape2")
+    help("reshape2")
+    
+    ?mean          # You can also use "?" for the shortcut of help.
+            
+    args(mean)     # get the arguments of function 'mean'
+  
+    example(mean)
+```
+  
+  
+## Web
+  
+  * RSiteSearch
+  
+    ```{r RSiteSearch, eval=FALSE, }
+    RSiteSearch("KeyWord")
+    ```      
+
+    The Command ```RSiteSearch()``` redirects you to the internet browser and search the "KeyWord" 
+      
+  * http://rseek.org
+
+      This is a R specific google-search page made by (sashagoodman.com)[http://sashagoodman.com/]
+
+  * http://stackoverflow.com
+      
+  * http://stats.stackexchange.com
+  
+
+
+### Mailing List
+
+  You can ask question to people using mailing list
+  
+  * Subscribe the R help list
+  * Read [posing guide](https://www.r-project.org/posting-guide.html) carefully before posting your question
+  * write your question correctly, including sample code which represent your problem as possible.
+  * Write your question to r-help@r-project.org
+
+```{r Clear, echo=FALSE}
+  rm(list=ls())
+```
+
+
+
+### Reference
+
+  * Rodger Feng, "          " of Coursera lecture 
+  
+  * Introduction to R.
+  
+  * R Cookbook 
+
+
+
+
+
+#### Read and write file 
+
+source()
+
+
+## References and Images
+
+http://www.stat.unipg.it/iasc/IASC-Presidents/J_M_Chambers.html

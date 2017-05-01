@@ -1,0 +1,15 @@
+---
+title: "00_Document_Info"
+author: "bjkim"
+date: "2015년 10월 2일"
+output: html_document
+---
+
+This document is the summary of several documents and lectures from
+
+
+1. R Cookbook.
+2. Coursera Courses for R (Johns hopkins )
+3. Introduction to R
+4. R data analysis
+5. [tryR](http://tryr.codeschool.com/)

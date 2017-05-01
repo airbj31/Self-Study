@@ -1,0 +1,164 @@
+---
+title: "04_R_Basics"
+author: "bjkim"
+date: "2015년 10월 26일"
+output: 
+  html_document: 
+    highlight: monochrome
+    theme: flatly
+    toc: yes
+---
+
+# Subsetting vector
+  There are number of ways to extract subsets of R objects
+  
+* "**[**", always returns an object of the same class as the original; can be used to select more than one elements(there is one exceptions)
+
+* **[[**, is used to extract elements of a list or a data frame :
+    it can only be used to extract a single element and the class of the returned object will not necessarily be a list or data frame.
+
+* **$**, is used to extract elements of a list or data frame by name :
+    semantics are simillar to hat of "[["
+
+```{r,echo=TRUE,eval=TRUE,prompt=TRUE}
+  x<-c("a","b","c")
+  x
+  x[1]  ## numerical index
+  x[1:2]
+  x[x > "a"] # only select elements larger than a
+  u <-x > "a"
+  u ## logical index
+  
+  x[u]
+  
+
+```
+
+# subsetting Lists
+
+```{r,echo=TRUE,eval=TRUE,prompt=TRUE}
+  x<-list(foo=1:4, bar=0.6)
+  x
+  x[[1]]
+  x$bar
+  x["bar"]
+  x[["bar"]]
+  
+
+```
+
+# subsetting nested elements of a list
+
+```{r,echo=TRUE,eval=TRUE,prompt=TRUE}
+  x<-list(a=list(10,12,14),b=c(3,14,8))
+  x[[c(1,3)]]
+  x[[1]][[3]]
+```
+
+# subsetting matrix
+
+* Matrices can be subsetted in the usual way with (i,j) type of index
+  where i=first index and j is the second index.
+```{r,echo=TRUE,eval=TRUE,prompt=TRUE}
+  x<-matrix(1:6,2:3)
+  x[1,2]
+  x[2,1]
+  
+```
+
+* indices can also be missing. if the index is missing, the expression prints all the elements of missing index ( think that shows all the values of the column / rows )
+
+```{r,echo=TRUE,eval=TRUE,prompt=TRUE}
+    x[1,]
+    x[,2]
+```
+
+*  by default, subsetting matrixs prints vector with length n. it was turned off by setting drop=FALSE 
+```{r,echo=TRUE,eval=TRUE,prompt=TRUE}
+    x[1,]
+    is.vector(x[1,])
+    x[1,,drop=FALSE]
+    is.vector(x[1,,drop=FALSE])
+    is.matrix(x[1,,drop=FALSE])
+
+```
+
+# subsetting -Partial matching
+
+* IF you do not rememebr the entire name of column or row, You can use partial matching with **[[** and **$**
+
+```{r,echo=TRUE,eval=TRUE,prompt=TRUE}
+    x<-list(merong=1:5)
+    x$m
+    x[["m"]]
+    x[["m",exact=FALSE]]
+```
+
+# subsetting - Removing missing values
+
+* a common tak is to remove missing values (NAs)
+
+```{r,echo=TRUE,eval=TRUE,prompt=TRUE}
+
+    x<-c(1,2,NA,4,NA,5,NA)
+    bad<-is.na(x)
+    bad # which element is NA (T/F)
+    x[bad] # print only True
+    x[!bad] # print only false
+```
+
+
+* ```complete.case() function ```
+    ```the complete.case()``` function return a logical vector indicating which cases are complete, i.e., have no missing values
+  
+    ``` {r,echo=TRUE,eval=TRUE,prompt=TRUE}
+    x<-c(1,2,NA,4,5,NA)
+    y<-c("a","b",NA,"d",NA,"f")
+    good<- complete.cases(x,y)
+    good
+    x[good]
+    y[good]
+    
+    ```
+
+* you can also omit missing values from data.frame using ```complete.case``` 
+
+    ``` {r,echo=TRUE,eval=TRUE,prompt=TRUE}
+    airquality[1:6,]
+    good<-complete.cases(airquality)
+    airquality[good,][1:6,]
+    ```
+    
+# vectorized Operation
+
+* Many operations in R are vectorized making code more efficient, concise, and eaiser to read.
+
+    e.g) arismetic operation such as add(**+**), substraction(**-**), multipllication(**\***) and  divide(**/**)
+
+```{r,echo=TRUE,eval=TRUE,prompt=TRUE}
+  x<-1:4;
+  y<-6:9;
+  x+y # 1+6, 2+7, 3+8, 4+9
+    
+  x > 2
+  y==8
+  x*y
+  x/y
+
+```
+
+# vectirized matrix operation
+```{r,echo=TRUE,eval=TRUE,prompt=TRUE}
+  x<-matrix(1:4,2,2);
+  y<-matrix(rep(10,4),2,2)
+  x*y ## element-wise multiplication. this is not matrix multiplication
+  
+  x/y
+  
+  x %*% y ## true matrix multiplication
+```
+# SWIRL
+-
+-
+-
+-

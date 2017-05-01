@@ -1,0 +1,78 @@
+---
+title: "Linear Algebra : Vector and its space"
+author: "bjkim"
+date: '2016 12 19 '
+output: html_document
+---
+
+# Objects
+- Knows the vector
+- understand how to calculate vectors
+- 
+# Introduction about Vectors
+
+## Definition of Vectors 
+
+**Vector** is a quantity having direction as well as **magnitude**, especially as determining the position of one point in space relative to another. e.g) velocity of 5 athletes. magitude ( 5 mph ) + direction ( west and or right. )
+
+```{r, echo=FALSE}
+set.seed(1234)
+  data<-data.frame(xBegin=sample(10,5),xEnd=sample(10,5), yBegin=1:5, yEnd=1:5)
+
+```
+
+## Visualizing Vector
+
+- vectors are represented as arrows, length for magnitude and direction for head.
+
+```{r, echo=FALSE, message=FALSE}
+
+  require(ggplot2)
+  p<-ggplot(data,aes(xBegin,yBegin)) + geom_point()
+  p<-p+ geom_segment(aes(x=xBegin,xend=xEnd,y=yBegin,yend=yEnd),size=2,arrow=arrow(length=unit(0.5,"cm")))
+  p<-p+theme_bw() + xlab("Velocity") + ylab("Sample No.")
+  p
+  
+```
+
+in typical mathmatical equation, vector is denoted as $$\vec{x} = (5,0) = \left( \begin{array}{c} 5 \\ 0 \end{array}\right)$$.
+
+# Vector Space
+
+$\begin{array}{c} R^n \\ \mathbb{R}^n \end{array} \Big\}$ n-Dimensional Real coordinate space.
+
+$$\begin{equation}
+  \left( \begin{array}{c}
+  x_{1} \\  
+  x_{2} \\  
+  \vdots \\
+  x_{n}
+  \end{array} \right)
+  \end{equation}$$
+ 
+# Vector Arithmetic
+
+$$\vec{a} = \left( \begin{array}{c} 6 \\-2 \end{array} \right), \vec{b} = \left( \begin{array}{c} -4 \\4 \end{array} \right)$$
+
+### Adding vectors,
+
+$$\vec{a} + \vec{b} =  \left( \begin{array}{c} 6 + -4 \\ -2 + 4 \end{array} \right)$$
+
+### Substrating vectors,
+
+### Multipying vectors by scalars
+
+$$3 \times \vec{a} = 3 \times \left( \begin{array}{c} 6 \\-2 \end{array} \right) = \left( \begin{array}{c} 3 \times 6 \\ 3 \times -2 \end{array} \right)$$
+
+- 3 is scalar, which denotes the orientation and magnitude of the small vector space.
+
+## Unit vector notation.
+
+- vector of length 1.
+- normally, denoted by a lowercase letter with a "hat"
+
+$$\hat{i}=\left( \begin{array}{c} 1 \\ 0 \end{array} \right)$$
+
+$$\hat{j}=\left( \begin{array}{c} 0 \\ 1 \end{array} \right)$$
+
+Any two dimensional vectors are calculated by 2 unit vector, i and j.
