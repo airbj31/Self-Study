@@ -19,15 +19,15 @@ The rmdir utility removes the directory entry specified by each directory argume
      The following option is available:
 
  -p      
-	+ Each directory argument is treated as a pathname of which all components will be removed, if they are empty, starting with the last most component.  (See rm(1) for fully non-discriminant recursive removal.)
+  + Each directory argument is treated as a pathname of which all components will be removed, if they are empty, starting with the last most component.  (See rm(1) for fully non-discriminant recursive removal.)
 
 The rmdir utility exits with one of the following values:
 
-     0       
-	+ Each directory entry specified by a dir operand referred to an empty directory and was removed successfully.
+ 0       
+  + Each directory entry specified by a dir operand referred to an empty directory and was removed successfully.
 
-     >0      
-	+ An error occurred.
+ >0      
+  + An error occurred.
 
 ## SEE ALSO
 

@@ -18,34 +18,34 @@ changed.  If cp detects an attempt to copy a file to itself, the copy will fail.
 The following options are available:
 
  -a    
-	+ Same as -pPR options. Preserves structure and attributes of files but not directory structure.
+  + Same as -pPR options. Preserves structure and attributes of files but not directory structure.
 
  -f    
-	+ If the destination file cannot be opened, remove it and create a new file, without prompting for confirmation regardless of its permissions.  (The -f option overrides any previous -n option.)
+  + If the destination file cannot be opened, remove it and create a new file, without prompting for confirmation regardless of its permissions.  (The -f option overrides any previous -n option.)
 
-	+ The target file is not unlinked before the copy.  Thus, any existing access rights will be retained.
+  + The target file is not unlinked before the copy.  Thus, any existing access rights will be retained.
 
  -H    
-	+ If the -R option is specified, symbolic links on the command line are followed. (Symbolic links encountered in the tree traversal are not followed.)
+  + If the -R option is specified, symbolic links on the command line are followed. (Symbolic links encountered in the tree traversal are not followed.)
 
  -i    
-	+ Cause cp to write a prompt to the standard error output before copying a file that would overwrite an existing file.  If the response from the standard input begins with the character `y' or `Y', the file copy is attempted.  (The -i option overrides any previous -n option.)
+  + Cause cp to write a prompt to the standard error output before copying a file that would overwrite an existing file.  If the response from the standard input begins with the character `y' or `Y', the file copy is attempted.  (The -i option overrides any previous -n option.)
 
  -L    
-	+ If the -R option is specified, all symbolic links are followed.
+  + If the -R option is specified, all symbolic links are followed.
 
  -n    
-	+ Do not overwrite an existing file.  (The -n option overrides any previous -f or -i options.)
+  + Do not overwrite an existing file.  (The -n option overrides any previous -f or -i options.)
 
  -P    
-	+ If the -R option is specified, no symbolic links are followed.  This is the default.
+  + If the -R option is specified, no symbolic links are followed.  This is the default.
 
  -p    
-	+ Cause cp to preserve the following attributes of each source file in the copy: modification time, access time, file flags, file mode, user ID, and group ID, as allowed by permissions.  Access Control Lists (ACLs) and Extended Attributes (EAs), including resource forks, will also be preserved.
+  + Cause cp to preserve the following attributes of each source file in the copy: modification time, access time, file flags, file mode, user ID, and group ID, as allowed by permissions.  Access Control Lists (ACLs) and Extended Attributes (EAs), including resource forks, will also be preserved.
 
-	+ If the user ID and group ID cannot be preserved, no error message is displayed and the exit value is not altered.
+  + If the user ID and group ID cannot be preserved, no error message is displayed and the exit value is not altered.
 
-	+ If the source file has its set-user-ID bit on and the user ID cannot be preserved, the set-user-ID bit is not preserved in the copy's permissions.  If the source file has its set-group-ID bit on and the group ID cannot be preserved, the set-group-ID bit is not preserved in the copy's permissions.  If the source file has both its set-user-ID and set-group-ID bits on, and either the user ID or group ID cannot be preserved, neither the set-user-ID nor set-group-ID bits are preserved
+  + If the source file has its set-user-ID bit on and the user ID cannot be preserved, the set-user-ID bit is not preserved in the copy's permissions.  If the source file has its set-group-ID bit on and the group ID cannot be preserved, the set-group-ID bit is not preserved in the copy's permissions.  If the source file has both its set-user-ID and set-group-ID bits on, and either the user ID or group ID cannot be preserved, neither the set-user-ID nor set-group-ID bits are preserved
 in the copy's permissions.
 
 -R    If source_file designates a directory, cp copies the directory and the entire sub-
@@ -124,4 +124,5 @@ mv(1), rcp(1), umask(2), fts(3), compat(5), symlink(7)
 The cp command is expected to be IEEE Std 1003.2 (``POSIX.2'') compatible.
 
 ## HISTORY
+
 A cp command appeared in Version 1 AT&T UNIX.
