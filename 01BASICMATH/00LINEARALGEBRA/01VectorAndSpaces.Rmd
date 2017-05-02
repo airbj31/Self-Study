@@ -8,7 +8,7 @@ output: html_document
 # Objects
 - Knows the vector
 - understand how to calculate vectors
-- 
+ 
 # Introduction about Vectors
 
 ## Definition of Vectors 
@@ -23,7 +23,7 @@ set.seed(1234)
 
 ## Visualizing Vector
 
-- vectors are represented as arrows, length for magnitude and direction for head.
+- vectors are represented as arrows, length for magnitude and direction for arrow head.
 
 ```{r, echo=FALSE, message=FALSE}
 
