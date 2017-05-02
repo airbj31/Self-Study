@@ -1,0 +1,71 @@
+---
+title: "svm"
+author: "BJ Kim"
+date: "2017년 4월 30일"
+output: html_document
+---
+
+
+```{r loadData}
+ data<-iris
+ set.seed(12345)
+ data$set<-"test"
+ train<-sort(sample(1:150,120))
+ data[train,]$set<-"train"
+ 
+ 
+ require(e1071)
+ svm_model<-svm(data[data$set=="train",c(1,2,3,4)],data[data$set=="train",]$Species,probability=TRUE)
+ pred<-predict(svm_model,data[data$set=="test",c(1,2,3,4)],probability=TRUE,decision.value=TRUE)
+ prob.versicolor <- attr (pred, "probabilities")[, "versicolor"]
+ 
+ roc.pred<-prediction(
+ 
+ table(data[data$set=="test",]$Species,pred)
+ 
+ 
+ attach(db)
+
+```
+
+```{r knn}
+
+pred<-class::knn(train=data[data$set=="train",c(1,2,3,4)],test=data[data$set=="test",c(1,2,3,4)],cl=data[data$set=="train",]$Species,k=6)
+
+
+require(pROC)
+
+knnroc<-multiclass.roc(response=data[data$set=="test",]$Species,predictor=as.ordered(pred))
+plot(knnroc,col="blue")
+
+
+```
+
+
+```{r}
+ roc.curve=function(s,print=FALSE){
+         Ps=(S>s)*1
+        FP=sum((Ps==1)*(Y==0))/sum(Y==0)
+        TP=sum((Ps==1)*(Y==1))/sum(Y==1)
+        if(print==TRUE){
+        print(table(Observed=Y,Predicted=Ps))
+        }
+        
+        vect=c(FP,TP)
+        names(vect)=c("FPR","TPR")
+        return(vect)
+ }
+
+threshold = 0.5
+roc.curve(threshold,print=TRUE)
+ROC.curve=Vectorize(roc.curve)
+
+I=(((S>threshold)&(Y==0))|((S<=threshold)&(Y==1)))
+plot(S,Y,col=c("red","blue")[I+1],pch=19,cex=.7,,xlab="",ylab="")
+abline(v=seuil,col="gray")
+M.ROC=ROC.curve(seq(0,1,by=.01))
+plot(M.ROC[1,],M.ROC[2,],col="grey",lwd=2,type="l")
+
+
+
+```

@@ -1,6 +1,0 @@
-./Genomics/GWAS/BIBS
-
-*/*.pdf
-*/*.Rproj
-*.user
-.gitignore

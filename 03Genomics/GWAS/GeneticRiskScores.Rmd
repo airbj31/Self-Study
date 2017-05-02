@@ -1,0 +1,18 @@
+---
+title: "GeneticRiskScore"
+author: "bjkim"
+date: '2017 5 1 '
+output: html_document
+---
+
+**Genetic risk score** is an estimate of the cumulative contribution of genetic factors to a specific outcome of interest in an individual that take into account the rported risk alleles.
+
+**Area under the curve (AUC)** The area under the curve (AUC) measures the predictive ability of a receiver operating
+characteristic (ROC) generated based on the genetic risk scores for a sample of individuals. The AUC is a function of the ability of the risk score to correctly identify the presence (sensitivity) or absence (specificity) of the outcome of interest.
+
+
+References
+
+Cooke Bailey, J.N., and Igo, R.P. Jr., 2016. Genetic risk scores. Curr.
+Protoc. Hum. Genet. 91:1.29.1-1.29.9.
+doi: 10.1002/cphg.20
