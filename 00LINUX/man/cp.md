@@ -48,24 +48,17 @@ The following options are available:
   + If the source file has its set-user-ID bit on and the user ID cannot be preserved, the set-user-ID bit is not preserved in the copy's permissions.  If the source file has its set-group-ID bit on and the group ID cannot be preserved, the set-group-ID bit is not preserved in the copy's permissions.  If the source file has both its set-user-ID and set-group-ID bits on, and either the user ID or group ID cannot be preserved, neither the set-user-ID nor set-group-ID bits are preserved
 in the copy's permissions.
 
--R    If source_file designates a directory, cp copies the directory and the entire sub-
-      tree connected at that point.  If the source_file ends in a /, the contents of the
-      directory are copied rather than the directory itself.  This option also causes
-      symbolic links to be copied, rather than indirected through, and for cp to create
-      special files rather than copying them as normal files.  Created directories have
-      the same mode as the corresponding source directory, unmodified by the process'
-      umask.
+-R    
+
+  + If source_file designates a directory, cp copies the directory and the entire subtree connected at that point.  If the source_file ends in a /, the contents of the directory are copied rather than the directory itself.  This option also causes symbolic links to be copied, rather than indirected through, and for cp to create special files rather than copying them as normal files.  Created directories have the same mode as the corresponding source directory, unmodified by the process' umask.  
 
 ...skipping...
-      symbolic links to be copied, rather than indirected through, and for cp to create
-      special files rather than copying them as normal files.  Created directories have
-      the same mode as the corresponding source directory, unmodified by the process'
-      umask.
+      
+  + symbolic links to be copied, rather than indirected through, and for cp to create special files rather than copying them as normal files.  Created directories have the same mode as the corresponding source directory, unmodified by the process' umask.
 
-      In -R mode, cp will continue copying even if errors are detected.
+  + In -R mode, cp will continue copying even if errors are detected.
 
-      Note that cp copies hard-linked files as separate files.  If you need to preserve
-      hard links, consider using tar(1), cpio(1), or pax(1) instead.
+  + Note that cp copies hard-linked files as separate files.  If you need to preserve hard links, consider using tar(1), cpio(1), or pax(1) instead.
 
 -v    Cause cp to be verbose, showing files as they are copied.
 

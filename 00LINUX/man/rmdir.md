@@ -12,11 +12,11 @@ rmdir [-p] directory ...
      
 The rmdir utility removes the directory entry specified by each directory argument, provided it is empty.
 
-     Arguments are processed in the order given.  In order to remove both a parent directory
-     and a subdirectory of that parent, the subdirectory must be specified first so the par-
-     ent directory is empty when rmdir tries to remove it.
+Arguments are processed in the order given.  In order to remove both a parent directory
+and a subdirectory of that parent, the subdirectory must be specified first so the par-
+ent directory is empty when rmdir tries to remove it.
 
-     The following option is available:
+The following option is available:
 
  -p      
   + Each directory argument is treated as a pathname of which all components will be removed, if they are empty, starting with the last most component.  (See rm(1) for fully non-discriminant recursive removal.)
