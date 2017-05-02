@@ -1,0 +1,52 @@
+---
+title: "02 REAL COORDINATE SPACEs"
+author: "bjkim"
+date: '2017 5 2 '
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
+    toc_level: 2
+    
+---
+
+## Real coordinate space
+
+$$ Real\;coordinate\;space = \{ \begin{array} {r} R^2 \\  \mathbf{R^2} \end{array} $$
+
+This notation means the real 2-Dimensional real coordinate space.it is all possible real-valued 2-tuples.
+
+e.g)
+
+
+```{r echo=FALSE,message=FALSE}
+        require(ggplot2)
+        tmp.df<-data.frame(
+                x=c(0,0,0,0,4,4),
+                y=c(0,0,0,3,3,0),
+                class=c("X","XY","Y")
+        )
+        p<-ggplot(tmp.df,aes(x,y,color=class)) + geom_line(arrow=arrow()) + guides(color=FALSE)
+        p + theme_bw()
+
+```
+ 
+ we have following 3 vectors ;
+ 
+  - blue arrow  (4,3) 
+  - green arrow (3,4)
+  - red arrow   (0,3)
+
+in such a way, we denotes 3-D real coordinate space as $R^3$
+
+## Adding vectors algebraically & graphically
+
+
+##
+
+
+## References
+
+[Khan academy]()
+[Wikipedia]()
+[]()
