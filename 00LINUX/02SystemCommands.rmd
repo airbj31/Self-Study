@@ -1,0 +1,46 @@
+
+
+# Linux system commands
+
+## Lunux commands
+
+ - case sensitive
+
+## structire of linux commands
+
+```
+ cmd <argument> <file>
+
+``
+
+## How can I leran about the command ?
+
+```
+ man cmd
+ cmd --help
+ cmd -h
+
+```
+
+## tab-completion
+
+
+
+##
+
+
+
+
+- df
+
+- du
+
+
+
+- ps
+
+## process management
+
+kill
+
+
