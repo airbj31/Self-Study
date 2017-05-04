@@ -16,17 +16,20 @@ The column utility formats its input into multiple columns.  Rows are filled bef
 
      The options are as follows:
 
-     -c      Output is formatted for a display columns wide.
+ -c      
+  + Output is formatted for a display columns wide.
 
-     -s      Specify a set of characters to be used to delimit columns for the
-	     -t option.
+ -s      
+  + Specify a set of characters to be used to delimit columns for the
+	     
+ -t option.
 
-     -t      Determine the number of columns the input contains and create a
-	     table.  Columns are delimited with whitespace, by default, or
-	     with the characters supplied using the -s option.	Useful for
-	     pretty-printing displays.
+     
+ -t      
+  + Determine the number of columns the input contains and create a table.  Columns are delimited with whitespace, by default, or with the characters supplied using the -s option.	Useful for pretty-printing displays.
 
-     -x      Fill columns before filling rows.
+ -x      
+  + Fill columns before filling rows.
 
 ## ENVIRONMENT
 
@@ -39,9 +42,11 @@ The column utility exits 0 on success, and >0 if an error occurs.
 ## EXAMPLES
 
 ```	   
-	  (printf "PERM LINKS OWNER GROUP SIZE MONTH DAY " ; \
-	   printf "HH:MM/YEAR NAME\n" ; \
-	   ls -l | sed 1d) | column -t
+
+$ (printf "PERM LINKS OWNER GROUP SIZE MONTH DAY " ; printf "HH:MM/YEAR NAME\n" ; ls -l | sed 1d) | column -t
+
+$ ls -l | awk -v OFS="," '{print $1,$2,$3,$4.$5}' | column -t -s ',' 
+
 ```
 ## SEE ALSO
      
