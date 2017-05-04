@@ -1,12 +1,25 @@
-
 # R
 
+00 How to Install and Learn R
 
+01 R Basics
 
+02 R data Type
 
+03 Reading Data 
 
+  + Tidy Data, dplyr and tidyr
 
-# Rmarkdown
+04 R and Statistics 
+
+05 
+
+# Visualization
 
 [R markdown Tutorial](./Rmarkdown/Rmarkdown.tutorial.Rmd)
 
+[R graphics](./graphics/README.md)
+
+  - base graph
+  - lattice
+  - ggplot2
