@@ -1,15 +1,17 @@
+# column
 
-COLUMN(1)		  BSD General Commands Manual		     COLUMN(1)
+## NAME
 
-NAME
-     column -- columnate lists
+column -- columnate lists
 
-SYNOPSIS
-     column [-tx] [-c columns] [-s sep] [file ...]
+## SYNOPSIS
 
-DESCRIPTION
-     The column utility formats its input into multiple columns.  Rows are
-     filled before columns.  Input is taken from file operands, or, by
+```     
+	column [-tx] [-c columns] [-s sep] [file ...]
+```
+## DESCRIPTION
+
+The column utility formats its input into multiple columns.  Rows are filled before columns.  Input is taken from file operands, or, by
      default, from the standard input.	Empty lines are ignored.
 
      The options are as follows:
@@ -26,25 +28,30 @@ DESCRIPTION
 
      -x      Fill columns before filling rows.
 
-ENVIRONMENT
-     The COLUMNS, LANG, LC_ALL and LC_CTYPE environment variables affect the
-     execution of column as described in environ(7).
+## ENVIRONMENT
 
-EXIT STATUS
-     The column utility exits 0 on success, and >0 if an error occurs.
+The COLUMNS, LANG, LC_ALL and LC_CTYPE environment variables affect the execution of column as described in environ(7).
 
-EXAMPLES
-	   (printf "PERM LINKS OWNER GROUP SIZE MONTH DAY " ; \
+## EXIT STATUS
+
+The column utility exits 0 on success, and >0 if an error occurs.
+
+## EXAMPLES
+
+```	   
+	  (printf "PERM LINKS OWNER GROUP SIZE MONTH DAY " ; \
 	   printf "HH:MM/YEAR NAME\n" ; \
 	   ls -l | sed 1d) | column -t
+```
+## SEE ALSO
+     
+colrm(1), ls(1), paste(1), sort(1)
 
-SEE ALSO
-     colrm(1), ls(1), paste(1), sort(1)
+## HISTORY
+     
+The column command appeared in 4.3BSD-Reno.
 
-HISTORY
-     The column command appeared in 4.3BSD-Reno.
+## BUGS
+     
+Input lines are limited to LINE_MAX (2048) bytes in length.
 
-BUGS
-     Input lines are limited to LINE_MAX (2048) bytes in length.
-
-BSD				 July 29, 2004				   BSD
