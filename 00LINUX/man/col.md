@@ -29,7 +29,7 @@ characters printed on a half line boundary are printed on the
 following line.
 
  -h      
-  +Do not output multiple spaces instead of tabs (default).
+  + Do not output multiple spaces instead of tabs (default).
 
  -l <num>  
   + Buffer at least num lines in memory.  By default, 128 lines are
@@ -40,19 +40,19 @@ buffered.
 
  -x      
   + Output multiple spaces instead of tabs.
-  + The control sequences for carriage motion that col understands and their decimal values are listed in the following table:
+  + The control sequences for carriage motion that col understands and their decimal values are listed in the following table:  
 
-	  ESC-7	      reverse line feed (escape then 7)
-	  ESC-8	      half reverse line feed (escape then 8)
-	  ESC-9	      half forward line feed (escape then 9)
-	  backspace	      moves back one column (8); ignored in the first column
-	  carriage return  (13)
-	  newline	      forward line feed (10); also does carriage return
-	  shift in	      shift to normal character set (15)
-	  shift out	      shift to alternate character set (14)
-	  space	      moves forward one column (32)
-	  tab	      moves forward to next tab stop (9)
-	  vertical tab     reverse line feed (11)
+	  ESC-7	      reverse line feed (escape then 7)  
+	  ESC-8	      half reverse line feed (escape then 8)  
+	  ESC-9	      half forward line feed (escape then 9)  
+	  backspace	      moves back one column (8); ignored in the first column  
+	  carriage return  (13)  
+	  newline	      forward line feed (10); also does carriage return  
+	  shift in	      shift to normal character set (15)  
+	  shift out	      shift to alternate character set (14)  
+	  space	      moves forward one column (32)  
+	  tab	      moves forward to next tab stop (9)  
+	  vertical tab     reverse line feed (11)  
 
  All unrecognized control characters and escape sequences are discarded.
 
