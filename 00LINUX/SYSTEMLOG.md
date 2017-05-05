@@ -8,7 +8,7 @@
  - logrotate	:
  - logwatch	:
 
-## syslogd(./man/syslogd.man)
+## [syslogd](./man/syslogd.man)
 
  All the records after system booting are stored in the log file in the directory of '/var/log' by **syslogd daemon** and **klogd**.
 
@@ -20,17 +20,47 @@
 
 **/etc/syslog.conf** file is the main configuration file for syslogd daemon. 
 
- - rules about configuring syslogd daemon
+**Rules about configuring syslogd daemon**
 
-    + Lines starting with a hash mark ("#") is a comment line so ignored.
-    + blank line is also ignored.
-    + Evey line is consists of **selector field** and **action filed**.
-  
-  **selector field**   which information would be stored ?.
-  
-  **action field**     where is the file the information stored.
+ - Lines starting with a hash mark ("#") is a comment line so ignored.
+ - blank line is also ignored.
+ - Evey line is consists of **selector field** and **action filed**.
+
+    + **selector field**   which information would be stored ?.
+
+    + **action field**     where is the file the information stored.
 
   facility and message priority is setted in the selector field.
+
+**example**
+
+etc/syslog.conf
+```
+# Log all kernel messages to the colsole.
+# logging much else clutters up the screen.
+# kern.*	/dev/console
+# log anything (Except mail) of level info or higher. please see the 'Facility'
+# Don't log private authentication messages.
+
+*.info;mail.none;news.none;authpriv.none;cron.none	/var/log/message
+
+# The authprive file has restricted access
+authpriv.*						/var/log/secure
+
+# log all the mail messages in one place
+mail.*							/var/log/maillog
+
+# log cron stuff
+con.*							/var/log/cron
+
+# save news errors of level crit and higher in a special file.
+uucp,news.crit						/var/log/spooler
+
+# save boot messages also to boot.log
+
+local7.*						/var/log/boot.log0
+
+```
 
 ### Facility
 
