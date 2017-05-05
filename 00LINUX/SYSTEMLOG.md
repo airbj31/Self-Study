@@ -16,53 +16,12 @@
 
   + provides two system utilities which provide support for system logging and kernel message trapping.  Support of both internet and unix domain  sockets  enables this utility package to support both local and remote logging.
 
-### How to configure syslog daemon.
+### Syslog message components
 
-**/etc/syslog.conf** file is the main configuration file for syslogd daemon. 
 
-**Rules about configuring syslogd daemon**
 
- - Lines starting with a hash mark ("#") is a comment line so ignored.
- - blank line is also ignored.
- - Evey line is consists of **selector field** and **action filed**.
 
-    + **selector field**   which information would be stored ?.
-
-    + **action field**     where is the file the information stored.
-
-  facility and message priority is setted in the selector field.
-
-**example**
-
-etc/syslog.conf
-```
-# Log all kernel messages to the colsole.
-# logging much else clutters up the screen.
-# kern.*	/dev/console
-# log anything (Except mail) of level info or higher. please see the 'Facility'
-# Don't log private authentication messages.
-
-*.info;mail.none;news.none;authpriv.none;cron.none	/var/log/message
-
-# The authprive file has restricted access
-authpriv.*						/var/log/secure
-
-# log all the mail messages in one place
-mail.*							/var/log/maillog
-
-# log cron stuff
-con.*							/var/log/cron
-
-# save news errors of level crit and higher in a special file.
-uucp,news.crit						/var/log/spooler
-
-# save boot messages also to boot.log
-
-local7.*						/var/log/boot.log0
-
-```
-
-### Facility
+#### Facility
 
 | code | Facility      | description                             |
 |------|---------------|-----------------------------------------|
@@ -82,7 +41,6 @@ local7.*						/var/log/boot.log0
 | 11   | ftp           | ftp daemon                              |
 | 12   | -             | NTP subsystem                           |
 | 13   | -             | log audit                               |
-| 14   | -             | log alert                               |
 
 ### Severity
 
@@ -99,30 +57,53 @@ the Severity is defined in [RFC 5424](https://tools.ietf.org/html/rfc5424)
 | 6     | Information |         |                     | Informational message |
 | 7     | Debug     | debug   |                     | Debug-level messages. Messages that contain information normally of use only when debugging a program.
 
-### How to configure log.
+### How to configure syslog daemon.
 
-**/etc/syslog.conf** file is the main configuration file for syslogd daemon.
+**/etc/syslog.conf** file is the main configuration file for syslogd daemon. 
 
+**Rules about configuring syslogd daemon**
 
+ - Lines starting with a hash mark ("#") is a comment line so ignored.
+ - blank line is also ignored.
+ - Evey line is consists of **selector field** and **action filed**.
 
+    + **selector field**   which information would be stored ?.
 
- All the records after system booting are stored in the log file in the directory of '/var/log' by **syslogd daemon** and **klogd**.
+    + **action field**     where is the file the information stored.
 
- the daemon is included in the sysklogd package, which is installed with Linux installation.
+  facility and message priority is setted in the selector field.
 
-
-```
-kern.*    /dev/console/
-```
- 
- This command log all kernel messages into the console.
-
-## run/restart syslog daemon
+**example : etc/syslog.conf**
 
 ```
- su -c service syslog restrt
+# Log all kernel messages to the colsole.
+# logging much else clutters up the screen.
+
+kern.*	/dev/console
+
+# log anything (Except mail) of level info or higher. please see the 'Facility'
+# Don't log private authentication messages.
+
+*.info;mail.none;news.none;authpriv.none;cron.none	/var/log/message
+
+# The authprive file has restricted access
+authpriv.*						/var/log/secure
+
+# log all the mail messages in one place
+
+mail.*							/var/log/maillog
+
+# log cron stuff
+
+cron.*							/var/log/cron
+
+# save news errors of level crit and higher in a special file.
+uucp,news.crit						/var/log/spooler
+
+# save boot messages also to boot.log
+
+local7.*						/var/log/boot.log0
+
 ```
-                                
-# logfile management
 
 ## logrotate
