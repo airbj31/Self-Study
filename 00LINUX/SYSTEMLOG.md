@@ -18,9 +18,6 @@
 
 ### Syslog message components
 
-
-
-
 #### Facility
 
 | code | Facility      | description                             |
@@ -106,4 +103,71 @@ local7.*						/var/log/boot.log0
 
 ```
 
-## logrotate
+## [logrotate](./man/logrotate.md)
+
+
+ Managing log file effectively is an essential task for linux sysadmin. logrotate is the progem to do the task effectively.
+
+ System runs logrotate on a schedule, daily/weekly/monthly by  '/etc/cron.daily/logrotate'
+
+ there are also variations. e.g)
+
+```
+ /etc/cron.daily/logrotate.cron ## on gentoo linux
+
+```
+
+ when the logrotate runs, it read its configure file to determine where to find the log files that it need to rotate, how often the file whould be rotated, and how many archieved logs to keep.
+
+### configuration 
+
+the main logrotate configuration file is located in the directory of `/etc/logrotate.conf`
+
+**example : /etc/logrotate.conf**
+
+```
+# see "man logrotate" for details
+# rotate log files weekly
+weekly
+
+# keep 4 weeks worth of backlogs
+rotate 4
+
+# create new (empty) log file after rotating old onees
+create
+
+# uncommen this if you wnat your log files compressed
+# compress
+
+# RPM packages drop log rotation information into thus directory
+include /etc/logrodate.d
+
+# no packages own wtmp -- wikk ritate them here
+
+/var/log/wtmp {
+	monthly
+	minisize 1M
+	create 0644 root utmp
+	rotate1
+}
+```
+**Explanations**
+
+- weekley/daily/monthly    - the interval of the log file routine.
+
+- rotate <n>               - log file rotates 4 times <weekly/daily/monthly> 
+
+e.g) 
+
+```
+ messages
+ messages.1
+ messages.2
+ messages.3
+ messages.4
+```
+- create                   - 'create' means that 
+
+- compress                 -
+
+- include                  - /etc/logrodate.d  
