@@ -35,36 +35,22 @@ If no command line arguments are given, logrotate  will	print  version and  copy
   + Turns  on	 debug mode and implies -v.  In debug mode, no changes will be made to the logs or to the logrotate state file.
 
 
-       -f, --force
-	      Tells logrotate to force the rotation, even if it doesn’t	 think
-	      this  is	necessary.   Sometimes this is useful after adding new
-	      entries to logrotate, or if old log files have been  removed  by
-	      hand,  as	 the  new files will be created, and logging will con-
-	      tinue correctly.
+ -f, --force
+  + Tells logrotate to force the rotation, even if it doesn’t think this is necessary. Sometimes this is useful after adding new entries to logrotate, or if old log files have been  removed  by hand, as the new files will be created, and logging will continue correctly.
 
+ -m, --mail <command>
+  + Tells logrotate which command to use when mailing logs. This  command  should accept two arguments: 1) the subject of the message, and 2) the recipient. The command must then read a message on standard input and mail it to the recipient. The default mail command is /bin/mail -s.
 
-       -m, --mail <command>
-	      Tells logrotate which command to use  when  mailing  logs.  This
-	      command  should accept two arguments: 1) the subject of the mes-
-	      sage, and 2) the recipient. The command must then read a message
-	      on standard input and mail it to the recipient. The default mail
-	      command is /bin/mail -s.
+ -s, --state <statefile>
+  + Tells logrotate to use an alternate state file. This is useful if logrotate is being run as a different user for various sets of log files.  The default state file is /var/lib/logrotate.status.
 
-
-       -s, --state <statefile>
-	      Tells logrotate to use an alternate state file.  This is	useful
-	      if  logrotate  is being run as a different user for various sets
-	      of log files.  The default state file is /var/lib/logrotate.sta-
-	      tus.
-
-
-       --usage
-	      Prints a short usage message.
+ --usage
+  + Prints a short usage message.
 
 
 ## CONFIGURATION FILE
 
-  logrotate  reads	 everything  about the log files it should be handling from the series of configuration files specified on the	command	 line. Each configuration file can set global options (local definitions override global ones, and later  definitions	 override  earlier  ones)  and specify	logfiles  to  rotate.  A  simple configuration file looks like this:
+  logrotate reads everything about the log files it should be handling from the series of configuration files specified on the	command	 line. Each configuration file can set global options (local definitions override global ones, and later  definitions	 override  earlier  ones)  and specify	logfiles  to  rotate.  A  simple configuration file looks like this:
 
 
 ***sample logrotate configuration file***
@@ -307,127 +293,61 @@ If no command line arguments are given, logrotate  will	print  version and  copy
 	      (this overrides the dateext option).
 
 
-       nomail Don’t mail old log files to any address.
+ **nomail**   
+  + Don’t mail old log files to any address.
 
 
-       nomissingok
-	      If  a  log  file	does  not  exist,  issue an error. This is the
-	      default.
+ **nomissingok**  
+  + If  a  log  file	does  not  exist,  issue an error. This is the  default.
+
+ **noolddir**
+  + Logs are rotated in the same directory the log normally  resides in (this overrides the olddir option).
+
+ **nosharedscripts**
+  + Run prerotate and postrotate scripts for every log file which is rotated (this is the default, and	 overrides  the	 sharedscripts option).	The  absolute  path to the log file is passed as first argument to the script. If the  scripts  exit  with  error,  the remaining actions will not be executed for the affected log only.
+
+ **notifempty**
+  + Do not rotate the log if it is empty (this overrides the ifempty option).
+
+ **olddir directory**
+  + Logs are moved into directory for rotation. The directory must be on the same physical device as the log file being rotated, and  is  assumed to be relative to the directory holding the log file unless an absolute path name is specified. When this option is  used all old versions of the log end up in directory.  This option may be overriden by the noolddir option.
 
 
-       noolddir
-	      Logs are rotated in the same directory the log normally  resides
-	      in (this overrides the olddir option).
+ **postrotate/endscript**
+  + The lines between postrotate and endscript (both of  which  must appear  on  lines	 by  themselves)  are executed (using /bin/sh) after the log file is rotated. These directives may only	appear inside a log file definition. Normally, the absolute path to the log file is passed as first argument to the script.  If  sharedscripts  is specified, whole pattern is passed to the script See prerotate as well.
 
 
-       nosharedscripts
-	      Run prerotate and postrotate scripts for every log file which is
-	      rotated (this is the default, and	 overrides  the	 sharedscripts
-	      option).	The  absolute  path to the log file is passed as first
-	      argument to the script. If the  scripts  exit  with  error,  the
-	      remaining	 actions  will	not  be	 executed for the affected log
-	      only.
+ **prerotate/endscript**
+  + The lines between prerotate and endscript (both  of  which  must appear on lines by themselves) are executed (using /bin/sh) before the log file is rotated and only if the log will actually be  rotated.  These directives may only appear inside a log file definition. Normally, the absolute path to the log file is passed as first argument to the script.  If  sharedscripts is specified, whole pattern is passed  to  the  script. See also postrotate.
 
 
-       notifempty
-	      Do not rotate the log if it is empty (this overrides the ifempty
-	      option).
+ **firstaction/endscript
+  + The  lines between firstaction and endscript (both of which must appear on lines by themselves) are executed (using /bin/sh) once before  all  log	files  that  match  the wildcarded pattern are rotated, before prerotate script is run and only if at least one log  will actually be rotated.  These directives may only appear inside a log file definition. Whole pattern  is  passed  to  the script  as  first	 argument.  If the script exits with error, no further processing is done. See also lastaction.
 
 
-       olddir directory
-	      Logs  are	 moved into directory for rotation. The directory must
-	      be on the same physical device as the log	 file  being  rotated,
-	      and  is  assumed to be relative to the directory holding the log
-	      file unless an absolute path name is specified. When this option
-	      is  used	all old versions of the log end up in directory.  This
-	      option may be overriden by the noolddir option.
+ **lastaction/endscript**
+  + The lines between lastaction and endscript (both of  which  must appear on lines by themselves) are executed (using /bin/sh) once after all log  files  that  match	 the  wildcarded  pattern  are rotated, after postrotate script is run and only if at least one log is rotated. These directives may only appear	inside	a  log file  definition. Whole pattern is passed to the script as first argument. If the script exits with error, just an error  message is shown (as this is the last action). See also firstaction.
 
 
-       postrotate/endscript
-	      The lines between postrotate and endscript (both of  which  must
-	      appear  on  lines	 by  themselves)  are executed (using /bin/sh)
-	      after the log file is rotated. These directives may only	appear
-	      inside a log file definition. Normally, the absolute path to the
-	      log file is passed as first argument to the script.  If  shared-
-	      scripts  is specified, whole pattern is passed to the script See
-	      prerotate as well.
+ **rotate** <count>
+  + Log  files  are  rotated <count> times before being removed or mailed to the address specified in a mail directive. If count is 0, old versions are removed rather then rotated.
 
 
-       prerotate/endscript
-	      The lines between prerotate and endscript (both  of  which  must
-	      appear  on  lines	 by  themselves)  are executed (using /bin/sh)
-	      before the log file is rotated and only if the log will actually
-	      be  rotated.  These directives may only appear inside a log file
-	      definition. Normally, the absolute  path	to  the	 log  file  is
-	      passed  as  first	 argument to the script.  If  sharedscripts is
-	      specified, whole pattern is passed  to  the  script.   See  also
-	      postrotate.
+ **size size** 
+  + Log  files are rotated only if they grow bigger then size bytes. If size is  followed  by	M,  the	 size  if  assumed  to	be  in megabytes. If the k is used, the size is in kilobytes. So size 100, size 100k, and size 100M are all valid.
 
 
-       firstaction/endscript
-	      The  lines between firstaction and endscript (both of which must
-	      appear on lines by themselves) are executed (using /bin/sh) once
-	      before  all  log	files  that  match  the wildcarded pattern are
-	      rotated, before prerotate script is run and only if at least one
-	      log  will actually be rotated.  These directives may only appear
-	      inside a log file definition. Whole pattern  is  passed  to  the
-	      script  as  first	 argument.  If the script exits with error, no
-	      further processing is done. See also lastaction.
+ **sharedscripts**
+  + Normally, prescript and postscript scripts are run for each  log which is rotated and the absolute path to the log file is passed as first argument to the script. That means a single script  may be  run multiple times for log file entries which match multiple files (such as the /var/log/news/* example). If sharedscripts is specified, the  scripts	are  only run once, no matter how many logs match the wildcarded pattern, and whole pattern  is	passed to  them. However,  if none of the logs in the pattern require rotating, the scripts will not be run at all. This option	overrides the nosharedscripts option and implies create option.
 
 
-       lastaction/endscript
-	      The lines between lastaction and endscript (both of  which  must
-	      appear on lines by themselves) are executed (using /bin/sh) once
-	      after all log  files  that  match	 the  wildcarded  pattern  are
-	      rotated, after postrotate script is run and only if at least one
-	      log is rotated. These directives may only appear	inside	a  log
-	      file  definition. Whole pattern is passed to the script as first
-	      argument. If the script exits with error, just an error  message
-	      is shown (as this is the last action). See also firstaction.
+ **start** <count>
+	     
+ This is the number to use as the base for rotation. For example, if you specify 0, the logs will be created with a .0 extension. as they are rotated from the original log files. If you specify 9, log files will be created with a  .9,	skipping  0-8.	 Files will  still  be  rotated	the number of times specified with the count directive.
 
 
-       rotate count
-	      Log  files  are  rotated	<count>	 times before being removed or
-	      mailed to the address specified in a mail directive. If count is
-	      0, old versions are removed rather then rotated.
-
-
-       size size
-	      Log  files are rotated only if they grow bigger then size bytes.
-	      If size is  followed  by	M,  the	 size  if  assumed  to	be  in
-	      megabytes.   If the k is used, the size is in kilobytes. So size
-	      100, size 100k, and size 100M are all valid.
-
-
-       sharedscripts
-	      Normally, prescript and postscript scripts are run for each  log
-	      which is rotated and the absolute path to the log file is passed
-	      as first argument to the script. That means a single script  may
-	      be  run multiple times for log file entries which match multiple
-	      files (such as the /var/log/news/* example). If sharedscripts is
-	      specified,  the  scripts	are  only run once, no matter how many
-	      logs match the wildcarded pattern, and whole pattern  is	passed
-	      to  them.	  However,  if none of the logs in the pattern require
-	      rotating, the scripts will not be run at all. This option	 over-
-	      rides the nosharedscripts option and implies create option.
-
-
-       start count
-	      This is the number to use as the base for rotation. For example,
-	      if you specify 0, the logs will be created with a	 .0  extension
-	      as they are rotated from the original log files.	If you specify
-	      9, log files will be created with a  .9,	skipping  0-8.	 Files
-	      will  still  be  rotated	the number of times specified with the
-	      count directive.
-
-
-       tabooext [+] list
-	      The current taboo extension list is  changed  (see  the  include
-	      directive	 for information on the taboo extensions). If a + pre-
-	      cedes the list of extensions, the current taboo  extension  list
-	      is  augmented,  otherwise	 it is replaced. At startup, the taboo
-	      extension list contains .rpmorig, .rpmsave, ,v,  .swp,  .rpmnew,
-	      and ~.
+ **tabooext [+] list**
+  + The current taboo extension list is  changed  (see  the  include directive for information on the taboo extensions). If a + precedes the list of extensions, the current taboo  extension  list is  augmented,  otherwise	 it is replaced. At startup, the taboo extension list contains .rpmorig, .rpmsave, ,v,  .swp,  .rpmnew, and ~.
 
 
  **weekly** 
@@ -445,12 +365,14 @@ If no command line arguments are given, logrotate  will	print  version and  copy
 ```
 
 ## SEE ALSO
-       gzip(1)
+       
+gzip(1)
 
-       <http://fedorahosted.org/logrotate/>
+<http://fedorahosted.org/logrotate/>
 
 ## AUTHORS
-       Erik Troan, Preston Brown, Jan Kaluza
+       
+Erik Troan, Preston Brown, Jan Kaluza
 
-       <logrotate-owner@fedoraproject.org>
+<logrotate-owner@fedoraproject.org>
 
