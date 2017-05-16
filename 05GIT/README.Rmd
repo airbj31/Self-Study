@@ -91,3 +91,6 @@ This repository is the shortened version of the book named "[Pro GIT](https://gi
 
     5.4 Summary
 
+## Easy update
+
+git add *; git commit -m "blah blah"; git push

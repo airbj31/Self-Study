@@ -1,0 +1,27 @@
+---
+title: "Untitled"
+author: "BJ Kim"
+date: "2017년 5월 10일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction to Probability
+
+- Probability is a measurement how likely something happen.
+
+it is a mathematical framework to describe and analyze random phenomena.
+
+wE CANNOT PREDICT THE RANDOM PHENOMENA
+
+e.g)
+
+Tossing a coin 
+
+- head(H) or tails (T)
+
+- We say that the probabiluty of the coin landing H is 1/2
+- and the probability of the coin landing T is 1/2
