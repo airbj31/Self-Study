@@ -4,16 +4,31 @@ This is public(?!) self-study area of BJ KIm. this page will cover the following
 
 [00 LINUX](./00LINUX)
 
-[01 BasicMath](./01BasicMath)
+[01 BasicMath](./01BASICMATH)
 
+[02 Statistics](./02Statistics)
 
-[02 Grid Engine](./02) 
+[03 Genomics](./03Genomics)
 
-02 Perl
+[04 Grid Engine](./04GridEngine) 
 
-03 Python
+[05 Git](./05GIT)
 
-04 R
+[06 Information Theory](./06INFOTHEORY)
+
+[07 Machine Learning](./07MachineLearning)
+  
+  - Decision Tree
+  - kNN 
+  - SVM
+  - Random Forest
+  - dNN
+
+[08 DATA Visualization](./08DATAVISUALIZATION)
+
+[09 R](./09R)
+
+[10 Python](./10PYTHON)
 
 05 MACHINE LEARNING
   - Decision Tree
@@ -22,28 +37,4 @@ This is public(?!) self-study area of BJ KIm. this page will cover the following
   - Random Forest
   - dNN
 
-06 SQL
-
-07 Statistics
-
-08 Data Science (?!)
-00LINUX/
-00SelfStudy.Rproj
-01BASICMATH/
-02Statistics/
-03Genomics/
-04GridEngine/
-05GIT/
-06INFOTHEORY/
-07MACHINELEARNING/
-08DATAVISUALIZATION/
-09R/
-10PYTHON/
-11LATEX/
-README.md
-README.txt
-Yonsei/
-data_visualization/
-index.html
-pdf.gitignore
-testfile.txt
+[11 LATRX and Rmarkdown](./11LATEX)
