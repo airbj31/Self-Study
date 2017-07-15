@@ -1,0 +1,161 @@
+---
+title: "03_Read/Write_data"
+author: "bjkim"
+date: "2015년 10월 26일"
+output: 
+  html_document: 
+    highlight: tango
+    theme: united
+    toc: yes
+---
+
+# Reading data
+
+## read.table and read.csv, for reading tabular data.
+
+### read.table
+* most commonly used function for reading files.
+* important Arguments
+    + **file**, the name of a file, or a connection. indicating the data to be read.
+    + **header**, logical indicating if the file has a header line.
+    + **sep**, a string indicating how the columns are separated.
+    + **colClasses**, a character vector indicating the class of each column in the dataset
+    + **nrows**, the number of rows in the dataset
+    + **comment.char**, a character string indicating the commenting character
+    + **skip**, the number of lines to skip from the beginning
+    + **stringsAsFactors**, should character variables to be coded as factor?
+
+```{r, echo=TRUE,error=TRUE,prompt=TRUE,eval=FALSE}
+  data<-read.table("foo.txt")
+```
+
+R will automatically 
+
+* skip lines that begin with a #
+* figure out how many rows there are (and how much memory needs to be allocated)
+* figure what type of variable is in each column of the table telling R all these things directly makes R run faster and more efficiently
+
+
+### read.csv
+
+* Initially, this function is same with ```read.table()``` 
+* but the default separator is ```,```
+
+### Reading Large dataset using read.table
+
+* read the help page by ```?help(read.table)``` which gave you numerous hints.
+* make a rough calculation of memory required to store your data.
+    if the dataset is larger than the amount of the RAM on your computer, you can probably stop right here.
+* Set ```comment.char=""``` if there are no commented lines in your file.
+
+* **colClasses** are very important if you want read file more faster than default read.table.  
+
+* **Set nrows**. argument set nrows helps to reduce the memory usage.
+* knowing the system you used is useful way to handle large dataset
+    + How much memory is available?
+    + what other applications are in use?
+    + are there other users logged into the same system?
+    + what operating system?
+    + is the computer 32bit or 64bit ?
+    
+## Calculating Memory Requirements
+
+* if you have 1,500,000 x 120 numeric data, 1,5000,000x120x8bytes/numeric memory is required.
+* 2^20^ byte = 1MB
+    
+## ```readLines()```, for reading lines of a text file
+
+```{r, echo=TRUE,error=TRUE,prompt=TRUE,eval=TRUE}
+con<-file("./data/Real.first.6game")
+x<-readLines(con,10)
+x
+```
+## ```source()```, for reading in R code files (inverse of dump)
+
+## ```dget```, for reading in R code files (inverse of dput)
+
+## ```load```, for reading in saved workspaces.
+
+## ```unserialize```, for reading single R objects in binary form
+
+
+# Writing data
+
+## ```dumping``` and ```dputing```, for textual format.
+
+* unliking writing out a table or csv file, ```dump``` and ```dputing``` preserve the *metadata* (sacrificing some readability), so that another user doesn;t have to specify it all over again 
+
+* easy to check the corruption and fix the problem.
+
+* Downside - the format is not very space-efficient.
+
+### dput-ting R objects
+
+```{r, echo=TRUE,error=TRUE,prompt=TRUE,eval=TRUE}
+  y<-data.frame(a=1,b="a")
+  dput(y)
+  dput(y,file="y.md")
+  new.y<-dget("y.md")
+  new.y
+```
+
+### dumping R Objects
+
+* multiple objects can be deparsed using the dump function and read back in using ```source()```.
+
+```{r, echo=TRUE,error=TRUE,prompt=TRUE,eval=TRUE}
+x<-"foo"
+y<-data.frame(a=1,b="a")
+dump(c("x","y"),file="y.md")
+rm(x,y)
+source("y.md")
+y
+ x 
+```
+
+
+# Interfaces to the outside world
+Data are read in using connection interfaces.
+connections can be made to files (most common) or to other more exotic things
+
+* file
+* gzfile
+* bzfile
+* url
+
+## File connections
+
+```{r, echo=TRUE,error=TRUE,prompt=TRUE,eval=TRUE}
+str(file)
+```
+* description is the name of file
+* open is a code indicating
+  * "r", for read only
+  * "w", for writing
+  * "a", apending
+  * "rb","wb","ab" - reading, writing, apending in binary mode (windows)
+  
+### open connection
+```{r, echo=TRUE,error=TRUE,prompt=TRUE,eval=TRUE}
+  con<-file("./y.md","r")
+  data<-read.csv(con)
+  close(con)
+```
+
+
+```{r, echo=TRUE,error=TRUE,prompt=TRUE,eval=TRUE}
+ 
+  data<-read.csv("./y.md","r") # same with above chunks
+
+```
+
+### close connection
+
+### Reading from web
+```{r, echo=TRUE,error=TRUE,prompt=TRUE,eval=TRUE}
+con<-url("http://sports.media.daum.net/sports/worldsoccer/netizen/talk/")
+x<-readLines(con)
+```
+
+### Subsetting R Objects
+

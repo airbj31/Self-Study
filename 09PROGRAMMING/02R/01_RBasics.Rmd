@@ -1,0 +1,110 @@
+---
+ptitle: "01_R_Input_and_Evaluation"
+author: "bjkim"
+date: "2015년 10월 23일"
+output: 
+  html_document: 
+    highlight: pygments
+    theme: readable
+    toc: yes
+---
+# R Basics
+
+## Input and Output
+
+### Input
+
+* prompt
+
+    ```
+    >
+    ```
+
+    prompt is the sign to show R is ready to receive the input.
+    you can put the expression(commands) here.
+
+* expression
+
+    the things we type into the R prompt are called *expression*
+    For easy uderstanding, think expression as a command.
+
+    anything you entered in the prompt is "expression"
+
+    ```{r expression, echo=TRUE,eval=TRUE, error=TRUE,prompt=TRUE}
+    hello
+
+    ```
+  
+    but R can't understand real "human words". 
+  
+* assignment (<-)
+    
+    arrow, assignment symbol assigned a value to specific variable.
+
+    ```{r, echo=TRUE,eval=TRUE, prompt=TRUE}
+    x<-5  # assign 1 to x
+    x     # check the value of "x""
+    ```
+
+* comment (\#)
+
+    the number symbol, hash symbol ,\# character indicates a coment
+    Anything to the right of \# (including the \# itself) is ignored 
+    
+    in above expression, \# sentences explains the code.
+    
+### Output
+  If a complete expression is entered at the prompt, the output shows the result of your expression.
+  
+````{r, echo=TRUE,eval=TRUE,prompt=TRUE}
+    x  # print x
+    print(x) ## explicit priinting
+````
+
+* the output, [1] 5, means that x is a vector and 5 is the first element.
+  sometimes, the output does not print anything.
+
+    ````{r, echo=TRUE,eval=TRUE,prompt=TRUE}
+    x <- 1:20 # assign 1 
+    print(x) ## explicit priinting
+    ````
+
+    colon operator is used to generate sequence of numbers.
+    
+## Arithmetics with R
+
+- Addition `+`
+```{r addition}
+ 1+1
+```
+
+- Substraction `-`
+
+```{r substraction}
+ 2-1
+
+```
+
+- Multiplication `*`
+
+```{r Multiplication}
+ 3 * 3
+```
+
+- Division `/` and remainders(Modulo) `%%`
+
+```{r division}
+  ## division
+  10/3 
+
+  ## Modulo
+  10%%3
+```
+
+- Exponential `^`
+
+```{r}
+  ## Exponential
+  2^4
+
+```

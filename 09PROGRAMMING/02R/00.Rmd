@@ -1,0 +1,74 @@
+---
+title: "Rstudy"
+author: "Byungju Kim"
+date: "Wednesday, September 30, 2015"
+output: html_document
+---
+
+```{r Real}
+library(plyr)
+library(ggplot2)
+data<-read.table("./Study/R/data/Real.first.6game",header=F,sep="\t")
+
+cdata <- ddply(data, c("V1"), summarise,
+               N    = length(V10),
+               mean = mean(V10),
+               sd   = sd(V10),
+               se   = sd / sqrt(N)
+)
+
+idata <- ddply(data, c("V2"), summarise,
+               N    = length(V10),
+               mean = mean(V10),
+               sd   = sd(V10),
+               se   = sd / sqrt(N)
+)
+
+
+CR7<-subset(data,data$V2=="Cristiano Ronaldo")
+Isco10<-subset(data,data$V2=="Isco")
+KB9<-subset(data,data$V2=="Karim Benzema")
+RV2<-subset(data,data$V2=="Raphael Varane")
+DC<-subset(data,data$V2=="Daniel Carvajal")
+KN<-subset(data,data$V2=="Keylor Navas")
+LM<-subset(data,data$V2=="Luka Modric")
+MK<-subset(data,data$V2=="Mateo Kovacic")
+TK<-subset(data,data$V2=="Tony Kroos")
+MC<-subset(data,data$V2=="Marcelo")
+
+CR7$RT<-CR7$V10-cdata$mean
+Isco10$RT<-Isco10$V10-cdata$mean
+KB9$RT<-KB9$V10-cdata$mean
+RV2$RT<-RV2$V10-cdata$mean
+DC$RT<-DC$V10-cdata$mean
+KN$RT<-KN$V10-cdata$mean
+LM$RT<-LM$V10-cdata$mean
+MK$RT<-MK$V10-cdata$mean
+TK$RT<-TK$V10-cdata$mean
+MC$RT<-MC$V10-cdata[1:5,]$mean
+
+CR7$V2<-"C.Ronaldo"
+KB9$V2<-"K.Benzema"
+RV2$V2<-"R.Varane"
+
+
+data<-rbind(CR7,Isco10,KB9,RV2,DC,KN,LM,MK,TK,MC)
+
+idata <- ddply(data, c("V2"), summarise,
+               N    = length(RT),
+               mean = mean(RT),
+               sd   = sd(RT),
+               se   = sd / sqrt(N)
+)
+
+
+
+p<-ggplot(data,aes(V1,RT,color=V2)) + geom_point() + xlab("Game") + ylab("TeamRating-IndividualRating") + geom_smooth() + theme_bw()
+
+p<-ggplot(idata,aes(x=V2,y=sd))+geom_bar(stat="identity") + xlab("경기") + ylab("기복") + theme_bw()
+
+p<-ggplot(idata,aes(x=V2,y=mean))+geom_bar(stat="identity") + xlab("경기") + ylab("기복") + theme_bw()
+
+i
+
+```

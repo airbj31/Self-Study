@@ -1,0 +1,79 @@
+---
+title: "BitwiseOperation"
+author: "BJ Kim"
+date: "2017년 7월 1일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Unit of the data used in computers
+
+## Bits and Byte
+
+A Bit is the smallest unit of data having a single binary value (0 or 1) in a computer.
+
+some glossaries
+
+- bit    - single unit fo data.
+- nibble - half byte (4 bits)
+- Byte   - 8 bits. normatlly the smallest unit of addressable memory.
+
+
+
+## Bitwise Operation vs Bytewise Operation
+
+
+C provides six operators for bit manipulation
+
+| Symbol | Operator                      |
+|--------|-------------------------------|
+| &      | Bitwise And                   |
+| \|     | Bitwise inclusive OR          |
+| ^      | Bitwise XOR (eXclusive OR)    |
+| <<     | left shift                    |
+| >>     | right shfit                   |
+| ~      | bitwise NOT (one's complement)|
+
+
+### Bitwise AND "&"
+
+| bit a | bit b | a & b (a AND b) |
+|-------|-------|-----------------|
+| 0     | 0     | 0               |
+| 0     | 1     | 1               |
+| 1     | 0     | 0               |
+| 1     | 1     | 1               |
+|
+
+### Bitwise OR "|"
+
+| bit a | bit b | a \| b (A or B) |
+|-------|-------|-----------------|
+| 0     | 0     | 0               |
+| 0     | 1     | 1               |
+| 1     | 0     | 1               |
+| 1     | 1     | 1               |
+
+### Bitwise XOR "^"
+
+| bit a | bit b | a ^ b (A or B) |
+|-------|-------|-----------------|
+| 0     | 0     | 0               |
+| 0     | 1     | 1               |
+| 1     | 0     | 1               |
+| 1     | 1     | 0               |
+
+### Bitwise NOT "~" / one's complement (unary)
+
+| bit a | ~ a (complement of a) |
+|-------|-----------------------|
+| 0     | 1                     |
+| 1     | 0                     |
+
+
+
+
+
