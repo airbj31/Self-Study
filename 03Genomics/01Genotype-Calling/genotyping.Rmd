@@ -2,7 +2,13 @@
 title: "Genotyping"
 author: "bjkim"
 date: "2016년 8월 26일"
-output: html_document
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
+    toc_level: 3
+    highlight: tango
+
 ---
 
 ```{r setup, include=FALSE}
@@ -43,3 +49,39 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Differental bias, informative missingness
 
+
+
+
+## Illumina Platform
+
+### Gencall
+
+- algorithm vendor provided
+
+- see the details in [technote_gencall_software](https://www.illumina.com/Documents/products/technotes/technote_gencall_data_analysis_software.pdf)
+
+**Gen Train score** designed to mimic evaluation made by a human expert's visual and cognitive system.
+
+GenCall score (GC) <0.15 is recommended threshold for failed genotype by Illumina. 
+
+### Illuminus
+
+- get 
+
+### GenoSNP
+
+
+
+## Affymetrix Platform
+
+### 
+
+### CRLMM ()
+
+- extracts and summarized X and Y intensities directly from the idat files.
+
+
+
+### References
+
+https://bmcbioinformatics.biomedcentral.com/articles/10.1186/1471-2105-12-68

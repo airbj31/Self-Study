@@ -1,0 +1,103 @@
+---
+title: "Untitled"
+author: "Byungju Kim"
+date: "2016년 1월 31일"
+output: html_document
+---
+
+
+## Family History and Inheritance Patterns
+
+## What's the Mendelian disease
+
+- the names, Mendelian's, comes from the father of genetics Gregor Mendel who describe the rule of inheritance for these kinds of disease.
+ 
+
+### Fig 1. Family tree of Queen Victoria, the elderly woman in the picture.
+
+![](./img/M02Fig1QueenVictoria.GIF)
+
+**Fig 1. British Victoria Queens's family tree.** Male descendents of the Royal family were cursed with disease named *Haemophilia*. See more details in http://www.sciencemag.org/news/2009/10/case-closed-famous-royals-suffered-hemophilia.
+
+One of fabulos example of an inhertied disease is British Royal Family, Queen victoria's family in 19C.
+The elder wonan in the picture is the queen victoria and her daughter, princess Beatrice. Both of Queen Victoria and Proncess Beatrice were  healthy, but their descents were dead at young age by inheritent *Haemophillia*.Prince Nicloi was dead at the age of 14.
+
+### Fig 2. Mad King and Porphyria. Allows the independence of America
+![](./img/M02Fig2KingGeorgeIII.GIF)
+
+## Family Tree and Inheritence.
+
+
+* Autosomal Dominant Disease
+* Autosomal Recessive.
+  - Cystric fibrosis
+  - Same as Mendel's Thorem, 3:1 ratio
+* Sex linked  disease
+* MT linked disease
+
+
+
+
+* Autosomal dominant
+- Single copy of an abnormal allele sufficient to produce the phenotype
+- Both sexes equally 
+  Male => Female and Female -> Male transmission
+  
+
+
+(example of ~~~)
+
+single gene mutation in LDL receptor causes high cholesterol and early heart attack. 
+
+Malfan Syndrome
+- Single base pair change is the reason.
+-
+-
+
+
+** Dominant and recessive
+
+
+* Variable Penetrance 
+- Not every single person who has the genetic abnormality will necessarily get the disease.
+
+
+* Sex link disease
+- X chromosome linked disease
+  - Male** 
+  -
+  
+- y chromosome -
+
+* MT linked disease
+- MT was transmiited by mothernal ways.
+-
+
+
+## Most common genetic diseases.
+* Cystic Fibrosis
+* Huntington's Disease
+* Down Syndrome
+* Duchenne Muscular Dystrophy
+* Sickle Cell anemia
+* Celiac Disease
+* Becker Muscular Dystrophy
+* Noonan Syndrome
+* Thalassemias
+* Bloom's Syndrome
+  prone to Ashkenzi Jews.
+  
+  
+# Ancestry - Genetic VFariation Across Generations and Geography.
+
+Why Ancestry is imprortant ?
+
+- Genomic Variation is common in one population but not common in other population.
+
+- *SNP* - Single Nucleotide Polymorphism.
+
+- *de novo mutation* - latin word for new mutation. uncommon.100 de novo mutation per individual.
+
+- *Haplotype* - Series of SNPs. they are not independent of each other.
+
+- *Linkage disequilibrium* -

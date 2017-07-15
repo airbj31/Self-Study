@@ -1,0 +1,32 @@
+---
+title: "01Microarray"
+author: "bjkim"
+date: '2017 5 24 '
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Overview on Microarray 
+
+- Denature
+- Hybridization
+
+- Amplification
+- Counting
+
+## The Basics
+
+
+
+## Usage of the technique
+
+- Gene Expression profiling
+
+- Comparative Genomic hybridization
+
+- Gene ID
+
+- SNP detection

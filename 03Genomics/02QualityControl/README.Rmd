@@ -1,0 +1,91 @@
+---
+title: "Quality Control/Assurance"
+author: "bjkim"
+date: '2017 5 15 '
+bibliography: ../BIBS.bib
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
+    toc_level: 3
+    highlight: tango
+---
+
+
+## Introduction
+
+Due to Recent advanced in technology, the accuracy and call rate of sequencing and microarray genotyping are truely high. however, probe quality, genotyping process, regent and instrumentation might generate small fraction of genotyping failures [@Cathy2010;@Rebecca2011]. Since the amount of the marker is numerous, small fraction of genotyping failure is also numerous (e.g, 1% of genotyping failure from 800,000 loci produces 8,000 error. So, even a low rate of error or bias could be detrimental and should be evaluated [@Anderson2010].
+
+
+## Sample Quality
+
+- [Sex concordance](./01SAMPLEQC-01CHECKsex.Rmd) 
+
+- [Missingness/Heterozygosity rates per individual](./01SAMPLEQC-02Missing.Rmd)
+    + Exclude the samples having more than 3% ~ 7% of missing loci and/or heterozygosity rate +- 3 strand deviation from the mean.
+    
+
+- [Sample Relatedness](./01SAMPLEQC-03SampleRelatedness.Rmd) 
+
+    + [IBD/IBS]()
+    
+      since the LD and population structure, mutation and genotyping error.
+      
+      PI-HAT score > 0.1875 ()
+                   > 0.98 (Identical Twin)
+      
+      KING.
+  
+    + [Population Structure]()
+    
+      - PCA
+      
+      - MDS
+      
+      - regions of high LD region must be excluded before conducting it.
+
+## Marker/Probe quality
+
+Basically, all of the problem in this category is related to the false/miss call due to the genotype caller and some other errors. 
+
+In Preliminary-QC, Low quality markers are filtered out by specific thresholds (e.g for the Affymetrix 6, the threshold is 0.1, for the Illumina platform GC score threshold is  0.15 )
+
+
+
+- [missingness per loci](./02MARKERQC-01)
+    
+    - Marker missingness call rate > 5%
+    
+        + 99% Call rate for low frequency (MAF < 5%)
+
+        + 
+
+    - missing differences between case and control
+
+- [Reproducibility]()  [@Stephen2011]
+
+- [batch Effect]()
+
+## Genome Version control and data merging
+
+- Major problem while merging different platforms.
+
+- Strand Orientation
+  + Untrackable A<->T;C<->G genotype
+
+-
+
+## Problem Detection.
+
+- Detection Methods.
+
+- Q-Q plot
+
+- PCA 
+
+-
+
+
+
+
+## References

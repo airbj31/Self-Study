@@ -1,0 +1,224 @@
+---
+title: "Personalized Medicine"
+author: "Byungju Kim"
+date: "2016년 1월 24일"
+output: 
+  html_document: 
+    css: ./style.css
+---
+
+
+## Glossary to understand
+
+### Biology
+  
+  * haploid
+  
+  *
+  
+### Statistical terms
+
+  * Sensitivity
+  * specificity
+  * odds ratio
+  * Relative Risks
+
+
+## What is Personalized Medicine ?
+
+<div class="image">
+![hipocrates@](./img/Hippocrates_Amanprana_Let_food_be_your_medicine_painter_Peter_Engels.jpg)<h5><span>It is more important to know what sort of person has a disease </br> than to know
+what sort of a disease a person has </span></h5></div>
+
+<p class="introduction"> Personalized medicine is getting a lot of
+press, and people are very interested in the idea that their medicine
+should be personalized. however, *the idea of personalized medicine is not new one*. </p>
+
+#### Personalized Medicine is not new one.
+
+As Hippocrates, the father of modern and anicent medicine, said it is more important to know what sort of person has a disease than to know what sort of disease a person has, 
+
+In other words, Understanding the patient and the disease is 
+
+More recently,
+<div class="image">
+  ![https://en.wikipedia.org/wiki/William_Osler#/media/File:William_Osler_photograph.jpg](./img/William_Osler_photograph.jpg)
+  <h5><span>The good physician treats the disease. </br>The great physician treats
+  the patient who has the disease.</span></h5>
+</div>
+More recently, Sir William Osler, the
+father of modern medicine, a Canadian who went to Johns Hopkins to found the famous
+department of medicine there and ended at his career at Oxford,
+is widely quoted. 
+
+
+#### New tools for deep understanding about the disease
+
+  * DNA molecule
+  * Computer technologies to analyse and manage DNA indofrmation 
+    
+#### What makes differences in individual cares.   
+
+  * Education -it enables people to understand what they need.
+  * information access - 
+  * clinical data
+  * family history
+  * ethinicity
+  * habit 
+  * genetic informations
+    - the information cross from one geneation to another generation
+
+
+## Genetic Hallmarks
+
+* 1865: Mendel discovers genes, but he is not believed.  He presents his findings at a scientific conference, but is laughed at.  After all, what does a monk know about biology?
+ 
+* 1882: Under a microscope, Flemming sees little squiggly things in the center of a cell.  He calls them chromosomes.
+ 
+* 1900: deVries notices similarities between Mendel’s particles and the newly-discovered chromosomes.  Finally Mendel’s name has been cleared but it is too late – he’s already dead.
+ 
+* 1924: Microscopic studies show that DNA is present in chromosomes.
+ 
+* 1952: Biologists Hershey and Chase realize that it is DNA that encodes the genes.  The gene is determined by the values of the DNA base pairs in the gene.
+ 
+* 1953: Watson and Crick describe the DNA double-helix structure, although arguably the credit should have gone to Franklin and Wilkins.  This was partially rectified when the Nobel prize was awarded to Watson, Crick, and Wilkins (Franklin died four years earlier).
+
+
+#### Mendel, father of genetics
+
+- together.
+
+  * Phenotypes
+    - smooth peas, wrinkled peas.
+    
+#### Watson and Crick
+
+  * DNA structure.
+  * We now understand how the information transmits.
+  
+
+####
+
+  Structure -> function -> meachanism -> Utility.
+
+## Genetics Definitions, Part 1
+
+<img class="circular" src="./img/DNA_Double_Helix.png">
+  DNA - double helix, long chain combination chemicals of Adenine, Guanine, Cytosine, and THymine
+  
+  Scope of the genetic Materials.
+  
+  * Base
+    * Adenine
+    * Guanine
+    * cytosine
+    * Thymine (Uracil for RNA)
+  
+  * centromere 
+  
+  * DNA double helix 
+  
+  * 5nm fiber (beads on the sting ) 
+  
+  * chromosome (1 (long)> 22 (Small))
+  
+    * 22  Autosome
+    
+    * sex chromosome (XX or XY)
+    
+  * genome 
+
+#### DNA
+
+
+
+
+DNA is long long long molecule
+
+### Central Dogma
+
+  * Exon, intron
+
+  
+  * Transcription
+      * Pre-mRNA
+      * RNA
+  * Translation
+  
+  
+
+
+## Genetics Definition, Part II & genetic variants
+
+  *
+  *
+  *
+  *
+  *
+  *
+
+## Data analysis, Part 1: what is a good study
+
+
+  * most important principle :: Garbage in and garbage out.
+  
+    If we really have to be quite convinced that the data are high quality.
+   
+  * What is a a good design ? 
+    - Variable always 1.
+    
+  * Two group
+    - 1. Odds ratio
+    - 2. 
+    
+  * What is Odds ratio 
+    - ratio of the odds in the two group.
+    - total 50 / group A - 30 / Group B - 20 / 
+        -> Odds 1.5 30/20
+        -> Risks 0.6/50
+  * Difference cut off ?
+    - p-value 
+        
+        P=(1/6)^3^ =
+        
+      If we do 12 experiment, (1/6)^12^ = 4.59x10^-10^
+      
+      what is low, what is high p-value?
+      - if we have many experiment and the p-value is 0.05, then, we can say that the chances are less than 1 in 20 that that's a fluke.
+      - 
+      
+  *
+## Data Aanalysis, Part II: what is a good Test.
+  
+  
+  
+  
+
+
+#### Some history about 
+
+
+
+### Hippocrates
+
+
+
+### George Medel
+
+
+### 
+
+Evidence-based Medicine
+
+### Exercises
+
+  * Calculate OR and RR (A versus B) 
+      - Group A - 45/50 (or = 21.4, rr - 3)
+      - Group B - 15/50 (or = 0.11/0.42 rr=0.33)
+
+### References
+
+[personal genome project] http://msb.embopress.org/content/1/1/2005.0030
+
+
+Personalized Medicine lecture from ~~~.

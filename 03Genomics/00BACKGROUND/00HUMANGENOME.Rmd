@@ -1,0 +1,19 @@
+---
+title: "HumanGenome"
+author: "bjkim"
+date: '2017 5 24 '
+output: html_document
+---
+
+# Human Genome
+
+
+- DNA
+
+- RNA
+
+- Protein
+
+- Central Dogma
+
+# Human Genome Variation

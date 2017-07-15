@@ -1,0 +1,42 @@
+---
+title: "Sample Relatedness"
+author: "BJ Kim"
+date: "2017년 5월 16일"
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
+    toc_level: 3
+---
+
+
+--
+
+## 
+
+
+--
+
+## The coefficient of Inbreeding (F)
+
+ The **coefficient of inbreeding** is the probability that two alleles at a randomly chosen locus are identical by descent
+
+ F ranges from o to 1.
+
+ 
+## IBD vs IBS
+
+  **Identity by Descent (IBD)** property of alleles in an individual or in two people that are identical because they were inherited from a common ancestor; as opposed to identity by state
+  
+  **Identity by State (IBS)** Property of alleles in an individual or in two people that are identical because of coincidental mutational processes, and not because they were inherited from a common ancestor (identity by descent) but it also used as synonym with "identical". so in many methods, IBS includes IBD as a subset.
+
+## implementation. 
+
+- PLINK
+
+  PI-HAT score : P(IBD=2) + 1/2 P(IBD=1)
+
+- King
+
+1. Assume all samples are homogeneous populatiopn. (IBSij=0 = IBDij=0)
+

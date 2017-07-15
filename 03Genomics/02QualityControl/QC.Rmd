@@ -1,0 +1,130 @@
+---
+title: "01Quality Control"
+author: "bjkim"
+date: '2017 5 15 '
+output: 
+  html_document: 
+    toc: true
+    toc_float: true
+    toc_level: 3
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Why Qulaity issue occured ? and why ~~~~.
+
+## Possible failures
+
+**SAMPLE PREPARATION**
+
+- SAMPLE HANDLING ERROR
+
+  - Storage, experimental Error -> genotype quality issue.
+        
+  - MISLABELLING -> Sample quality issue
+
+
+
+**Genotyping**
+
+  - Algorithmatic Failure
+
+# Details
+
+### Sample Quality (per-individual QC)
+
+#### Gender Identity
+  
+1. Sample handling error (plating error/sample mix-up) could be occured while conducting genotyping.
+
+2. since males can have one X chromosome, the markers on the X chromosome couldn't be heterozygous except Pseudoautosomal region of Y chromosome.
+
+3. Theoretically, male samples should have a homozygosity rate of 1 
+
+X chromosome heterozygosity rates to determine sex empirically.
+
+- 0.2 > F, Female.
+
+- 0.8 < F, Male
+        
+        
+
+#### Genotype Calling Rate
+
+ - Missingness
+ - 
+
+
+                
+   - heterogenity & missingness
+
+    in each genome, ~~~ is problematic.
+        
+        
+        (N(NM) - O(Hom))/N(NM).
+        
+        - homozygous genotypes o(Hom)
+        - N(NM) - non-missing genotypes
+        - 
+        
+        
+  - Spurious Association
+        - sample relatedness 
+        - population structure
+
+- Genotype Quality
+  
+  - Marker/Probe probe quality
+  
+    - concordance test
+    
+    - Hardy-Weinberg test
+  
+  - Minor allele frequency
+  
+
+- Batch Effects
+
+        - How to detect ?
+
+        -
+
+        -
+
+## Five Years of GWAS Discovery
+
+## Statistics
+
+### F statistics**
+
+*F-statistics* describe statistical expectecd level of heterozygosity in population
+
+
+
+### Hardy-Weinberg test
+
+
+
+### The coefficient of Inbreeding (F)
+
+
+### LD pruning
+
+ LD pruning 
+
+
+## Glossary
+
+
+
+## References
+
+Smoking is associated with mosaic loss of chromosome Y
+
+http://www.nature.com/hdy/journal/v116/n6/full/hdy201620a.html
+
+http://www.nature.com/nrg/journal/v6/n2/full/nrg1522.html
+
+Melum E, Franke A, Karlsen TH. Genome-wide association studies - A summary for the clinical gastroenterologist. World J Gastroenterol 2009; 15(43): 5377-5396

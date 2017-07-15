@@ -126,6 +126,33 @@ Nature Genet. 30 Mar 2008 (doi:10.1038/nrg.120)
 
 ### Chi-square
 
+
+### Cochran-Armitage trand test
+
+- [William cochran](https://en.wikipedia.org/wiki/William_Gemmell_Cochran) and [Peter Armitage](https://en.wikipedia.org/wiki/Peter_Armitage) invented it.
+
+- Statistical test for analysis of categorical data when categories are ordered. It os used to test for association in a 2 x k contingency table (where k is the number of exposure categories - in this case, genotype cases). In genetic association studies, because the underlying genetic model is unknwom, the additive version of this test is most commonly used.
+ 
+ e.g) let's assume that we do cochran-Armitage trad test from 2x3 case-control table.
+ 
+ |        | aa      | aA      | AA       | Sum     |
+ |--------|---------|---------|----------|---------|
+ | case   |$N_{11}$ |$N_{12}$ | $N_{13}$ | $R_{1}$ |
+ | control|$N_{21}$ |$N_{21}$ | $N_{23}$ | $R_{2}$ |
+ | Sum    |$C_{1}$  |$C_{2}$  | $C_{3}$  | N       |
+ 
+The Trend statistic is 
+
+$$ T = \sum_{i=1}^{k} t_{i} (N_{1i}R_{2} - N_{2i}R_{1})$$
+
+where $t_{i}$ is the weights, and difference $N_{1i}R_{2}-N_{2i}R_{1}$ can be seen as the difference between N1i and N2i after reweighing the rows tp jave the same total.
+
+
+
+### Bonferroni correction
+
+
+
 ## Structured Association
 
 ## Regression Model
@@ -145,6 +172,18 @@ Nature Genet. 30 Mar 2008 (doi:10.1038/nrg.120)
 
 ## Case-Control design
 
+
+Aalmost of the publications in GWAS have been used a case-control design, which compares a set of unrelated individuals with the trait of interest against an unaffected set of control. 
+
+*Pros*
+
+- Easy to recruit subjects.
+
+*cons*
+
+- Possible confoundings causes spurious association which yield False positives. 
+
+
 **Common control** 
 
  Welcome Trust Case-Control Consortium (WTCCC) study was demonstrate the effectuveness of a 'common control' design in which are 3,000 UK controls.[@Mark_index_2008]
@@ -156,6 +195,25 @@ Nature Genet. 30 Mar 2008 (doi:10.1038/nrg.120)
 - Sample-Size 
 - Association is not Caucation.
 
+## Family-based Design
+
+*pros*
+
+- having potential to detect rare variants compared with case-contrl studies.
+
+  + 관심있는 trait 를 지닌 가족을 recruit 할경우, disease-predisposing allele 가 일반 population에 비해 많이 관측될 것.
+  
+  + Environmental condition이 general population 보다 더욱 homogeneous so, minimizing non-gentic effects.  
+  
+
+*Cons*
+
+- Hard to gather data.
+- if quality issue introduced, then the cost is higher than case-control study.
+
+## Power and coverage
+
+Since the amount of whole number of genetic markers are vary and numerous, large number of putative associations may occur simply by chance. if conventional definition of statistical significance is used.
 
 
 ## REVIEWS/BIBs
@@ -221,6 +279,8 @@ Statistical power and significance testing in large scale genetic studies
 
 
 # References
+
+Common statistical issues in genome-wide association studies : a review on power, data quality control, genotype calling and population structure.
 
 
 

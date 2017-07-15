@@ -1,0 +1,80 @@
+h1 {
+    margin:auto;
+    width: 60%;
+  
+}
+h2 {
+    color: navy;
+    margin: left;
+}
+
+h3 {
+  color=navy;
+  text-decoration: underline;
+}
+
+h4 {
+  color=navy;
+}
+
+h5 {
+   position: absolute; 
+   top: 180px; 
+   left: 0; 
+   width: 100%;
+}
+
+
+img {
+  float: left;
+  margin: 0pt 10pt 10pt 0pt;
+  width: 700px;
+  height: 300px;
+}
+.align_right {
+  align: right;
+
+}
+
+p.introduction:first-line{
+  
+}
+
+p.introduction:first-letter {
+ font-size: 44px;
+ float: left; 
+ color: #D4D4C7;
+ line-height: 35px;
+ padding-top: 3px; 
+ padding-right: 3px;
+}
+
+.image { 
+   position: relative;
+   width: 100%; /* for IE 6 */
+}
+
+
+
+h5 span {
+   margin: 0px;
+   display: inline-block;
+   color: white; 
+   font: bold 18px/32px Helvetica, Sans-Serif; 
+   letter-spacing: -1px;  
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.7);
+   padding: 6px; 
+}
+
+
+.circular {
+	width: 100px;
+	height: 100px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	}

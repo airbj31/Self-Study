@@ -1,0 +1,38 @@
+---
+title: "Population Genetics"
+author: "BJ Kim"
+date: "2017년 5월 21일"
+output: html_document
+---
+
+http://bio.classes.ucsc.edu/bio107/Class%20pdfs/
+
+# Population
+
+- Ideal population - gas like thing
+
+- Fragmented population - Real situation.
+
+  - Physical Barrier (mountain, rivers, ocean etc. which restrict access to mates)
+    - Mating occur at random within sub population
+    
+**demes** alternative terms for subpopulation. local grouping which panmixia (random mating) occurs.
+
+# Distributional characteristics of population
+
+A. Dispersion (us of space $\bar{n}$ is the mean number of individuals per sample quadrat and $\sigma_{n}^{2}$ is the variance)
+
+- Clumped ($\bar{n} < \sigma_{n}^{2}$)
+
+- Random ($\bar{n} = \sigma_{n}^{2}$)
+
+- Regular ($\bar{n} >> \sigma_{n}^{2}$)
+
+B. Dispersal ()
+
+# Elementary population growth
+
+A. Exponential Growth ( Bacteria)
+
+
+B. Logsitic Growh
