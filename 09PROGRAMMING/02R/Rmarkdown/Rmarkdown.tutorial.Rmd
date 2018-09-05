@@ -3,17 +3,17 @@ title: "An Example R Markdown (edited)"
 author: "James H. Steiger, [Byungju Kim](http://about.me/byungju.kim)"
 date: "Wednesdat, June 29, 2016"
 output: 
-  html_document: 
-    code: hide
-    highlight: textmate
-    toc: yes
-    toc-level: 1
-    toc_float:
-      collapsed: TRUE
-      smooth_scroll: yes
+  html_document:
+      code_folding: hide
+      highlight: textmate
+      toc: yes
+      toc-level: 1
+      toc_float:
+        collapsed: true
+        smooth_scroll: true
 ---
 
-```{r}
+```{r setup, include=FALSE}
   require(htmlTable)
   require(dplyr)
   require(tidyr)
