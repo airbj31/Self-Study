@@ -12,14 +12,14 @@ This repository is self-study and reading materials for machine learning learner
 
 ## Math Notations
 
-* vector : 1-Dimensional array. normally expressed as 
+* vector : 1-Dimensional array. normally expressed as
 
 * n : number of observation.
 
 * p : number of variables that are available for use in making predictions.
   e.g) year,age,sex, and more..
 
-* $x_{i,j}$ is element of an X matrix, representing the value of the jth variable for the
+* $ x_{i,j} $ is element of an X matrix, representing the value of the jth variable for the
 ith observation, where i = 1, 2,...,n and j = 1, 2,...,p.
 
 $$ X = \left( \begin{array} {rrrr}

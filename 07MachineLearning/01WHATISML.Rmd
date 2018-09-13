@@ -1,0 +1,47 @@
+## What is the Machine learning ?
+
+- Method for teaching computer to make and improve predictions or behaviors based on the data.
+
+**Adam Samuel (1901-1990)**
+
+Giva a computer the ability to learn without beign explicitly programmed.
+
+
+**Tom Mitchell**
+
+* well proposed learning problem :
+
+```
+   A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.
+
+```
+
+## What is the Machine learning ? : e.g) Spam Filter.
+
+
+
+
+## Glossary
+
+- Input data
+
+- Output
+
+
+## Type of Machine learning
+
+- supervised Learning
+
+  e.g) k-NN
+
+- unsupervised Learning
+
+  e.g) clustering
+
+e.g) sales
+
+-
+-
+-
+-
+-
