@@ -136,30 +136,46 @@ $(document).ready(function () {
 <li><p>deep Neural network</p></li>
 </ol>
 </div>
-<div id="notations" class="section level2">
-<h2>notations</h2>
+<div id="math-notations" class="section level2">
+<h2>Math Notations</h2>
 <ul>
+<li><p>vector : 1-Dimensional array. normally expressed as</p></li>
 <li><p>n : number of observation.</p></li>
 <li><p>p : number of variables that are available for use in making predictions. e.g) year,age,sex, and more..</p></li>
 <li><p><span class="math inline">\(x_{i,j}\)</span> is element of an X matrix, representing the value of the jth variable for the ith observation, where i = 1, 2,…,n and j = 1, 2,…,p.</p></li>
 </ul>
-<p><span class="math display">\[ X = \left( \begin{array} {rrr}
-x_{11} &amp; \cdots &amp; x_{1p} \\
-\vdots &amp; \ddots &amp; \vdots \\
-x_{n1} &amp; \cdots &amp; x_{np} \\
+<p><span class="math display">\[ X = \left( \begin{array} {rrrr}
+x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1p} \\
+x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2p} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{n1} &amp; \cdots &amp; \cdots &amp; x_{np} \\
 \end{array} \right)
 \]</span></p>
-<p>(need latex equation for the matrix.</p>
 <ul>
-<li><em>y_{i}</em></li>
+<li><em>x_{i}</em></li>
 </ul>
+<p><span class="math display">\[ x_{i} = \begin{pmatrix}
+  x_{i1}  \\
+  x_{i2}  \\
+  \vdots \\
+  x_{ip}  \\ \end{pmatrix}  \]</span></p>
+<ul>
+<li><sup>T</sup> notation defines the transpose of a matrix of vector.</li>
+</ul>
+<p><span class="math display">\[ X^{T} = \left( \begin{array} {rrrr}
+x_{11} &amp; x_{21} &amp; \cdots &amp; x_{n1} \\
+x_{12} &amp; x_{22} &amp; \cdots &amp; x_{n2} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{1p} &amp; \cdots &amp; \cdots &amp; x_{np} \\
+\end{array} \right)
+\]</span></p>
 </div>
 <div id="useful-resources" class="section level2">
 <h2>Useful resources</h2>
 <ul>
-<li><p><a href="http://www-bcf.usc.edu/~gareth/ISL/">An introduction to statistical learning with Application in R</a> and</p></li>
+<li><p><a href="http://www-bcf.usc.edu/~gareth/ISL/">An introduction to statistical learning with Application in R</a></p></li>
 <li><p><a href="https://web.stanford.edu/~hastie/Papers/ESLII.pdf">The Elements of Statistical Learning</a></p></li>
-<li><p>Machine learning coursera course by (Andrew Ng)</p></li>
+<li><p><a href="https://www.coursera.org/learn/machine-learning">Machine learning coursera course by (Andrew Ng)</a></p></li>
 <li></li>
 </ul>
 </div>
