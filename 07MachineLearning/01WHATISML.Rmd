@@ -12,6 +12,7 @@ output:
 
 ```{r setup, include=FALSE}
  require(tufte)
+ require(HistData)
  options(width = 1200)
 
 
@@ -71,6 +72,11 @@ output:
 
 -->
 
+### The Concept
+
+                               new data              
+ 
+input data -> Machine (Learn) ------------> test
 
 
 ### Spam Filter example
@@ -96,47 +102,74 @@ output:
   
 * Neural Network
 
-### unsupervised Learning : `lable X`
+### Unsupervised Learning : `label X`
 
   e.g) sales
 
-  * clustering
+**clustering**
   
-    * k-Mean
-    
-    * Hierarchical Clustering
-    
-    * Expectation Maximization
+* k-Mean
   
-  * Visualization and Dimensional reduction
+* Hierarchical Clustering
+    
+* Expectation Maximization
   
-    * PCA
-    
-    * PCA^kernel^
-    
-    * Locally-linear Embedding (LLE)
-    
-    * t-SNE
+**Visualization and Dimensional reduction**
   
-  * Association rule learning
+* PCA
     
-    * Apriori
+* PCA^kernel^
     
-    * Eclat
-
-### Semi-supervised learning
-
-    * Deep belief network
+* Locally-linear Embedding (LLE)
     
-    * restricted Boltzmann machine
+* t-SNE
+  
+**Association rule learning**
     
-    * Reinforcement Learning
+* Apriori
+    
+* Eclat
 
--
--
--
+### Semi-supervised learning : `label O + label X`
 
-## Example data
+* Deep belief network
+    
+* restricted Boltzmann machine
+    
+* Reinforcement Learning
+
+### Examples
+
+* data : iris
+
+```{r}
+str(iris)
+```
+
+* GaltonFamily 
+
+```{r}
+str(GaltonFamilies)
+```
+
+* Breast Cancer
+
+```{r}
+
+```
+
+
+* *k*-Nearleast Neighbor (*k*-NN)
+  
+* linear regression
+  
+* Logistic regression
+  
+* support vector machine
+  
+* Decision Tree/Random Forest
+  
+* Neural Network
 
 
 
@@ -145,5 +178,9 @@ output:
 - Input data
 
 - Output
+
+## Reference
+
+* Hands on Machine Learning, Chapter 1.
 
 
