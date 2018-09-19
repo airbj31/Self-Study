@@ -6,7 +6,7 @@ output:
   html_document: 
     highlight: tango
     toc: yes
-    toc_depth: 3
+    toc_depth: 4
     toc_float: true
 ---
 
@@ -19,9 +19,7 @@ output:
 ```
 ## EDGC ML study group
 
-![](images/ML.png)
-
-<div style="background:#FFFFFF; position:fixed; bottom:0; right:0; width:100%; height:140px;">
+<div style="background:#FFFFFF; position:fixed; bottom:0px; right:10px left:10px top:10px; width:100%; height:140px;">
 <hr widht="100%" style="border-top: dashed 1px;"/>
 
   <img src="images/EDGC_LOGO_EN.png" align="left"> &nbsp; <b>Byungju Kim </b> Ph.D. <br />
@@ -31,6 +29,13 @@ output:
   &nbsp; email : byungju.kim@edgc.com 
   
 </div>
+
+![](images/ML.png)
+
+* Author : Byungju Kim
+
+* Date   : 2018-10-01
+
 
 
 <!--
@@ -53,19 +58,13 @@ output:
 
 ## What is the Machine learning ?
 
+**Quotes about Machine Learning**
 
-- Method for teaching computer to make and improve predictions or behaviors based on the data.
+<image src="./images/ArtSamuel.JPG" align=left style="margin-right: 10px;"> &nbsp; <blockquote> Giva a computer the ability to learn without beign explicitly programmed. <br /> <br /><div align="right">--- **Athur Samuel (1901-1990)**</span> </blockquote>
 
-**Adam Samuel (1901-1990)**
+<image src="./images/TomWEF2017.JPG" align=right style="margin-right: 10px;"> &nbsp; well proposed learning problem :
 
-> Giva a computer the ability to learn without beign explicitly programmed.
-
-
-**Tom Mitchell**
-
-* well proposed learning problem :
-
-> A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.
+> A computer program is said to learn from experience **E** with respect to some task **T** and some performance measure **P**, if its performance on T, as measured by P, improves with experience E.<br /><br .> --- **Tom Mitchell (1951-present)**
 
 <!--
 
@@ -73,6 +72,9 @@ output:
 -->
 
 ### The Concept
+
+Method for teaching computer to make and improve predictions or behaviors based on the data.
+
 
                                new data              
  
@@ -89,6 +91,8 @@ input data -> Machine (Learn) ------------> test
 ## Type of Machine learning
 
 ### supervised Learning : `Label O`
+
+Classification + Regression
 
 * *k*-Nearleast Neighbor (*k*-NN)
   
@@ -138,32 +142,34 @@ input data -> Machine (Learn) ------------> test
     
 * Reinforcement Learning
 
-### Examples
+## Examples
 
-* data : iris
+### iris DATA
 
 ```{r}
 str(iris)
 ```
 
-* GaltonFamily 
+### GaltonFamily 
 
 ```{r}
 str(GaltonFamilies)
 ```
 
-* Breast Cancer
+### B Breast Cancer
 
 ```{r}
 
 ```
 
 
-* *k*-Nearleast Neighbor (*k*-NN)
+### *k*-Nearleast Neighbor (*k*-NN)
+
+* Most simplest alogrithm
+
+### linear regression
   
-* linear regression
-  
-* Logistic regression
+### Logistic regression
   
 * support vector machine
   
