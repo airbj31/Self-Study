@@ -1,23 +1,142 @@
+---
+title : "The Machine Learning Landscape"
+date: "`r Sys.Date()`"
+output: 
+#  tufte::tufte_html:default
+  html_document: 
+    highlight: tango
+    toc: yes
+    toc_depth: 3
+    toc_float: true
+---
+
+```{r setup, include=FALSE}
+ require(tufte)
+ options(width = 1200)
+
+
+```
+## EDGC ML study group
+
+![](images/ML.png)
+
+<div style="background:#FFFFFF; position:fixed; bottom:0; right:0; width:100%; height:140px;">
+<hr widht="100%" style="border-top: dashed 1px;"/>
+
+  <img src="images/EDGC_LOGO_EN.png" align="left"> &nbsp; <b>Byungju Kim </b> Ph.D. <br />
+  &nbsp; Research Scientist / Bioinformatics Team <br />
+  &nbsp; # 291 Harmony-ro, Yeonsu-gu, Incheon <br />
+  &nbsp; mobile : +82-10-5091-8731 <br />
+  &nbsp; email : byungju.kim@edgc.com 
+  
+</div>
+
+
+<!--
+ Greetings, Everyone. this is first meeting of Machine Learning study group.
+ I'm the guy who
+
+-->
+
+## Before start 
+
+**some useful sources**
+
+* About the document what I wrote : [Rmarkdown](https://bookdown.org/yihui/rmarkdown/) 
+
+* Mathmatical equations : [LaTex](http://www.math.harvard.edu/texman/)
+
+* Linear Algebra : 
+
+* Statistics : [Open intro Statistics](https://www.openintro.org/stat/textbook.php)
+
 ## What is the Machine learning ?
+
 
 - Method for teaching computer to make and improve predictions or behaviors based on the data.
 
 **Adam Samuel (1901-1990)**
 
-Giva a computer the ability to learn without beign explicitly programmed.
+> Giva a computer the ability to learn without beign explicitly programmed.
 
 
 **Tom Mitchell**
 
 * well proposed learning problem :
 
-```
-   A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.
+> A computer program is said to learn from experience E with respect to some task T and some performance measure P, if its performance on T, as measured by P, improves with experience E.
+
+<!--
+
+
+-->
+
+
+
+### Spam Filter example
 
 ```
 
-## What is the Machine learning ? : e.g) Spam Filter.
+```
 
+
+## Type of Machine learning
+
+### supervised Learning : `Label O`
+
+* *k*-Nearleast Neighbor (*k*-NN)
+  
+* linear regression
+  
+* Logistic regression
+  
+* support vector machine
+  
+* Decision Tree/Random Forest
+  
+* Neural Network
+
+### unsupervised Learning : `lable X`
+
+  e.g) sales
+
+  * clustering
+  
+    * k-Mean
+    
+    * Hierarchical Clustering
+    
+    * Expectation Maximization
+  
+  * Visualization and Dimensional reduction
+  
+    * PCA
+    
+    * PCA^kernel^
+    
+    * Locally-linear Embedding (LLE)
+    
+    * t-SNE
+  
+  * Association rule learning
+    
+    * Apriori
+    
+    * Eclat
+
+### Semi-supervised learning
+
+    * Deep belief network
+    
+    * restricted Boltzmann machine
+    
+    * Reinforcement Learning
+
+-
+-
+-
+
+## Example data
 
 
 
@@ -28,20 +147,3 @@ Giva a computer the ability to learn without beign explicitly programmed.
 - Output
 
 
-## Type of Machine learning
-
-- supervised Learning
-
-  e.g) k-NN
-
-- unsupervised Learning
-
-  e.g) clustering
-
-e.g) sales
-
--
--
--
--
--
