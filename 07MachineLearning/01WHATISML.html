@@ -10,7 +10,7 @@
 
 
 
-<meta name="date" content="2018-09-21" />
+<meta name="date" content="2018-09-28" />
 
 <title></title>
 
@@ -98,7 +98,7 @@ h6 {
 }
 </style>
 
-<link href="data:text/css;charset=utf-8,h1%20%7B%0Amargin%3Aleft%3B%0Acolor%3A%20%231293F2%3B%0A%7D%0Ah2%20%7B%0Acolor%3A%20%231293F2%3B%0Amargin%3A%20left%3B%0A%7D%0A%23h3%20%7B%0A%23%20color%3Dnavy%3B%0A%23%20text%2Ddecoration%3A%20underline%3B%0A%23%20%7D%0A%23%20h4%20%7B%0A%23%20color%3Dnavy%3B%0A%23%20%7D%0Ah5%20%7B%0Aposition%3A%20absolute%3B%20top%3A%20180px%3B%20left%3A%200%3B%20width%3A%20100%25%3B%0A%7D%0A%2EBig%2Dfirst%2Dletter%20%7B%0Afont%2Dsize%3A%2044px%3B%0Afloat%3A%20left%3B%20color%3A%20%23D4D4C7%3B%0Aline%2Dheight%3A%2035px%3B%0Apadding%2Dtop%3A%203px%3B%20padding%2Dright%3A%203px%3B%0A%7D%0A%2Egray%2Dbold%20%7B%0Acolor%3A%237A7F82%3B%0Afont%2Dwigh%3A%20bold%3B%0A%7D%0A%2Econtainer%20%7B%20position%3A%20relative%3B%0A%23%23%20position%3A%20fixed%3B%0A%23%23%20text%2Dalign%3A%20center%3B%0Awidth%3A%20100%25%3B%20%0A%7D%0Ah5%20span%20%7B%0Amargin%2Dleft%3A%200px%3B%0Amargin%2Dtop%3A%20100px%3B%0Adisplay%3A%20inline%2Dblock%3B%0Acolor%3A%20white%3B%20font%3A%20bold%2018px%2F32px%20Helvetica%2C%20Sans%2DSerif%3B%20letter%2Dspacing%3A%20%2D1px%3B%20background%3A%20rgb%280%2C%200%2C%200%29%3B%20%0Abackground%3A%20rgba%280%2C%200%2C%200%2C%200%2E7%29%3B%0Apadding%3A%206px%3B%20%7D%0Abottom%2Dright%20%7B%0Aposition%3A%20absolute%3B%0Abottom%3A%208px%3B%0Aright%3A%2016px%3B%0A%7D%0A" rel="stylesheet" type="text/css" />
+<link href="data:text/css;charset=utf-8,h1%20%7B%0Amargin%3Aleft%3B%0Acolor%3A%20%231293F2%3B%0A%7D%0Ah2%20%7B%0Acolor%3A%20%231293F2%3B%0Amargin%3A%20left%3B%0A%7D%0A%23h3%20%7B%0A%23%20color%3Dnavy%3B%0A%23%20text%2Ddecoration%3A%20underline%3B%0A%23%20%7D%0A%23%20h4%20%7B%0A%23%20color%3Dnavy%3B%0A%23%20%7D%0Ah5%20%7B%0Aposition%3A%20absolute%3B%20top%3A%20180px%3B%20left%3A%200%3B%20width%3A%20100%25%3B%0A%7D%0A%2EBig%2Dfirst%2Dletter%20%7B%0Afont%2Dsize%3A%2066px%3B%0Afloat%3A%20left%3B%20color%3A%20%23D4D4C7%3B%0Aline%2Dheight%3A%2035px%3B%0Apadding%2Dtop%3A%203px%3B%20padding%2Dright%3A%203px%3B%0A%7D%0A%2Egray%2Dbold%20%7B%0Acolor%3A%237A7F82%3B%0Afont%2Dwigh%3A%20bold%3B%0A%7D%0A%2Econtainer%20%7B%20position%3A%20relative%3B%0A%23%23%20position%3A%20fixed%3B%0A%23%23%20text%2Dalign%3A%20center%3B%0Awidth%3A%20100%25%3B%20%0A%7D%0Ah5%20span%20%7B%0Amargin%2Dleft%3A%200px%3B%0Amargin%2Dtop%3A%20100px%3B%0Adisplay%3A%20inline%2Dblock%3B%0Acolor%3A%20white%3B%20font%3A%20bold%2018px%2F32px%20Helvetica%2C%20Sans%2DSerif%3B%20letter%2Dspacing%3A%20%2D1px%3B%20background%3A%20rgb%280%2C%200%2C%200%29%3B%20%0Abackground%3A%20rgba%280%2C%200%2C%200%2C%200%2E7%29%3B%0Apadding%3A%206px%3B%20%7D%0Abottom%2Dright%20%7B%0Aposition%3A%20absolute%3B%0Abottom%3A%208px%3B%0Aright%3A%2016px%3B%0A%7D%0A" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -282,9 +282,17 @@ div.tocify {
 <h2>Some basics and terms</h2>
 <ul>
 <li><p>vector : 1-Dimensional array. normally expressed as <span class="math inline">\(K=\{a,b,c,d\}\)</span></p></li>
-<li><p>n</p></li>
-<li></li>
+<li><p>n : number of observation.</p></li>
+<li><p>p : number of variables that are available for use in making predictions. e.g) year,age,sex, and more..</p></li>
+<li><p>$ x_{i,j} $ is element of an X matrix, representing the value of the jth variable for the ith observation, where i = 1, 2,…,n and j = 1, 2,…,p.</p></li>
 </ul>
+<p><span class="math display">\[ X = \left( \begin{array} {rrrr}
+x_{11} &amp; x_{12} &amp; \cdots &amp; x_{1p} \\
+x_{21} &amp; x_{22} &amp; \cdots &amp; x_{2p} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+x_{n1} &amp; \cdots &amp; \cdots &amp; x_{np} \\
+\end{array} \right)
+\]</span></p>
 </div>
 <div id="what-is-the-ml" class="section level2">
 <h2>What is the ML ?</h2>
@@ -522,8 +530,9 @@ div.tocify {
 <h2>Reference</h2>
 <ul>
 <li><p>Hands on Machine Learning, Chapter 1.</p></li>
-<li><p>Samuels checkers player (<a href="https://webdocs.cs.ualberta.ca/~jonathan/publications/ai_publications/samuel.pdf" class="uri">https://webdocs.cs.ualberta.ca/~jonathan/publications/ai_publications/samuel.pdf</a>)</p></li>
+<li><p>[Samuels checkers player] (<a href="https://webdocs.cs.ualberta.ca/~jonathan/publications/ai_publications/samuel.pdf" class="uri">https://webdocs.cs.ualberta.ca/~jonathan/publications/ai_publications/samuel.pdf</a>)</p></li>
 <li><p>Statistical learning</p></li>
+<li><p><a href="http://jmlr.csail.mit.edu/papers/volume3/guyon03a/guyon03a.pdf">Feature Selection</a></p></li>
 </ul>
 </div>
 
