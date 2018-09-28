@@ -45,6 +45,11 @@ h5 {
    width: 100%; /* for IE 6 */
 }
 
+#rc1{
+        border-radius: 5px 30px 30x 5px;
+        background-color: rgb(0, 0, 0); /* fallback color */
+}
+
 h5 span {
    margin-left: 0px;
    margin-top: 100px;

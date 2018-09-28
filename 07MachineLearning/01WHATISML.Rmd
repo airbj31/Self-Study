@@ -24,7 +24,7 @@ output :
 
 ## EDGC ML study group
 
-<div style="background:#FFFFFF; position:fixed; bottom:0px; right:10px left:10px top:10px; width:100%; height:140px;">
+<div style="background-color:#FFFFFF;opacity:1; position:fixed; bottom:0px; right:10px left:10px top:10px; width:100%; height:140px;">
 <hr widht="100%" style="border-top: dashed 1px;"/>
 
   <img src="images/EDGC_LOGO_EN.png" align="left"> &nbsp; <b>Byungju Kim </b> Ph.D. <br />
@@ -35,12 +35,15 @@ output :
   
 </div>
 <div class="container">
-  <img src="images/ML.png"> 
+
+  <img src="images/ML.png">
+
   <h5><span>
       Chapter 1 : &nbsp; The Machine Learning Landscape <br \>
       Author &nbsp; &nbsp; &nbsp; : &nbsp; Byungju Kim <br \>
       Date &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : &nbsp; 2018-10-01
   </span></h5>
+  
  </div>
 
 <!--
@@ -49,17 +52,35 @@ output :
 
 -->
 
-## Before Start 
+## What is the ML ?
 
-<span class="gray-bold">-- some useful sources</span>
+<span class="gray-bold"> - Some Quotes about Machine Learning</span>
 
-* "Pure Math" : [Linear Algebra](https://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/video-lectures/), Calculus^[1](https://ocw.mit.edu/courses/mathematics/18-01-single-variable-calculus-fall-2006/video-lectures/),[2](https://ocw.mit.edu/courses/mathematics/18-02sc-multivariable-calculus-fall-2010/index.htm)-section1,2^, [Gradient Descent](https://en.wikipedia.org/wiki/Gradient_descent)
-          
-* Probability and Statistics : [Open intro Statistics](https://www.openintro.org/stat/textbook.php)
+<image src="./images/ArtSamuel.JPG" align=right style="margin-right: 10px;"> &nbsp; <blockquote> <span class="Big-first-letter">"</span> Give a computer the ability to learn without being explicitly programmed.<br \><br \>--- **Athur Samuel (1901-1990)** </blockquote> 
 
-* Programming (Python/R etc ...)
 
-* Information theory :
+
+&nbsp; well proposed learning problem :
+
+<image src="./images/TomWEF2017.JPG" align=right style="margin-right: 10px;"> 
+
+<blockquote>  <span class="Big-first-letter">"</span>A computer program is said to learn from experience **E** with respect to some task **T** and some performance measure **P**, if its performance on **T**, as measured by **P**, improves with experience **E**.<br /><br .> --- **Tom Mitchell (1951-present)** </blockquote>
+
+<!--
+
+
+-->
+
+### The Concept
+
+Machine Learning is a Method for teaching computer to make and improve predictions or behaviors based on the data.
+
+
+For me, ML is somewhat similar to statistical inference.
+
+                               new data              
+ 
+input data -> Machine (Learn) --> Model (parameter Optimization) --> 
 
 ## Some basics and terms
 
@@ -82,36 +103,11 @@ x_{n1} & \cdots & \cdots & x_{np} \\
 $$
 
 
-## What is the ML ?
-
-<span class="gray-bold">- Quotes about Machine Learning</span>
-
-<image src="./images/ArtSamuel.JPG" align=right style="margin-right: 10px;"> &nbsp; <blockquote> <span class="Big-first-letter">"</span> Give a computer the ability to learn without being explicitly programmed.<br \><br \>--- **Athur Samuel (1901-1990)** </blockquote> 
 
 
+### Statistical Inference and ML.
 
-&nbsp; well proposed learning problem :
-
-<image src="./images/TomWEF2017.JPG" align=right style="margin-right: 10px;"> 
-
-<blockquote>  <span class="Big-first-letter">"</span>A computer program is said to learn from experience **E** with respect to some task **T** and some performance measure **P**, if its performance on **T**, as measured by **P**, improves with experience **E**.<br /><br .> --- **Tom Mitchell (1951-present)** </blockquote>
-
-<!--
-
-
--->
-
-### The Concept
-
-Method for teaching computer to make and improve predictions or behaviors based on the data.
-
-
-                               new data              
- 
-input data -> Machine (Learn) --> Model (parameter Optimization) --> 
-
-### Statistical Inference
-
+| ML | Statistical Inference |
 DATA -> sampled data -> inference -> DATA
 
 
@@ -294,7 +290,7 @@ str(GaltonFamilies)
 
 ## Other Resources
 
-<span class="gray-bold">Information theory </span>
+<span class="gray-bold">[Information theory](https://www.amazon.com/Elements-Information-Theory-Telecommunications-Processing/dp/0471241954/ref=pd_bxgy_b_img_c) </span>
 
 <span class="gray-bold">Machine Learning</span>
 
@@ -311,6 +307,20 @@ str(GaltonFamilies)
 * About the document what I wrote : [Rmarkdown](https://bookdown.org/yihui/rmarkdown/) 
 
 * Mathmatical equations : [LaTex](http://www.math.harvard.edu/texman/)
+
+## Before Start 
+
+<span class="gray-bold">-- some useful sources</span>
+
+* "Pure Math" : [Linear Algebra](https://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/video-lectures/), Calculus^[1](https://ocw.mit.edu/courses/mathematics/18-01-single-variable-calculus-fall-2006/video-lectures/),[2](https://ocw.mit.edu/courses/mathematics/18-02sc-multivariable-calculus-fall-2010/index.htm)-section1,2^, [Gradient Descent](https://en.wikipedia.org/wiki/Gradient_descent)
+          
+* Probability and Statistics : [Open intro Statistics](https://www.openintro.org/stat/textbook.php)
+
+* Programming (Python/R etc ...)
+
+* Information theory :
+
+
 
 ## Reference
 
