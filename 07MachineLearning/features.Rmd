@@ -1,0 +1,21 @@
+---
+date   : "`r Sys.Date()`"
+Author : "Byungju Kim"
+output : 
+  bookdown::html_document2: 
+    css: css/style.css
+    toc: yes
+    theme: flatly
+    highlight: espresso
+    toc_depth: 4
+    toc_float: yes
+    code_folding: hide
+---
+
+## Features
+
+* workhorses of machine learning.
+
+* attributes, independent variable, predictor, descriptor ... etc.
+
+*

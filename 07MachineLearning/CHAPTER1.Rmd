@@ -1,0 +1,554 @@
+---
+date   : "`r Sys.Date()`"
+Author : "Byungju Kim"
+output : 
+  html_document: 
+    css: css/style.css
+    highlight: tango
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+---
+
+```{r setup, include=FALSE}
+ #require(tufte)
+ require(tidyverse)
+ require(bookdown)
+ require(HistData)
+ require(readMLData)
+ require(DiagrammR)
+ require(ggplot2)
+
+ options(width = 1200)
+
+```
+
+## EDGC ML study group
+
+<div style="background-color:#FFFFFF;opacity:1; position:fixed; bottom:0px; right:10px left:10px top:10px; width:100%; height:140px;">
+<hr widht="100%" style="border-top: dashed 1px;"/>
+
+  <img src="images/EDGC_LOGO_EN.png" align="left"> &nbsp; <b>Byungju Kim </b> Ph.D. <br />
+  &nbsp; Research Scientist / Bioinformatics Team <br />
+  &nbsp; # 291 Harmony-ro, Yeonsu-gu, Incheon <br />
+  &nbsp; mobile : +82-10-5091-8731 <br />
+  &nbsp; email : byungju.kim@edgc.com 
+  
+</div>
+<div class="container">
+
+  <img src="images/ML.png">
+
+  <h5><span>
+      Chapter 1 : &nbsp; The Machine Learning Landscape <br \>
+      Author &nbsp; &nbsp; &nbsp; : &nbsp; Byungju Kim <br \>
+      Date &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : &nbsp; 2018-10-01
+  </span></h5>
+  
+ </div>
+
+<!--
+ Greetings, Everyone. this is first meeting of Machine Learning study group.
+ I'm the guy who
+
+-->
+
+## What is the ML ?
+
+**Machine Learning** is a Method for teaching computer (self-teaching) to make and improve predictions or behaviors based on the data. 
+
+<span class="gray-bold"> - Some Quotes about Machine Learning</span>
+
+<image src="./images/ArtSamuel.JPG" align=right style="margin-right: 10px;"> &nbsp; <blockquote> <span class="Big-first-letter">"</span> Give a computer the ability to learn without being explicitly programmed.<br \><br \>--- **Athur Samuel (1901-1990)** </blockquote> 
+
+&nbsp; “How do we create computer programs that improve with experience?”  :
+
+<image src="./images/TomWEF2017.JPG" align=right style="margin-right: 10px;"> 
+
+<blockquote>  <span class="Big-first-letter">"</span>A computer program is said to learn from experience **E** with respect to some task **T** and some performance measure **P**, if its performance on **T**, as measured by **P**, improves with experience **E**.<br /><br .> --- **Tom Mitchell (1951-present)** </blockquote>
+
+<!--
+
+
+-->
+
+## Some basic terms
+
+**vector** 1-Dimensional array.
+
+$$ X = \{X_{1}, X_{2}, X_{3}, ... X_{4}\} $$
+
+**Data** - our information for analysis.
+
+- Quantitative, continuous data.
+- Qualitative, categorical data.
+
+  Generally, Data is matrix/Data Table/Data frame.
+
+$$ X = \left( \begin{array} {rrrr}
+x_{11} & x_{12} & \cdots & x_{1p} \\
+x_{21} & x_{22} & \cdots & x_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+x_{n1} & \cdots & \cdots & x_{np} \\
+\end{array} \right)
+$$
+
+
+* n : number of observation.
+
+* p : number of variables that are available for use in making predictions.
+
+* $x_{i,j}$ is element of an X matrix, representing the value of the `j`th variable for the
+`i`th observation, where i = 1, 2,...,n and j = 1, 2,...,p.
+
+**feature/descriptor/Predictor/independent variable (X)** is used to make a prediction for dependent variables. 
+
+**Response/dependent variable (Y)** is that variable whose variation depends on other variables. normally expressed as Vector, $Y = \{y_{1}, y_{2}, y_{3} ... y_{n}\}$
+
+**Prediction ($\hat{Y}$)** predicted value by the model/algorithm.
+
+**Training** is the way of teaching the computer the data. Machine learning algorithms are applied in this step.
+                
+**Training set**  is the data set used for training process. target of learning.
+
+**Testing/Validation** is the checking or proving the validity. (accuracy, error etc.)
+
+**Testing set** is the subset of data which is used for the testing.
+ 
+**optimization** The process of adjusting weights to produce more and more accurate guesses about the data.
+
+
+
+## schematic view
+
+![](images/ML.jpg)
+
+## Traditional programming vs Machine learning.
+
+![](images/Programming_vs_ML.PNG)
+
+## Example :: Spam-Filter 
+
+Spam filter is binary classifier (Spam or not)
+
+![](images/spamfilter.JPG)
+
+**DATA**                 : thousands of emails
+
+**descriptor/predictor** : 
+
+- Text Pattern : Free, 4U, crediit card, ... etc.
+
+- Image Pattern : text/image ratio ... etc.
+
+| no. email | Free  | Credit Card | Spam? |
+| ---- | ----  | --- | --- |
+| 1    | 6     | 1   | True  |
+| 2    | 0     | 0   | False |
+| 3    | 2     | 2   | False |
+| ...  | ...   | ... | ... |
+| 9999  | 4   | 6 | True |
+
+### Traditional programming approach
+
+Writing Rules by hand or human recognition.
+
+e.g) spam = #Free >= 3 or #Credit card >=3
+
+![](images/T.programmingl.JPG)
+
+### ML approach
+
+DATA determine the rules by training algorithm
+
+![](images/ml_approach_spamfilter.JPG)
+
+Machine Learning is great for: 
+
+- Problems for which existing solutions require a lot of hand-tuning or long lists of rules: one Machine Learning algorithm can often simplify code and perform better. 
+
+- Complex problems for which there is no good solution at all using a traditional approach: the best Machine Learning techniques can find a solution. 
+
+- Fluctuating environments: a Machine Learning system can adapt to new data. 
+
+- Getting insights about complex problems and large amounts of data.
+
+<!--
+* vector : 1-Dimensional array. normally expressed as $K=\{a,b,c,d\}$
+
+* n : number of observation.
+
+* p : number of variables that are available for use in making predictions.
+  e.g) year,age,sex, and more..
+  
+* $ x_{i,j} $ is element of an X matrix, representing the value of the jth variable for the
+ith observation, where i = 1, 2,...,n and j = 1, 2,...,p.
+
+
+### Statistical Inference and ML.
+
+| ML | Statistical Inference |
+DATA -> sampled data -> inference -> DATA
+
+
+### Example :Spam Filter 
+
+
+
+-->
+<!--
+## Type of the DATA ?
+
+observation
+
+data table
+
+- Quantitative, continuous
+
+- Qualitative, categorical or discrete
+
+-->
+
+## Type of Machine learning
+
+- Supervised Learning (We already knows the answer) / Unsupervised learning (we do not knows the answer)
+  
+    * Classification and Regression are major two objectives of supervised learning.
+  
+      * **Classification** : output variable is categorical data (qualitative data) e.g) cancer vs non-cancer.
+     
+      * **Regression**     : output variable is a real value. e.g) Height, 
+  
+      * clustering, dimensionality reductions, are the main purpose of unsupervised learning.
+
+<table>
+<tr><td>Classification</td><td>Regression</td><td>Clustering</td>
+</tr>
+<tr><td><img src="images/supervised_learning.JPG"></td>
+<td><img src="images/regression.JPG"></td>
+<td><img src="images/unsupervised_learning.JPG"></td>
+</tr>
+</table>
+      
+
+
+- Batch learning (Traditional Machine learning) / Online Learning
+
+      * Batch learning use whole data at once for training. requires high computing resources.
+      
+      * Online learning learns data step by step and update the model.
+
+- instance based learning (e.g. k-NN) / Model-based learning
+
+     * instance based learning : No model is learned. stored "training instances" represent the "knowledge" (lazy learning) e.g) k-Nearleast neighbor.
+     
+     * model based learning : make a model with various parameters.
+     
+### supervised Learning : `Label O`
+
+
+* *k*-Nearleast Neighbor (*k*-NN)
+
+* support vector machine
+  
+* Decision Tree/Random Forest
+
+* linear regression
+  
+* Logistic regression
+  
+* Naive bayes
+
+* Neural Network
+
+### Unsupervised Learning : `label X`
+
+  e.g) sales
+
+**clustering**
+  
+* k-Mean
+  
+* Hierarchical Clustering
+    
+* Expectation Maximization
+  
+**Visualization and Dimensional reduction**
+  
+* PCA
+    
+* PCA^kernel^
+    
+* Locally-linear Embedding (LLE)
+    
+* t-SNE
+  
+**Association rule learning**
+
+Rule-based machine learning which discovers the relationship between variables in large dataset.
+    
+* Apriori
+    
+* Eclat
+
+### Semi-supervised learning : `label O + label X`
+
+![](images/semisupervised_learning.JPG)
+
+* Deep belief network (restricted Boltzmann machine)
+
+* Reinforcement Learning
+
+    - Reward / Penalty system for learning which maximize the rewards.
+
+
+## Examples
+
+<!--
+### iris DATA
+
+```{r}
+
+str(iris)
+iris[c(1:5,50:55,140:145),]
+
+```
+
+### GaltonFamily 
+
+```{r}
+
+str(GaltonFamilies)
+GaltonFamilies[c(1:5,50:55,140:145),]
+
+```
+-->
+
+### *k*-Nearleast Neighbor (*k*-NN)
+
+in *k-NN classification*, the object is classified by a majority vote of its *k* neighbor.
+
+Step 1: divide data into training and testing sets.
+
+Step 2: calculate distance between objects in training set.
+
+Step 3: Measure its performance (prediction accuracy, using parameter k = 1 ~ n-1 )
+
+Step 4: determine *k*
+
+Step 5: calculate distance between training set and testing set and applying determined *k* to testing data for the classification.
+
+---
+
+
+Distance Calculation : *p* dimensions
+
+ suppose that we have two vector P and Q consisting of n values.
+
+ $$ d(A,B) = \sqrt{(a_{1}-b_{1})^2 + (a_{2}-b_{2})^2 + (a_{3}-b_{3})^2 ... (a_{p}-b_{p})^2} $$
+
+
+```{r kNN}
+   iris[1:4,1:5]
+   iris_dist<-dist(iris[,1:4],upper=T,diag=T)     ## calculate euclidean distance
+   iris_dist<-as.data.frame(as.matrix(iris_dist)) ## change dist object -> matrix -> data.frame
+   iris_dist[1:5,1:5]
+   #colnames(iris_dist)<-iris$Species
+   first.instance<-t(iris_dist[60,])              ## select 60th row 
+   first.instance<-as.data.frame(first.instance)
+   first.instance$sample<-iris$Species
+   
+   colnames(first.instance)<-c("distance","sample")
+   ggplot(first.instance,aes(sample,distance)) + geom_boxplot() + theme_bw()
+   first.instance %>% arrange(distance) %>% head(11)
+   
+   
+```   
+### Dimensionality Reduction : Multidimensional scaling
+
+```{r mds}
+   
+   mds_iris<-cmdscale(iris_dist,eig=T,k=2)
+   
+   iris_mds_df<-as.data.frame(mds_iris$`points`)
+   iris_mds_df$species<-iris$Species
+   head(iris_mds_df)
+   
+   ggplot(iris_mds_df,aes(V1,V2,colour=species))+geom_point() + theme_bw() + xlab("mds axis 1") + ylab("mds axis 2")
+
+```
+
+
+
+### linear regression
+
+Linear regression make a linear model between response variable and independent variable.
+
+
+$$ Y = \theta_{0} + \theta_{1}x_{1} + \theta_{2}x_{2} ... \theta_{n}x_{n}$$
+
+
+```{r}
+
+require(HistData)
+str(GaltonFamilies)
+head(GaltonFamilies)
+df<-GaltonFamilies
+attach(df)
+G_LMODEL<-lm(childHeight ~ midparentHeight + as.numeric(df$gender))
+summary(G_LMODEL)
+
+pred<-G_LMODEL$coefficients[1] + G_LMODEL$coefficients[2]*df$midparentHeight + G_LMODEL$coefficients[3]*as.numeric(df$gender)
+
+eq<-paste("Y==",format(G_LMODEL$coefficients[1],digits=2,nsmall=2),"+",format(G_LMODEL$coefficients[2],nsmall=2,digits=2),"%*% H[MidParent] +",format(G_LMODEL$coefficients[3],digits=2,nsmall=2),"%*% sex",sep=" ")
+r.sq<-paste("adj-r^2 ==",summary(G_LMODEL)$adj.r.squared,sep=" ")
+
+df<-data.frame(height=df$childHeight,predicted=pred)
+p<-ggplot(df,aes(height,pred)) + geom_point() + geom_smooth(method="lm")+ theme_bw()
+p<-p+ggtitle("Regression Analysis for Height of Galton Family study") + xlab("Predicted child's Height (inch)") + ylab("True Child's Height (inch)")
+p<-p + annotate("text",x=-Inf,y=Inf,label=r.sq,parse=T,hjust=-0.05,vjust=1.05)
+p<-p + annotate("text",x=Inf,y=-Inf,label=eq,parse=T,hjust=1.05,vjust=-0.5)
+p
+
+```
+
+## Main Challenges of ML
+
+### DATA
+
+generally, quality and size of data are key for Machine Learning.
+
+* Insufficient Quantity of Traning data.
+
+<img src="images/importantofdatasize.JPG" width=400 height=400>
+
+* Non-representative Training data
+
+    <img src="images/nonrepresentative.data.JPG" width=600 height=300>
+
+    Adding missing country changes the model (regression line).
+
+    By using a nonrepresentative training set, the Trained model is unlikely to make accurate predictions, especially for very poor and very rich countries.
+
+    Two type of non-representative training data.
+
+      * **Sampling noise**
+
+        if sample size is too small, Signal could be generated by random chance.
+
+      * **Sampling bias**
+
+        e.g) US presidential election in 1936 (Roosevelt vs Landon).
+    
+        Predicting genomic susceptibility using Korean Cancer vs American normal.
+    
+* Poor Quality data
+
+    Noise, error in training data gained by poor-quality measurment will make harder for the systm to detect the underlying data patterns.
+    Removal of outliers are necessary. 
+
+* Irrelevent Features.
+
+    Garbage in, Garbage out. Your system will only be capable of learning if the training data contains enough relevant features and not too many irrelevant ones. A critical part of the success of a Machine Learning project is coming up with a good set of features to train on
+    
+    - `Feature selection` - selecting the most useful features to train on among existing features.
+    
+    - `Feature extraction` - combining existing features to produce a more useful one.
+
+    - creating new features by gathering new data.
+
+### Algorithm
+
+![](images/overfit+underfit.JPG)
+
+**Overfitting** 
+
+* Model fits training data too well but not fits the testing data. it occcurs when the model captures the noise of the data.
+
+* shows low bias but high variance
+
+overcoming by
+
+* Simplify the model by selecting one with fewer parameters
+* Gather more data
+* Remove the noise of the data
+
+**Underfitting** 
+
+* Model does not fit the data well.
+
+* it occurs when the model cannot capture the underlying pattern of the data.
+
+* shows low variacne but high bias
+
+overcoming by
+
+* choose more complex model by selecting more parameters.
+
+* feeding better features to the learning algorithm.
+
+* reduce the constraints on the model.
+
+**Variance bias tradeoff**
+
+$$ Pred_{err} = Bias^{2} + Variance + Irreducible Error$$
+
+**Bias** - differences between expected prediction and correct value which we want to predict. (accuracy in statistics)
+
+**Variance** - variation of predicted data point. (precision in statistics)
+
+![](images/bias-and-variance.jpg)
+
+
+![](images/biasvariance.png)
+
+
+## Test and Validation
+
+![](./images/h.out+c.val.JPG)
+
+## Other Resources
+
+<span class="gray-bold">Math</span>
+
+* "Pure Math" : [Linear Algebra](https://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/video-lectures/), Calculus^[1](https://ocw.mit.edu/courses/mathematics/18-01-single-variable-calculus-fall-2006/video-lectures/),[2](https://ocw.mit.edu/courses/mathematics/18-02sc-multivariable-calculus-fall-2010/index.htm)-section1,2,[Gradient Descent](https://en.wikipedia.org/wiki/Gradient_descent)^
+
+* Probability and Statistics : [Open intro Statistics](https://www.openintro.org/stat/textbook.php)
+
+* Programming (Python/R etc ...)
+
+<span class="gray-bold">[Information theory](https://www.amazon.com/Elements-Information-Theory-Telecommunications-Processing/dp/0471241954/ref=pd_bxgy_b_img_c) </span>
+
+<span class="gray-bold">Machine Learning</span>
+
+* [Machine learning course@coursera](http://www.coursera.org/learn/machine-learning)
+
+* [An introduction to statistical learning with Application in R](http://www-bcf.usc.edu/~gareth/ISL/)
+
+* [The Elements of Statistical Learning](https://web.stanford.edu/~hastie/Papers/ESLII.pdf)
+
+<span class="gray-bold">Deep Neural Network</span>
+
+* [neural network course@coursera](http://www.coursera.org/learn/neuralnets)
+
+* [deeplearinig.ai](https://www.deeplearning.ai/courses)
+
+<span class="gray-bold">etc</span>
+
+* About the document what I wrote : [Rmarkdown](https://bookdown.org/yihui/rmarkdown/) 
+
+* Mathmatical equations : [LaTex](http://www.math.harvard.edu/texman/)
+
+<!--
+## Reference
+
+* Hands on Machine Learning, Chapter 1.
+
+* [Samuels checkers player]
+  (https://webdocs.cs.ualberta.ca/~jonathan/publications/ai_publications/samuel.pdf)
+  
+* Statistical learning
+
+* [Feature Selection](http://jmlr.csail.mit.edu/papers/volume3/guyon03a/guyon03a.pdf)
+-->
+

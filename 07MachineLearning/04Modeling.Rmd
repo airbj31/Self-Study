@@ -1,0 +1,280 @@
+---
+date   : "`r Sys.Date()`"
+Author : "Byungju Kim"
+output : 
+  bookdown::html_document2: 
+    css: css/style.css
+    toc: yes
+    theme: flatly
+    highlight: espresso
+    toc_depth: 4
+    toc_float: yes
+    code_folding: hide
+---
+
+```{r setup, include=FALSE}
+ #require(tufte)
+
+ require(tidyverse)
+ require(bookdown)
+ require(HistData)
+ require(readMLData)
+ require(DiagrammR)
+ require(ggplot2)
+
+ options(width = 1200)
+
+```
+
+# EDGC ML study group
+
+<div style="background-color:#FFFFFF;opacity:1; position:fixed; bottom:0px; right:10px left:10px top:10px; width:100%; height:140px;">
+<hr widht="100%" style="border-top: dashed 1px;"/>
+
+  <img src="images/EDGC_LOGO_EN.png" align="left"> &nbsp; <b>Byungju Kim </b> Ph.D. <br />
+  &nbsp; Research Scientist / Bioinformatics Team <br />
+  &nbsp; # 291 Harmony-ro, Yeonsu-gu, Incheon <br />
+  &nbsp; mobile : +82-10-5091-8731 <br />
+  &nbsp; email : byungju.kim@edgc.com 
+  
+</div>
+<div class="container">
+
+  <img src="images/ML.png">
+
+  <h5><span>
+      Chapter 4 : &nbsp; Modeling and its evaluation <br \>
+      Author &nbsp; &nbsp; &nbsp; : &nbsp; Byungju Kim <br \>
+      Date &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : &nbsp; 2018-10-17
+  </span></h5>
+  
+ </div>
+
+<!--
+ Greetings, Everyone. this is first meeting of Machine Learning study group.
+ I'm the guy who
+
+-->
+
+# Overview on modeling
+
+**Modeling**
+
+* Geomatric, instance-based Modeling
+
+  * k-Nearleast neighbor
+  
+  * distance based clustering
+  
+    * k-mean
+    
+    * Hierarchical clustering
+
+* Linear Modeling
+  
+* Probability model
+
+    * naive bayes
+    
+    * Expectation-Maximisation
+    
+    * Gaussian mixture models
+    
+    
+    
+    
+
+
+
+*
+
+# Modeling
+
+## Linear Modeling
+
+### Linear Regrssion
+
+**Background**
+
+* The concept of Random Error introduced only 400 years ago. Before the concept is generalized, the measurement which having small random errors were utterly wrong. Now the errors are considered as approximately trues. it opened up the possibility of investigating approximate, stochastic relationships between variables.
+
+```{r height, fig.width=4,fig.height=3,fig.cap="density plot for 20 height measurements. What is True height of the person?"}
+        
+        set.seed(1234)
+        dmat<-rnorm(20,mean=178,sd=0.5)
+        dmat<-data.frame(height=dmat)
+        p <- ggplot(dmat,aes(height)) + geom_density(fill="#B00D23") + theme_bw()
+        p <- p + xlab("measured height, cm") + ggtitle("Density plot of height measurements \nfor annonymous person 1")
+        p
+
+```
+
+* When we want to know if one measurement variable is associated with another one, then we can plot them to check whether there is linear trends.
+<center>
+```{r LinearRegression,fig.width=4,fig.height=4,fig.cap="**Relationship between dry weight and number of eggs female *Platorchestia platensis*,a kind of sand flea, carrying**. suppose that we are interesting in the relationship between female weight and the number of eggs."}
+egg<-c(20,23,22,20,25,25,17,24,20,27,24,21,22,22,23,35,26,23,25,24,19,21,20,33,17,21,25,22)
+weight<-c(5.38,7.36,6.13,4.75,8.10,8.62,6.30,7.44,7.26,7.17,7.78,6.23,5.42,7.87,5.25,7.37,8.01,4.92,7.03,6.45,5.06,6.72,7.00,9.39,6.49,6.34,6.16,5.74)
+     
+df <- data.frame(egg=egg,weight=weight)
+p<-ggplot(df,aes(weight,egg)) # geom_smooth(method=lm,linetype="dotted") 
+p<-p+ geom_point(shape=4,stroke=2,color="grey31") + theme_bw() +xlab("Dry Weight, mg") + ylab("Number of egg")
+p
+
+
+```
+</center>
+
+* Linear relationship is described as $\hat{Y} = \theta_{0} + \theta_{1} x + \epsilon$ where $\theta_{0}$ for <span id="winered">intercept</span> and $\theta_{1}$ for <span id="winered">slope</span> and $\epsilon$ denotes the error. we are trying to find those <span id="winered">regression coefficients</span>
+
+* Linear model is seeking the `estimaters of linear function` between <span id="winered">a continuous reponse variable (Y)</span> and <span id="winered">one or more predictor variable (X)</span>
+
+
+* Regression problem is supevised learning problems in which the response is continuous.
+
+Linear models are 
+
+- **Parametetric** : 
+- **stable** - small variation in training data have only limited impact on the learned model.
+- **less likely to overfit the training data than some other models** since they do not have many parameters
+- could have low variance and high bias.
+
+
+Benefits : 
+
+* widely uesd
+* runs fast
+* easy to use
+* hgihly interpretable
+* basis for many other methods.
+
+**kinds of Lineal model**
+
+* Linear Regression
+* Logistic Regression
+* Polynomial Regression
+* Stepwise Regression
+* Ridge Regression
+* Lasso Regresson
+* ElasticNet regression
+
+
+#### Simple Linear regression
+
+Simple linear regression is an approach for predicting a quantitative response (dependent variables,ouput) using a single feature (single predictor or input variables)
+
+$$\begin{equation}
+        \hat{Y} = \theta_{0} + \theta_{1} x
+        (#eq:SLR)
+  \end{equation}$$
+
+
+* $\hat{Y}$ : predicted value, output.
+* x : feature
+* $\theta_{0}$ is the intercept
+* $\theta_{1}$ is the coefficient for x. $\theta$s are model coefficients.
+
+**How to fit line ? : Model coefficients**
+
+* moel is estimated by least square criterion which minimize the sum of squared residuals or errors.
+
+```{r}
+        set.seed(2018)
+        dmat<-rnorm(100,mean=5,sd=3)
+        dmat<-data.frame(X=rep(1:25,each=2)-dmat[1:50],Y=rep(1:25,each=2)-dmat[51:100])
+        p<-ggplot(dmat,aes(X,Y))+geom_point(stroke=2,shape=4,color="darkgray") + theme_bw() + geom_smooth(method=lm)
+        p<-p+geom_point(data=dmat[c(17,28,30),],aes(X,Y),color="red",inherit.aes = T,shape=4,stroke=2)
+        p
+
+
+```
+
+
+
+
+#### Multiple linear regression
+
+$$\begin{equation} 
+        \hat{Y} = \theta_{0} + \theta_{1}x_{1} + \theta_{2}x_{2} + ... + \theta_{p}x_{p} + \epsilon 
+        (#eq:LM) 
+\end{equation}$$
+
+* Y : predicted value
+* p : number of variables
+* $x_{i}$ : value of ith variable.
+* $\theta_{j}$ : model parameter for jth variable
+
+the fomula is written as vector format.
+
+\begin{equation} 
+        \hat{Y} = h_{\theta}(X) = \theta^{T} \cdot x
+        (#eq:LMmat) 
+\end{equation}
+
+* $\theta$ : is model parameter from $\theta_{0}$ to $\theta_{n}$
+* $\theta^{T}$ : transposed matrix for theta. 1xp matrix
+* X : is the feature vector containing $X \ni \{x_{0} x_{0} ... x_{p}\}$. $X_{0}$ is always 0 (intercept)
+* \theta^{T} \cdot x
+* $h_{\theta}$ is the hypothesis function using model $\theta$
+
+
+#### Multivariate linear regression
+
+
+### Model evaluation/validation
+
+
+
+
+
+
+## Referring Equations
+
+\@ref(eq:LM)
+\@ref(eq:LMmat)
+\@ref(eq:vector)
+
+## Glossary
+
+* vector : 1 dimensional array,n x 1 matrix. written as
+
+$$ \begin{equation} 
+        X = \begin{pmatrix}
+                x_{1} \\
+                x_{2} \\
+                \vdots \\
+                x_{n} \\ 
+            \end{pmatrix}
+            (#eq:vector)  
+\end{equation} $$
+
+* $x_{i,j}$ is element of an X matrix, representing the value of the jth variable for the
+ith observation, where i = 1, 2,...,n and j = 1, 2,...,p. matrix and it's elements are written as
+
+$$ X = \left( \begin{array} {rrrr}
+x_{11} & x_{12} & \cdots & x_{1p} \\
+x_{21} & x_{22} & \cdots & x_{2p} \\
+\vdots & \vdots & \ddots & \vdots \\
+x_{n1} & \cdots & \cdots & x_{np} \\
+\end{array} \right)
+$$
+
+
+* ^T^ notation defines the transpose of a matrix of vector.
+
+$$ X^{T} = \left( \begin{array} {rrrr}
+x_{11} & x_{21} & \cdots & x_{n1} \\
+x_{12} & x_{22} & \cdots & x_{n2} \\
+\vdots & \vdots & \ddots & \vdots \\
+x_{1p} & \cdots & \cdots & x_{np} \\
+\end{array} \right)
+$$
+
+
+## Support vector machine
+
+C-classification
+nu-classification
+one-classification (for novelty detection)
+eps-regression
+nu-regression
+degree

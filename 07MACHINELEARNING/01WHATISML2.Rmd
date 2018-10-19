@@ -61,8 +61,6 @@ output :
 
 <image src="./images/ArtSamuel.JPG" align=right style="margin-right: 10px;"> &nbsp; <blockquote> <span class="Big-first-letter">"</span> Give a computer the ability to learn without being explicitly programmed.<br \><br \>--- **Athur Samuel (1901-1990)** </blockquote> 
 
-
-
 &nbsp; “How do we create computer programs that improve with experience?”  :
 
 <image src="./images/TomWEF2017.JPG" align=right style="margin-right: 10px;"> 
@@ -78,12 +76,14 @@ output :
 
 **vector** 1-Dimensional array.
 
+$$ X = \{X_{1}, X_{2}, X_{3}, ... X_{4}\} $$
+
 **Data** - our information for analysis.
 
 - Quantitative, continuous data.
 - Qualitative, categorical data.
 
-  Generally, Data is matrix/Data frame.
+  Generally, Data is matrix/Data Table/Data frame.
 
 $$ X = \left( \begin{array} {rrrr}
 x_{11} & x_{12} & \cdots & x_{1p} \\
@@ -98,23 +98,28 @@ $$
 
 * p : number of variables that are available for use in making predictions.
 
-* $x_{i,j}$ is element of an X matrix, representing the value of the jth variable for the
-ith observation, where i = 1, 2,...,n and j = 1, 2,...,p.
+* $x_{i,j}$ is element of an X matrix, representing the value of the `j`th variable for the
+`i`th observation, where i = 1, 2,...,n and j = 1, 2,...,p.
 
 **feature/descriptor/Predictor/independent variable (X)** is used to make a prediction for dependent variables. 
 
 **Response/dependent variable (Y)** is that variable whose variation depends on other variables. normally expressed as Vector, $Y = \{y_{1}, y_{2}, y_{3} ... y_{n}\}$
 
-**Training** is the way of teaching the computer the data.
+**Prediction ($\hat{Y}$)** predicted value by the model/algorithm.
+
+**Training** is the way of teaching the computer the data. Machine learning algorithms are applied in this step.
                 
-**Training set**  is the data set used for training process.
+**Training set**  is the data set used for training process. target of learning.
 
 **Testing/Validation** is the checking or proving the validity. (accuracy, error etc.)
 
 **Testing set** is the subset of data which is used for the testing.
  
-**Optimization** The process of adjusting weights to produce more and more accurate guesses about the data is known as parameter optimization.
+**optimization** The process of adjusting weights to produce more and more accurate guesses about the data.
 
+
+
+## schematic view
 
 ![](images/ML.jpg)
 
@@ -122,8 +127,9 @@ ith observation, where i = 1, 2,...,n and j = 1, 2,...,p.
 
 ![](images/Programming_vs_ML.PNG)
 
+## Example :: Spam-Filter 
 
-## Example :: Spam-Filter - binary classification.
+Spam filter is binary classifier (Spam or not)
 
 ![](images/spamfilter.JPG)
 
@@ -147,11 +153,9 @@ ith observation, where i = 1, 2,...,n and j = 1, 2,...,p.
 
 Writing Rules by hand or human recognition.
 
-e.g) spam = #Free >= 3 or $Credit card >=3
+e.g) spam = #Free >= 3 or #Credit card >=3
 
 ![](images/T.programmingl.JPG)
-
-
 
 ### ML approach
 
@@ -159,22 +163,15 @@ DATA determine the rules by training algorithm
 
 ![](images/ml_approach_spamfilter.JPG)
 
+Machine Learning is great for: 
 
+- Problems for which existing solutions require a lot of hand-tuning or long lists of rules: one Machine Learning algorithm can often simplify code and perform better. 
 
+- Complex problems for which there is no good solution at all using a traditional approach: the best Machine Learning techniques can find a solution. 
 
-Benefits for choosing ML.
+- Fluctuating environments: a Machine Learning system can adapt to new data. 
 
-- 
-
--
-
--
-
--
-
--
-
-
+- Getting insights about complex problems and large amounts of data.
 
 <!--
 * vector : 1-Dimensional array. normally expressed as $K=\{a,b,c,d\}$
@@ -222,7 +219,7 @@ data table
      
       * **Regression**     : output variable is a real value. e.g) Height, 
   
-      * clustering is the main purpose of unsupervised learning.
+      * clustering, dimensionality reductions, are the main purpose of unsupervised learning.
 
 <table>
 <tr><td>Classification</td><td>Regression</td><td>Clustering</td>
@@ -243,12 +240,10 @@ data table
 
 - instance based learning (e.g. k-NN) / Model-based learning
 
-     * No model is learned. stored "training instances" represent the "knowledge" (lazy learning) e.g) k-Nearleast neighbor.
+     * instance based learning : No model is learned. stored "training instances" represent the "knowledge" (lazy learning) e.g) k-Nearleast neighbor.
      
-     * make a model with various parameters.
+     * model based learning : make a model with various parameters.
      
-**Model based learning**
-
 ### supervised Learning : `Label O`
 
 
@@ -304,7 +299,7 @@ Rule-based machine learning which discovers the relationship between variables i
 
 * Reinforcement Learning
 
-  - Reward / Penalty system for learning which maximize the rewards.
+    - Reward / Penalty system for learning which maximize the rewards.
 
 
 ## Examples
@@ -341,16 +336,16 @@ Step 3: Measure its performance (prediction accuracy, using parameter k = 1 ~ n-
 
 Step 4: determine *k*
 
-Step 5: applying the instances and determined *k* to testing data.
+Step 5: calculate distance between training set and testing set and applying determined *k* to testing data for the classification.
 
 ---
 
 
-Distance Calculation : *n* dimensions
+Distance Calculation : *p* dimensions
 
  suppose that we have two vector P and Q consisting of n values.
 
- $$ d(P,Q) = \sqrt{\sum_{x=1}^{n}{(p_{1}-q_{1})^2 + (p_{2}-q_{2})^2 + (p_{3}-q_{3})^2 ... (p_{n}-q_{n})^2}} $$
+ $$ d(A,B) = \sqrt{(a_{1}-b_{1})^2 + (a_{2}-b_{2})^2 + (a_{3}-b_{3})^2 ... (a_{p}-b_{p})^2} $$
 
 
 ```{r kNN}
@@ -419,7 +414,7 @@ p
 
 ## Main Challenges of ML
 
-## DATA
+### DATA
 
 generally, quality and size of data are key for Machine Learning.
 
@@ -429,36 +424,36 @@ generally, quality and size of data are key for Machine Learning.
 
 * Non-representative Training data
 
-<img src="images/nonrepresentative.data.JPG" width=600 height=300>
+    <img src="images/nonrepresentative.data.JPG" width=600 height=300>
 
-Adding missing country changes the model (regression line).
+    Adding missing country changes the model (regression line).
 
-By using a nonrepresentative training set, the Trained model is unlikely to make accurate predictions, especially for very poor and very rich countries.
+    By using a nonrepresentative training set, the Trained model is unlikely to make accurate predictions, especially for very poor and very rich countries.
 
-Two type of non-representative training data.
+    Two type of non-representative training data.
 
-- Sampling noise. 
+      * **Sampling noise**
 
-    if sample size is too small, Signal could be generated by random chance.
+        if sample size is too small, Signal could be generated by random chance.
 
-- Sampling bias.  
+      * **Sampling bias**
 
-    e.g) US presidential election in 1936 (Roosevelt vs Landon).
+        e.g) US presidential election in 1936 (Roosevelt vs Landon).
     
-    Predicting genomic susceptibility using Korean Cancer vs American normal.
+        Predicting genomic susceptibility using Korean Cancer vs American normal.
     
 * Poor Quality data
 
     Noise, error in training data gained by poor-quality measurment will make harder for the systm to detect the underlying data patterns.
-    Removal of outliers, 
+    Removal of outliers are necessary. 
 
 * Irrelevent Features.
 
     Garbage in, Garbage out. Your system will only be capable of learning if the training data contains enough relevant features and not too many irrelevant ones. A critical part of the success of a Machine Learning project is coming up with a good set of features to train on
     
-    - Feature selection - selecting the most useful features to train on among existing features.
+    - `Feature selection` - selecting the most useful features to train on among existing features.
     
-    - Feature extraction - combining existing features to produce a more useful one.
+    - `Feature extraction` - combining existing features to produce a more useful one.
 
     - creating new features by gathering new data.
 
@@ -498,18 +493,25 @@ overcoming by
 
 $$ Pred_{err} = Bias^{2} + Variance + Irreducible Error$$
 
+**Bias** - differences between expected prediction and correct value which we want to predict. (accuracy in statistics)
+
+**Variance** - variation of predicted data point. (precision in statistics)
+
 ![](images/bias-and-variance.jpg)
 
 
 ![](images/biasvariance.png)
 
-In ML, we are trying to reduce both of variance and Bias
 
-Other Resources
+## Test and Validation
+
+![](./images/h.out+c.val.JPG)
+
+## Other Resources
 
 <span class="gray-bold">Math</span>
 
-* "Pure Math" : [Linear Algebra](https://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/video-lectures/), Calculus^[1](https://ocw.mit.edu/courses/mathematics/18-01-single-variable-calculus-fall-2006/video-lectures/),[2](https://ocw.mit.edu/courses/mathematics/18-02sc-multivariable-calculus-fall-2010/index.htm)-section1,2^, [Gradient Descent](https://en.wikipedia.org/wiki/Gradient_descent)
+* "Pure Math" : [Linear Algebra](https://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/video-lectures/), Calculus^[1](https://ocw.mit.edu/courses/mathematics/18-01-single-variable-calculus-fall-2006/video-lectures/),[2](https://ocw.mit.edu/courses/mathematics/18-02sc-multivariable-calculus-fall-2010/index.htm)-section1,2,[Gradient Descent](https://en.wikipedia.org/wiki/Gradient_descent)^
 
 * Probability and Statistics : [Open intro Statistics](https://www.openintro.org/stat/textbook.php)
 
@@ -520,6 +522,10 @@ Other Resources
 <span class="gray-bold">Machine Learning</span>
 
 * [Machine learning course@coursera](http://www.coursera.org/learn/machine-learning)
+
+* [An introduction to statistical learning with Application in R](http://www-bcf.usc.edu/~gareth/ISL/)
+
+* [The Elements of Statistical Learning](https://web.stanford.edu/~hastie/Papers/ESLII.pdf)
 
 <span class="gray-bold">Deep Neural Network</span>
 
