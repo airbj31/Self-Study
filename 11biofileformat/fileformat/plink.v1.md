@@ -186,9 +186,9 @@ A text file with a header line, and one line per sample with the following six f
 * E(HOM) : Expected number of homozygotes ($`E_{HOM}`$)
 * N(NM)	Number of non-missing autosomal genotypes ($`N_{NM}`$)
 * F	Method-of-moments F coefficient estimate
-
+<center>
 ![eq1](http://www.sciweavers.org/upload/Tex2Img_1541029677/render.png)
-
+</center?
 ```math
   F = \frac{O_{HOM}-E_{HOM}}{N_{NM}-E_{HOM}}
 ```
