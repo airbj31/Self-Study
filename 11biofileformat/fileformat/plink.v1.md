@@ -187,6 +187,8 @@ A text file with a header line, and one line per sample with the following six f
 * N(NM)	Number of non-missing autosomal genotypes ($`N_{NM}`$)
 * F	Method-of-moments F coefficient estimate
 
+![eq1](http://www.sciweavers.org/upload/Tex2Img_1541029677/render.png)
+
 ```math
   F = \frac{O_{HOM}-E_{HOM}}{N_{NM}-E_{HOM}}
 ```
