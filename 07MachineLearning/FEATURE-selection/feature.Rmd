@@ -1,0 +1,79 @@
+---
+title: "Combining p-values"
+author: "Byungju Kim"
+date: "2018³â 10¿ù 30ÀÏ"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+We sometimes need to combine the results of scientific studies
+
+```
+fishersMethod = function(x) pchisq(-2 * sum(log(x)),df=2*length(x),lower=FALSE)
+```
+* aggregating of the information to lead a higher statistical power and more robust point estimate than individual study.
+* is possble from the measured derived from any individual study.
+
+
+
+
+Combining `p-values` from independent statistical methods is a popular approach while conducting meta-analysis.
+
+
+* Suppose we have  p-values like $p_{1}, p_{2}, p_{3} ... p_{n}$ from independent n hyptothesis test. if the underlying test statistics $t_{1} ... t_{n}$ have absolute continuous probability distribution under their corresponding null hypothesis, the joint null hypothesis for the p-value is 
+
+$$ H_{0} : p_{i} \sim U[0,1],\; \; \; i=1, ..., n $$
+
+* 
+
+*
+
+*
+
+*
+
+
+
+
+# methods
+
+* Fisher, 1934
+
+$$ S_{F} = \sum_{i=1}^{n} log\;p_{i} $$
+Fisher's method is identical to multiplying p-values.
+
+e.g)
+
+* Pearson, 1933
+
+$$ S_{P} = - \sum_{i=1}^{n} log(1 - pi)  $$
+
+* Mudholkar and George, 1979
+
+$$ S_{G} = S_{F}+S_{P} = \sum_{i=1}^{n} log \frac{p_{i}}{1-p{i}} $$
+
+* Edgington, 1972
+
+$$ S_{E} = \sum_{i=1}^{n}p_{i} $$
+
+* Stouffer et al., 1949
+
+$$ S_{S} = \sum_{i=1}^{n} \phi^{-1}(p_{i}) $$
+where $\phi$ is the standard normal cumulative distribution function.
+
+* Tippett, 1931
+
+$$ S_{T}=min(p_{1} ... p_{n}) $$
+
+
+
+# References
+
+- http://www.stat.wisc.edu/~wardrop/courses/meta2.pdf
+
+

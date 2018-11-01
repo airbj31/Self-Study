@@ -90,6 +90,16 @@ output :
 
 # Modeling
 
+Understaning how ML works is helpful to find proper models, algorithm, and optimize parameters.
+
+in this chapter, We learns the following topics
+
+* OLS (Ordinary Least Square), Lasso regression, ridge regression, elastic net regression, stepwise regression
+
+* Parameter optimization using `Gradient Descent`, and it's variables such as `Mini-batch` and `Stoachastic Gradient descent`.
+
+I add some concept and details in the slies.
+
 ## Linear Modeling
 
 ### Linear Regrssion
@@ -98,16 +108,19 @@ output :
 
 * The concept of Random Error introduced only 400 years ago. Before the concept is generalized, the measurement which having small random errors were utterly wrong. Now the errors are considered as approximately trues. it opened up the possibility of investigating approximate, stochastic relationships between variables.
 
-```{r height, fig.width=4,fig.height=3,fig.cap="density plot for 20 height measurements. What is True height of the person?"}
+<table>
+<tr><td> Height <br /> Prediction <br /> Image </td><td>
+```{r height, fig.width=4,fig.height=3,fig.cap="**density plot for 20 height measurements**. What is True height of the person?"}
         
-        set.seed(1234)
-        dmat<-rnorm(20,mean=178,sd=0.5)
-        dmat<-data.frame(height=dmat)
-        p <- ggplot(dmat,aes(height)) + geom_density(fill="#B00D23") + theme_bw()
-        p <- p + xlab("measured height, cm") + ggtitle("Density plot of height measurements \nfor annonymous person 1")
-        p
+set.seed(1234)
+dmat<-rnorm(20,mean=78,sd=0.5)
+dmat<-data.frame(height=dmat)
+p <- ggplot(dmat,aes(height)) + geom_density(fill="#B00D23") + theme_bw()
+p <- p + xlab("measured height, cm") + ggtitle("Density plot of height measurements \nfor annonymous person 1")
+p
 
 ```
+</td></tr></table>
 
 * When we want to know if one measurement variable is associated with another one, then we can plot them to check whether there is linear trends.
 <center>
@@ -149,6 +162,8 @@ Benefits :
 
 **kinds of Lineal model**
 
+Here are some regression.
+
 * Linear Regression
 * Logistic Regression
 * Polynomial Regression
@@ -157,13 +172,21 @@ Benefits :
 * Lasso Regresson
 * ElasticNet regression
 
+these techniques are mostly driven by 3 metics.
+
+* number of independent variables
+* shape of the regression
+* type of dependent variabl.
+
+
+### OLS
 
 #### Simple Linear regression
 
 Simple linear regression is an approach for predicting a quantitative response (dependent variables,ouput) using a single feature (single predictor or input variables)
 
 $$\begin{equation}
-        \hat{Y} = \theta_{0} + \theta_{1} x
+        \hat{Y} = \theta_{0} + \theta_{1} x + \epsilon
         (#eq:SLR)
   \end{equation}$$
 
@@ -171,7 +194,8 @@ $$\begin{equation}
 * $\hat{Y}$ : predicted value, output.
 * x : feature
 * $\theta_{0}$ is the intercept
-* $\theta_{1}$ is the coefficient for x. $\theta$s are model coefficients.
+* $\theta_{1}$ is the coefficient for $x$ (slope of the line). if the predictor changes 1 point, the 
+* $\epsilon$ is the error.
 
 **How to fit line ? : Model coefficients**
 
@@ -187,9 +211,6 @@ $$\begin{equation}
 
 
 ```
-
-
-
 
 #### Multiple linear regression
 
@@ -217,8 +238,90 @@ the fomula is written as vector format.
 * $h_{\theta}$ is the hypothesis function using model $\theta$
 
 
+**Limitation of Linear Regression**
+
+* Sensitive to outlier.
+
+* Overfitting
+
+* it's easy to overfit your model such that your regression begins to model the random error in the data,
+  (Linear regression is not defined when p > n)
+
+* does not handle non-linear relationship.
+
+### Ganeralized additive model
+
 #### Multivariate linear regression
 
+### Ridge Regression
+
+
+
+
+**Ridge Regresison**
+
+* Ridge Regression has shirinkage term : shrinks the estimate of the coefficients toward zero.
+
+* $\lambda$, <span id="winered"> tuning parameter</span>, is another therm to control shirinkage term.
+
+
+### Lasso 
+
+**Least absolute shrinkage and selection operator (LASSO)** is regression analysis method which performs feature selection and regularization in order to enhance prediction accuracy annd interpretatibility of the statistial model.
+
+* made Prediction selection
+
+*
+
+#### Elastic Net regression
+
+* it overcomes the limitaiton of lasso by applying $l^2$ penaty term giving
+
+$$ min {||} $$
+
+
+#### Fused lasso
+
+*
+#### Quasi-morms and bridge regression
+
+*
+
+### OLS vs RIDGE vs LASSO vs Elastic Net
+
+```{r}
+# swiss <- datasets::swiss
+# x <- model.matrix(Fertility~., swiss)[,-1]
+# y <- swiss$Fertility
+#lambda <- 10^seq(10, -2, length = 100)
+
+#library(glmnet)
+
+#set.seed(489)
+#train = sample(1:nrow(x), nrow(x)/2)
+#test = (-train)
+#ytest = y[test]
+
+#OLS
+#swisslm <- lm(Fertility~., data = swiss)
+#coef(swisslm)
+#summary(swisslm)
+
+#ridge
+#ridge.mod <- glmnet(x, y, alpha = 0, lambda = lambda)
+#predict(ridge.mod, s = 0, exact = T, type = 'coefficients')[1:6,]
+
+```
+
+#### ElasticNet
+
+-
+
+### parameter Optimization
+
+**Gradient descent (GD)** 
+
+**GD** is a first-order iterative optimization algorithm for finding the minimum of a function.
 
 ### Model evaluation/validation
 

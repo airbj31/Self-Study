@@ -68,13 +68,3 @@ bottom-right {
     right: 16px;
 }
 
-#winered {
-  color: #B00D23;
-  font: bold;
-}
-
-#winered.small {
-  color: #B00D23;
-  font: bold;
-  font-size: 8pt;
-}
