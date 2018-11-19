@@ -126,8 +126,8 @@ I add some concept and details in the slies.
 
 | &nbsp;         | Logistic Regression | Linear Regression | Ridge | Lasso | Elastic Net |
 | :---:          | :---: | :---: | :---: | :---: | :---: |
-| Model          |       |       |       |       |       |
-| Loss Function  |       | $\sum\hat{y}_{i}-y_{i}$ |       |       |       |
+| Model          |       | $y = \theta_{0} + \theta_{1} x + \epsilon$ |       |       |       |
+| Loss Function  |       | $\sum\hat{y}_{i}-y_{i}$ | L2  | $\sum\hat{y}_{i}-y_{i}$ (L1) |       |
 | Regularization |       |       |       |       |       |
 | Notes          |       |       |       |       |       |
 |                |       |       |       |       |       |
@@ -150,6 +150,7 @@ I add some concept and details in the slies.
 
 
 **Loss function - Classification (Logistic)**
+(https://heartbeat.fritz.ai/5-regression-loss-functions-all-machine-learners-should-know-4fb140e9d4b0)
 
 * Log Loss
 
@@ -171,16 +172,22 @@ $$ MSE = \sum_{i=1}^{n} \frac{(\hat{y}_{i}-y_{i})^2}{n}$$
 
 Mean Absolute Error (MAE) is another loss function used for regression models. MAE is the sum of absolute differences between our target and predicted variables. So it measures the average magnitude of errors in a set of predictions, without considering their directions. (If we consider directions also, that would be called Mean Bias Error (MBE), which is a sum of residuals/errors). The range is also 0 to ∞.
 
-$$ MSE = \sum_{i=1}^{n} \frac{|\hat{y}_{i}-y_{i}|}{n}$$
+$$ MAE = \sum_{i=1}^{n} \frac{|\hat{y}_{i}-y_{i}|}{n}$$
 
 * MSE vs MAE ( L2 versus L1 loss)
 
-MSE is easier to solve, b
-
+**MAE** - more robust outliers. 
+      - useful when training data is corrputed with outliers.
+      - it's gradient is same throught, 
+**MSE** : easier to solve 
 
 * Huber Loss / smooth Mean Absolute Error
 
-* Log cosh Loss
+Huber loss is less sensitive to outliers in data than the squared error loss. It’s also differentiable at 0. It’s basically absolute error, which becomes quadratic when error is small. How small that error has to be to make it quadratic depends on a hyperparameter, 𝛿 (delta), which can be tuned. Huber loss approaches MAE when 𝛿 ~ 0 and MSE when 𝛿 ~ ∞ (large numbers.)
+
+* Log-cosh Loss
+
+Log-cosh is another function used in regression tasks that’s smoother than L2. Log-cosh is the logarithm of the hyperbolic cosine of the prediction error.
 
 * Quantile Loss
 
@@ -535,7 +542,30 @@ the fomula is written as vector format.
 
 #### Multivariate linear regression
 
-### Ridge Regression
+
+<!-- Regression Shrinkage Methods -->
+
+
+### Regression Shrinkage Methods 
+
+**Motivations**
+
+* too many predictors - 
+
+* 
+
+* Variable selection
+
+* stepwise procedure in regression
+
+  * Backward elimination : eliminate the least important variable from the selected one.
+
+  * Forward selection    : add the most important variable from the remaining ones.
+
+  * 
+
+
+#### Ridge Regression
 
 
 
