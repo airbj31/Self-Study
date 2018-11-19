@@ -68,3 +68,13 @@ bottom-right {
     right: 16px;
 }
 
+.redwine {
+  color: #B00D23;
+  font: bold;
+}
+
+#redwine.small {
+  color: #B00D23;
+  font: bold;
+  font-size: 8pt;
+}

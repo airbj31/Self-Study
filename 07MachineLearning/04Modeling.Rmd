@@ -1,15 +1,16 @@
 ---
 date   : "`r Sys.Date()`"
 Author : "Byungju Kim"
+runtime: shiny
 output : 
   bookdown::html_document2: 
     css: css/style.css
     toc: yes
-    theme: flatly
     highlight: espresso
     toc_depth: 4
     toc_float: yes
     code_folding: hide
+    df_print: kable
 ---
 
 ```{r setup, include=FALSE}
@@ -21,6 +22,7 @@ output :
  require(readMLData)
  require(DiagrammR)
  require(ggplot2)
+ require(gridExtra)
 
  options(width = 1200)
 
@@ -58,7 +60,35 @@ output :
 
 # Overview on modeling
 
-**Modeling**
+## What is the Model ?
+
+here are short reviews on previous study.
+
+**Model**
+
+* Ouput of the Machine learning.
+
+* what is being learned from data, in order to solve given task.
+
+
+<image src="./images/TomWEF2017.JPG" align=right style="margin-right: 10px;"> 
+
+<blockquote>  <span class="Big-first-letter">"</span>A computer program is said to learn from experience **E** with respect to some task **T** and some performance measure **P**, if its performance on **T**, as measured by **P**, improves with experience **E**.<br /><br .> --- **Tom Mitchell (1951-present)** </blockquote>
+
+**Tasks (T)**
+
+* Classification (binary, multiclass classification)
+
+* Regresson 
+
+**Experience (E)** <- today's main topic.
+
+* more data, more modeling
+
+**Performacne (P)**
+
+
+## Kinds of Modeling
 
 * Geomatric, instance-based Modeling
 
@@ -81,13 +111,6 @@ output :
     * Gaussian mixture models
     
     
-    
-    
-
-
-
-*
-
 # Modeling
 
 Understaning how ML works is helpful to find proper models, algorithm, and optimize parameters.
@@ -100,11 +123,82 @@ in this chapter, We learns the following topics
 
 I add some concept and details in the slies.
 
+
+| &nbsp;         | Logistic Regression | Linear Regression | Ridge | Lasso | Elastic Net |
+| :---:          | :---: | :---: | :---: | :---: | :---: |
+| Model          |       |       |       |       |       |
+| Loss Function  |       | $\sum\hat{y}_{i}-y_{i}$ |       |       |       |
+| Regularization |       |       |       |       |       |
+| Notes          |       |       |       |       |       |
+|                |       |       |       |       |       |
+
+
+| Regression model | equation |
+| :--- | :---: |
+| Simple Linear Regression | \@ref(eq:SLR) |
+| multiple linear regression | ... |
+| multivariate linear regression | ... |
+
+**advanced topic**
+
+| Regression Model | equation | 
+| :--- | :---: |
+| Lasso | | 
+| :--- | :---: |
+| ridge | |
+| elastic net  | |
+
+
+**Loss function - Classification (Logistic)**
+
+* Log Loss
+
+* Focal Loss
+
+* KL Divergence/Relative Entropy
+
+* Exponential Loss
+
+** Loss Function - Regression **
+
+* Mean Square Error (MSE) / Quadratic Loss, **L2 Loss**
+
+Mean Square Error (MSE) is the most commonly used regression loss function. MSE is the sum of squared distances between our target variable and predicted values.
+
+$$ MSE = \sum_{i=1}^{n} \frac{(\hat{y}_{i}-y_{i})^2}{n}$$
+
+* Mean Absolute Error (MAE, L1 Loss)
+
+Mean Absolute Error (MAE) is another loss function used for regression models. MAE is the sum of absolute differences between our target and predicted variables. So it measures the average magnitude of errors in a set of predictions, without considering their directions. (If we consider directions also, that would be called Mean Bias Error (MBE), which is a sum of residuals/errors). The range is also 0 to ∞.
+
+$$ MSE = \sum_{i=1}^{n} \frac{|\hat{y}_{i}-y_{i}|}{n}$$
+
+* MSE vs MAE ( L2 versus L1 loss)
+
+MSE is easier to solve, b
+
+
+* Huber Loss / smooth Mean Absolute Error
+
+* Log cosh Loss
+
+* Quantile Loss
+
+
+
+These techniques are mostly driven by 3 metics.
+
+* Number of independent variables
+
+* Shape of the regression
+
+* Type of dependent variable.
+
 ## Linear Modeling
 
 ### Linear Regrssion
 
-**Background**
+**Exact approach vs Approximation**
 
 * The concept of Random Error introduced only 400 years ago. Before the concept is generalized, the measurement which having small random errors were utterly wrong. Now the errors are considered as approximately trues. it opened up the possibility of investigating approximate, stochastic relationships between variables.
 
@@ -123,15 +217,43 @@ p
 </td></tr></table>
 
 * When we want to know if one measurement variable is associated with another one, then we can plot them to check whether there is linear trends.
-<center>
-```{r LinearRegression,fig.width=4,fig.height=4,fig.cap="**Relationship between dry weight and number of eggs female *Platorchestia platensis*,a kind of sand flea, carrying**. suppose that we are interesting in the relationship between female weight and the number of eggs."}
+
+
+
+
+### Simple Linear regression
+
+Simple linear regression is an approach for predicting a quantitative response (dependent variables,ouput) using a single feature (single predictor or input variables). simple linear regression fits a straight line to the data.
+
+e.g.) subsampling of data from McDonald's work  (1989).
+
+```{r regression.data,cols.print=3, rows.print=6}
 egg<-c(20,23,22,20,25,25,17,24,20,27,24,21,22,22,23,35,26,23,25,24,19,21,20,33,17,21,25,22)
 weight<-c(5.38,7.36,6.13,4.75,8.10,8.62,6.30,7.44,7.26,7.17,7.78,6.23,5.42,7.87,5.25,7.37,8.01,4.92,7.03,6.45,5.06,6.72,7.00,9.39,6.49,6.34,6.16,5.74)
-     
-df <- data.frame(egg=egg,weight=weight)
-p<-ggplot(df,aes(weight,egg)) # geom_smooth(method=lm,linetype="dotted") 
-p<-p+ geom_point(shape=4,stroke=2,color="grey31") + theme_bw() +xlab("Dry Weight, mg") + ylab("Number of egg")
-p
+
+df <- data.frame(egg=egg,weight=weight,pred_egg=10.386+weight*1.892)
+df <-as.tibble(df)
+df %>% select(weight,egg) %>% head(n=5)
+str(df)
+
+```
+
+<center>
+```{r LinearRegression,fig.width=10,fig.height=4,fig.cap="**Relationship between dry weight and number of eggs female *Platorchestia platensis*,a kind of sand flea, carrying**. suppose that we are interesting in the relationship between female weight and the number of eggs."}
+
+p1<-ggplot(df,aes(weight,egg)) # geom_smooth(method=lm,linetype="dotted") 
+p1<-p1+ geom_point(shape=4,stroke=2,color="grey31") + theme_bw() +xlab("Dry Weight, mg") + ylab("Number of egg")
+p1<-p1+ggtitle("egg vs dry weights")
+
+p2<-ggplot(df,aes(weight,egg)) + geom_smooth(method=lm,linetype="dotted",se=FALSE,color="red") 
+p2<-p2+ geom_point(shape=4,stroke=2,color="grey31") + theme_bw() +xlab("Dry Weight, mg") + ylab("Number of egg") 
+p2<-p2+geom_point(data=df[c(1,16,24),],aes(weight,pred_egg),color="red",stroke=2,shape=4)
+p2<-p2+annotate("segment",x=5.38,xend=5.38,y=20,yend=20.56496,color="dodgerblue3",size=2,alpha=0.5)
+p2<-p2+annotate("segment",x=7.37,xend=7.37,y=24.33004,yend=35,color="dodgerblue3",size=2,alpha=0.5)
+p2<-p2+annotate("segment",x=9.39,xend=9.39,y=33,yend=28.15188,color="dodgerblue3",size=2,alpha=0.5)
+p2<-p2+ggtitle("Simple linear regression")
+
+grid.arrange(p1,p2,ncol=2)
 
 
 ```
@@ -139,9 +261,9 @@ p
 
 * Linear relationship is described as $\hat{Y} = \theta_{0} + \theta_{1} x + \epsilon$ where $\theta_{0}$ for <span id="winered">intercept</span> and $\theta_{1}$ for <span id="winered">slope</span> and $\epsilon$ denotes the error. we are trying to find those <span id="winered">regression coefficients</span>
 
-* Linear model is seeking the `estimaters of linear function` between <span id="winered">a continuous reponse variable (Y)</span> and <span id="winered">one or more predictor variable (X)</span>
+* Linear model is seeking the <span class="redwine">estimaters of linear function<span> between <span class="redwine">a continuous reponse variable (Y)</span> and <span class="redwine">one or more predictor variable (X)</span>
 
-
+<!--
 * Regression problem is supevised learning problems in which the response is continuous.
 
 Linear models are 
@@ -176,30 +298,188 @@ these techniques are mostly driven by 3 metics.
 
 * number of independent variables
 * shape of the regression
-* type of dependent variabl.
+* type of dependent variable.
+-->
 
 
-### OLS
 
-#### Simple Linear regression
+$$
+\begin{equation}
+\begin{aligned}
+Y &= \theta_{0} + \theta_{1} x + \epsilon \\
+  &= \hat{Y} + \epsilon 
+\end{aligned}
+(\#eq:SLR)
+\end{equation}
+$$
 
-Simple linear regression is an approach for predicting a quantitative response (dependent variables,ouput) using a single feature (single predictor or input variables)
-
-$$\begin{equation}
-        \hat{Y} = \theta_{0} + \theta_{1} x + \epsilon
-        (#eq:SLR)
-  \end{equation}$$
-
-
+* Y : Acutual (ground truth) output.
 * $\hat{Y}$ : predicted value, output.
 * x : feature
 * $\theta_{0}$ is the intercept
 * $\theta_{1}$ is the coefficient for $x$ (slope of the line). if the predictor changes 1 point, the 
 * $\epsilon$ is the error.
+* $\\theta_{0} + \theta_{1} x$ : explained proportion.
 
-**How to fit line ? : Model coefficients**
 
-* moel is estimated by least square criterion which minimize the sum of squared residuals or errors.
+**How to choose a good model ?**
+
+![figure 3-3. What is a good model ?](./images/whatisgoodSLR.JPG)
+
+* as shown in figure 3-2, Linear model makes a prediction for each observed data point. the observation (y) is predcted by the output of the \@ref(eq:SLR).
+
+* However, we can draw lots of lines shown in figure 3-3. then, what is a good model ?.
+
+We can think the estimation like below :
+
+![figure 3-3.**SLR**](./images/SLR_explain.JPG)
+
+Every dependent variable could have its own real value and predicted values. the differences between real value and predicted value are out prediction/model errors. error for each point is defined by :
+
+$$ 
+\begin{equation}
+\begin{aligned}
+\epsilon &= y - \hat{y} \\
+         &= y - (\theta_{0} + \theta_{1} x)
+\end{aligned}
+(\#eq:error)
+\end{equation}
+$$
+<span class="redwine">**Sum of Squared Error (SSE)**</span>
+
+* The model is better as lower the total error. this is sum of errors. so, model is estimated by <span class="redwine">least square criterion which minimize the sum of squared residuals/errors</span> written as :
+
+$$
+\begin{equation}
+\begin{aligned}
+ SSE &= \sum_{i=1}^{n} (y_{i}-f(x_{i}))^2 \; \; \; \; \; \; \; \text{in the case of one explanatory variable.}
+\end{aligned}
+(\#eq:SSE)
+\end{equation}
+$$
+
+Where **n for sample size**, $f(x)$ is the linear model expressed as $f(x)=\hat{y}=(\theta_{0} + \theta_{1} x)$.
+
+
+**Estimating the coefficients**   
+
+$$X \ni \{1,2,3\}$$
+$$Y \ni \{2,4,6\}$$
+```{r}
+x<-1:3
+y<-x*2
+```
+
+
+
+
+$$ 
+\begin{equation}
+\begin{aligned}
+SSE &= \sum (Y - f(x))^2 \\
+    &= \sum (Y^2 - 2 f(x) \cdot Y + f(x)^2) \\
+    &= \sum (Y^2 - 2 (\theta_{0}+\theta_{1}X ) + (\theta_{0}+\theta_{1}X )^2 \\
+    &= \sum (Y^2 - 2 \theta_{0}-2 \theta_{1} X + \theta_{0}^2 + 2\theta_{0}\theta_{1}X + \theta_{1}^{2}X^{2})
+\end{aligned}
+\end{equation}
+$$
+**calculating \theta_{1}**
+
+$$
+\begin{equation}
+
+\begin{aligned}
+\frac{d \cdot SSE}{d \cdot \theta_{1}} = 0 &= \sum (0 - 2XY - 0 + 2 \theta_{0}X + 2X^2\theta_{1}) \\
+                                           &= \sum (-2XY +2 \theta_{0}X+ 2X^2\theta_{1}) \\
+                                           &= \sum (-XY + \theta_{0}X +2X2\theta_{1})
+\end{aligned}
+\end{equation}
+$$
+
+
+**calculating \theta_{0}**
+
+$$
+\begin{equation}
+
+\begin{aligned}
+\frac{d \cdot SSE}{d \cdot \theta_{0}} = 0 &= \sum (0 - 2Y + 2 \theta_{1} + 2\theta_{0} + 0) \\
+                                            &= \sum (-2Y+2\theta_{1}+2\theta_{0}) \\
+\end{aligned}
+\end{equation}
+$$
+
+$$
+\begin{equation}
+\begin{aligned}
+
+\therefore \theta_{0}=\sum (Y - \theta_{1}X)
+
+\end{aligned}
+\end{equation}
+$$
+
+
+
+(for proof, see https://www.amherst.edu/system/files/media/1287/SLR_Leastsquares.pdf)
+
+
+$$ \theta_{1} = \frac{\sum_{i=1}^{n} (X_{i} - \bar{X}) (Y_{i} - \bar{Y})} { \sum_{i=1}^{n} (X_{i}-\bar{X})^2}$$
+
+$$ \theta_{0} = \bar{Y} - \theta_{1} \bar{x} $$
+
+
+
+
+<span class="redwine">**Sum of Squares Regression (SSR)**</span>
+
+* then, how many proportion is explained by the model ?.
+
+the variance of the population is defined by $Var(T) = \sum(\bar{Y}-x_{i})^2$ which measure how far a set of numers are spread out from their average value. by substracting predicted value ($\har{Y}$) from mean of the actual values, we can measure how our model could explaine the variance of the real data by following :
+
+
+
+
+
+$$
+\begin{equation}
+ SSR = \sum_{i=1}^{n} (\bar{Y}-\hat{y_{i}})^2 \; \; \; \; \; \; \; \text{in the case of one explanatory variable.}
+(\#eq:SSR)
+\end{equation}
+$$
+
+
+
+Oldinary Least Square 
+
+
+from the dataset,
+
+```{r}
+ df
+
+```
+
+$$ 20= \theta_{0} +  \theta_{1} \times 5.38 $$
+$$ 23= \theta_{0} +  \theta_{1} \times 7.36 $$
+$$ 22= \theta_{0} +  \theta_{1} \times 6.13 $$
+
+$$ 20 = \theta_{0} + \theta_{1} \times 4.75$$
+
+
+
+
+
+
+
+**SSE**
+
+**SSTo**
+
+**SS**
+
+
+
 
 ```{r}
         set.seed(2018)
@@ -211,6 +491,8 @@ $$\begin{equation}
 
 
 ```
+
+
 
 #### Multiple linear regression
 
@@ -262,7 +544,7 @@ the fomula is written as vector format.
 
 * Ridge Regression has shirinkage term : shrinks the estimate of the coefficients toward zero.
 
-* $\lambda$, <span id="winered"> tuning parameter</span>, is another therm to control shirinkage term.
+* $\lambda$, <span id="redwine"> tuning parameter</span>, is another therm to control shirinkage term.
 
 
 ### Lasso 
@@ -381,3 +663,23 @@ one-classification (for novelty detection)
 eps-regression
 nu-regression
 degree
+
+## shiny excercise
+
+```{r eruptions, echo=FALSE}
+selectInput(
+  'breaks', label = 'Number of bins:',
+  choices = c(10, 20, 35, 50), selected = 20
+)
+
+renderPlot({
+  par(mar = c(4, 4, .1, .5))
+  hist(
+    faithful$eruptions, as.numeric(input$breaks),
+    col = 'gray', border = 'white',
+    xlab = 'Duration (minutes)', main = ''
+  )
+})
+
+
+

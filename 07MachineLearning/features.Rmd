@@ -19,3 +19,36 @@ output :
 * attributes, independent variable, predictor, descriptor ... etc.
 
 *
+
+
+## Variable selection
+
+* $R^2_{adj}$
+
+* Stepwise regresson
+
+  * add/delete one variable at time.
+
+* **backward-elimination** : starting with whole variables and remove it one by one until we are satisfied that all remaining variables are important to the model.
+
+* **forward selection** : starting with no variables included in the model, then it adds in variables according to their importance until no ther important variables are found.
+
+  * No guarantee that backward-elimination and forward selecton will arrive at the same final model.
+  
+  * Q-Q plot for quantiles.
+  
+## checking the model assumption using graphs
+
+  * the residuals of the model are nearly normal,
+  
+  * the variability of the residuals is nearly constant,
+  
+  * the residuals are independent, and
+  
+  * each variable is linearly related to the outcome.
+  
+**Normal Probability plot**
+
+**Absolute values of residuls against fitted values**
+  
+  
