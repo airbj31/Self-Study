@@ -1,0 +1,97 @@
+---
+title: "Statistical_Backgrounds_for_regression"
+author: "Byungju Kim"
+date: "2018년 11월 15일"
+output:
+  bookdown::html_document2: 
+    theme: united
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    code_folding: hide
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Data Distribution
+
+* Probability Distribution
+
+```{r distribution,meassage=F}
+ require(HistData,quietly=T)
+ set.seed(7777)
+ df<-data.frame(id=1:2000,height=rnorm(2000,mean=65,sd=2))
+ df$class<-"normal distribution"
+ df2<-data.frame(id=1:2000,height=c(rnorm(1200,mean=70,sd=1),rnorm(600,mean=67,sd=3),rnorm(200,mean=68.5,sd=1)))
+ df2$class<-"not a normal distribution"
+
+ DST<-rbind.data.frame(df,df2)
+ rm(df,df2)
+ p<-ggplot(DST,aes(height,fill=class,color=class))+geom_histogram(position="identity",alpha=0.7,bins=40) + scale_fill_manual(values=c("#722F37","#008080")) + scale_color_manual(values=c("#722F37","#008080")) + theme_bw() + theme(legend.position=c(0,1),legend.justification=c(0,1),legend.background=element_blank(),legend.title=element_blank())
+
+p
+```
+
+
+## Discrete Distribution
+
+### Benford distribution
+
+The [Benford Distribution](http://en.wikipedia.org/wiki/Benford_distribution) is the distribution of the first digit of a number. It is due to Benford 1938[1] and Newcomb 1881
+
+```{r New-come_Benford}
+ library(VGAM)
+ benfold<-data.frame(number=1:9,prob=dbenf(c(1:9)))
+ bf_dist<-ggplot(benfold,aes(number,prob)) + geom_bar(stat="identity") + theme_bw() + ggtitle("benford-newcome distribution")
+ 
+ bf_dist
+```
+
+the probability of first digit from random selection of a number from a table of physical constants or statistical data.
+
+$$
+\begin{equation}
+P{d} = \frac{1 +\frac{1}{d}}{ln(10)}
+(\#eq:benfold)
+\end{equation}
+$$
+
+## Continuous distribution
+
+
+**Normal distribution** means and variance
+
+* Non-normal distribution
+
+1. beta distribution
+
+```{r beta distribution}
+        
+
+```
+2. Exponential Distribution
+3. gamma distribution
+4. inverse gamma distribution
+5. Log Normal distribution
+6. Logistic distribution
+7. Maxwell-Boltzmann distribution
+8. Poisson distribution
+9. Skewed Distribution
+10. Symmetric distribution
+11. Uniform distribution
+12. Unimodel distribution
+13. Weibull-Distribution
+
+**Linear transformation** 
+
+**Lognormal distribution**
+
+
+## Reference
+
+1. Benford, F. (1938) The Law of Anomalous Numbers. Proceedings of the American Philosophical Society, 78, 551–572.
+2. Newcomb, S. (1881) Note on the Frequency of Use of the Different Digits in Natural Numbers. American Journal of Mathematics, 4, 39–40.

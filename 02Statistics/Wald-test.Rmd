@@ -1,0 +1,58 @@
+---
+title: "Wald Test and variable selection."
+author: "Byungju Kim"
+date: "2018년 11월 15일"
+output: 
+  bookdown::html_document2: 
+    theme: united
+    toc: yes
+    toc_depth: 4
+    toc_float: yes
+    code_folding: hide
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(bookdown)
+require(tidyverse)
+```
+
+# Wald Test
+
+Wald test is a parameteric statistical test named after the statistical Abraham Wald
+
+**Wald test** (also called the WALD Chi-sq Test) is a way to find out if explanatory variable in a model are "significant"
+
+# Mathmetical details
+
+Under the Wald statistical test, the maximum likelihood estimate $\hat{\theta}$ of the parameter(s) of interest $\theta$  is compared with the proposed value $\theta_{0}$, with the assumption that the difference between the two will be approximately normally distributed. Typically the square of the difference is compared to a chi-squared distribution.
+
+
+In univariate case, the Wald statisti is 
+
+$$
+\begin{equation}
+\frac{(\hat{\theta} - \theta_{0})^2}{var(\hat{\theta})}
+(\#eq:waldtest)
+\end{equation}
+$$
+which is compared against a chi-square distribution.
+
+Alternatively, the difference can be comapred to a normal distribution. in this case the test statistic is 
+
+$$
+\begin{equation}
+\frac{\hat{\theta} - \theta_{0}}{se(\hat{\theta})}
+(\#eq:waldtestNormalDist)
+\end{equation}
+$$
+
+
+* Significant : the variable add something to the model
+* 
+
+
+# Wald test and variable seleciton
+
+* Question : Can we realiabl detect that this coefficient isn't exactly zero ?.

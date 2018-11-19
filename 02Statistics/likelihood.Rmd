@@ -1,0 +1,46 @@
+---
+title: "Likelyhood and "
+author: "Byungju Kim"
+date: "2018년 11월 15일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## what is likelyhood ?
+
+The probability of an event or situation taking place. Likelihood is an informal way of discussing the likeliness that something will happen, without specific reference to numerical probability. Likelihood is typically used to refer to events that have a reasonable probability of occurring, but are not definite or may be influenced by factors not yet observed or measured.
+
+
+## What is the difference between "likelihood" and "probability"
+
+In non-technical parlance, "likelihood" is usually a synonym for "probability," 
+
+but in statistical usage there is a clear distinction in perspective: the number that is the probability of some observed outcomes given a set of parameter values is regarded as the likelihood of the set of parameter values given the observed outcomes.
+
+
+##
+
+**Likelyhood function**
+
+frequentist inference, likelihood, is a function of the parameters of a statistical model, given specific observed data.
+
+
+## Definition
+
+$$
+\mathcal{L}(\theta|x)=p_{\theta}(x)=P_{\theta}(X=x),
+$$
+
+
+## Glossary
+
+
+
+
+## Maximum likelihood estimation (MLE-method)
+
+* in statistics, **MLE-method** is a Method of estimating the parameters of a statistical model, given observation.
+* MLE-method attmpting to find the parameter values that mximize the **likelihood function**
