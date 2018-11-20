@@ -1,0 +1,156 @@
+---
+output:
+  bookdown::html_document2: 
+    css: css/style.css
+    toc: yes
+    highlight: espresso
+    toc_depth: 4
+    toc_float: yes
+    code_folding: hide
+    df_print: kable
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require(tidyverse)
+ require(bookdown)
+ require(HistData)
+ require(readMLData)
+ require(DiagrammR)
+ require(ggplot2)
+ require(gridExtra)
+
+```
+
+<div style="background-color:#FFFFFF;opacity:1; position:fixed; bottom:0px; right:10px left:10px top:10px; width:100%; height:140px;">
+<hr widht="100%" style="border-top: dashed 1px;"/>
+
+  <img src="images/EDGC_LOGO_EN.png" align="left"> &nbsp; <b>Byungju Kim </b> Ph.D. <br />
+  &nbsp; Research Scientist / Bioinformatics Team <br />
+  &nbsp; # 291 Harmony-ro, Yeonsu-gu, Incheon <br />
+  &nbsp; mobile : +82-10-5091-8731 <br />
+  &nbsp; email : byungju.kim@edgc.com 
+  
+</div>
+<div class="container">
+
+  <img src="images/ML.png">
+
+  <h5><span>
+      Chapter 4 : &nbsp; Modeling and its evaluation <br \>
+      Author &nbsp; &nbsp; &nbsp; : &nbsp; Byungju Kim <br \>
+      Date &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : &nbsp; 2018-10-17
+  </span></h5>
+  
+ </div>
+
+
+# Objectives of the chapter
+
+* Learn how to fit the model. (how to select good model)
+
+    * Least Square
+    * Gradient Descent
+    * Batch Gradient Descent
+    * Stochastic Gradient Descent
+    
+* Understanding learning rate and curve. 
+
+* Learn some regression models, such as
+
+    * Lienar Regression
+    * Polynominal Regression
+    * biased regression, such as ridge, lasso and elastic net.
+
+# Linear Regression
+
+Simple linear regression (SLR) is an approach for predicting a quantitative response (dependent variables,ouput) using a single feature (single predictor or input variables). simple linear regression fits a straight line to the data.
+
+```{r LinearRegression,fig.width=10,fig.height=4,fig.cap="**Relationship between dry weight and number of eggs female *Platorchestia platensis*,a kind of sand flea, carrying**. suppose that we are interesting in the relationship between female weight and the number of eggs."}
+
+egg<-c(20,23,22,20,25,25,17,24,20,27,24,21,22,22,23,35,26,23,25,24,19,21,20,33,17,21,25,22)
+weight<-c(5.38,7.36,6.13,4.75,8.10,8.62,6.30,7.44,7.26,7.17,7.78,6.23,5.42,7.87,5.25,7.37,8.01,4.92,7.03,6.45,5.06,6.72,7.00,9.39,6.49,6.34,6.16,5.74)
+
+df <- data.frame(egg=egg,weight=weight,pred_egg=10.386+weight*1.892)
+
+p1<-ggplot(df,aes(weight,egg)) # geom_smooth(method=lm,linetype="dotted") 
+p1<-p1+ geom_point(shape=4,stroke=2,color="grey31") + theme_bw() +xlab("Dry Weight, mg") + ylab("Number of egg")
+p1<-p1+ggtitle("A. egg vs dry weights")
+
+p2<-ggplot(df,aes(weight,egg)) + geom_smooth(method=lm,linetype="dotted",se=FALSE,color="red") 
+p2<-p2+ geom_point(shape=4,stroke=2,color="grey31") + theme_bw() +xlab("Dry Weight, mg") + ylab("Number of egg") 
+p2<-p2+geom_point(data=df[c(1,16,24),],aes(weight,pred_egg),color="red",stroke=2,shape=4)
+p2<-p2+annotate("segment",x=5.38,xend=5.38,y=20,yend=20.56496,color="dodgerblue3",size=2,alpha=0.5)
+p2<-p2+annotate("segment",x=7.37,xend=7.37,y=24.33004,yend=35,color="dodgerblue3",size=2,alpha=0.5)
+p2<-p2+annotate("segment",x=9.39,xend=9.39,y=33,yend=28.15188,color="dodgerblue3",size=2,alpha=0.5)
+p2<-p2+ggtitle("B. application of Simple linear regression to McDonald's work (1980)")
+
+grid.arrange(p1,p2,ncol=2)
+
+
+```
+
+We can grasp that the increment of Dry weight increases the number of eggs carrying. 
+
+The distances, indicating a thick blue line,  between black x and red x is unpredicted proportion from the hypothesis.
+
+
+$$
+\begin{equation}
+\begin{aligned}
+Y &= H_{0}(x) + \epsilon \\ 
+  &= \hat{Y} + \epsilon \\ 
+  &= \theta_{0} + \theta_{1} x + \epsilon
+\end{aligned}
+(\#eq:SLR)
+\end{equation}
+$$
+
+* Y : Acutual (ground truth) output.
+* $\hat{Y}$ : predicted value, output.
+* x : feature
+* $\theta_{0}$ is the intercept
+* $\theta_{1}$ is the coefficient for $x$ (slope of the line). if the predictor changes 1 point, the 
+* $\epsilon$ is the error of the prediction .
+* $\theta_{0} + \theta_{1} x$ : explained proportion.
+
+
+
+the equation is also written as follows :
+
+$$ 
+\begin{equation}
+\hat{Y} = \Theta^{T} \cdot X
+(\#eq:SLR2)
+\end{equation}
+$$ 
+
+* feature vector, $X \ni\{x_{0} ... x_{n}\}$
+
+* $\Theta^{T}$ is transposed {\theta_{0} ... \theta_{n}$
+
+## Cost(Loss) function for Linear Regression
+
+* **Mean Absolute Error** (=L1 Loss)
+
+    Mean Absolute Error (MAE) is the sum of absolute differences between our prediction and ground truth. it measures average error in a set of prediction, by ignoring the direction of errors.
+
+$$ MAE = \sum_{i=1}^{n} \frac{|\hat{y}_{i}-y_{i}|}{n}$$
+
+* **Mean Squared Error** (=L2 Loss)
+
+    Mean Square Error (MSE) is the sum of our prediction's squared error from the ground truth.
+
+$$ MSE = \sum_{i=1}^{n} \frac{(\hat{y}_{i}-y_{i})^2}{n}$$
+
+the equation is written in the matrix form.
+
+$$ MSE= \frac{1}/n \sum_{i=1}{n} (\theta_{T} \cdot x{i} - y{i} )^2 $$
+
+
+* Gradient descent
+
+$$ \frac{\theta}{d \theta} = 
+
+
+* batch graident descent
