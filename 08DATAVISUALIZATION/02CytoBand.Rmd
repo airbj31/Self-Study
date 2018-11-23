@@ -1,0 +1,44 @@
+---
+title: "02DrawingGenomicData.Rmd"
+author: "Byungju Kim"
+date: "2018년 11월 23일"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Drawing Genomic Data
+
+```{r cytoband}
+
+cytoband.GRCh37<-read_tsv("./08DATAVISUALIZATION//01DATA/HG19.txt.gz",col_names=c("chr","BP_start","BP_end","cytoband","gieStain")) cytoband.GRCh37<-cytoband.GRCh37 %>% mutate(chr=gsub("chr","",chr),chr=gsub("X","23",chr),chr=gsub("Y","24",chr),chr=gsub("MT","26",chr),chr=as.numeric(chr))
+
+cytoband.GRCh37$bp_start2<-(cytoband.GRCh37$chr-1)*100000000 + cytoband.GRCh37$BP_start
+cytoband.GRCh37$bp_end2<-(cytoband.GRCh37$chr-1)*100000000 + cytoband.GRCh37$BP_end
+
+cytoband.GRCh37$BP_start
+
+p<-ggplot(cytoband.GRCh37,aes(ymin=bp_start2,ymax=bp_end2,xmin=3.5,xmax=4,fill=gieStain)) + geom_rect() + coord_polar(theta="y") + xlim(0,4) + theme_bw()
+
+
+p<-ggplot(cytoband.GRCh37,aes(xmin=BP_start,xmax=BP_end,ymin=chr-1,ymax=chr,fill=gieStain)) + geom_rect(color="black") +  theme_bw() + scale_fill_manual(breaks=c("acen","gneg","gpos100","gpos25","gpos50","gpos75","gvar","stalk"),
+                               values=c("orange","white","green","gray100","gray40","gray50","gray75","red","orange")                                                                                                                                   
+                                                                                                                                                         )
+
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+
+
+
+```
+
+

@@ -170,7 +170,7 @@ $$ MSE = \sum_{i=1}^{n} \frac{(\hat{y}_{i}-y_{i})^2}{n}$$
 
 * Mean Absolute Error (MAE, L1 Loss)
 
-Mean Absolute Error (MAE) is another loss function used for regression models. MAE is the sum of absolute differences between our target and predicted variables. So it measures the average magnitude of errors in a set of predictions, without considering their directions. (If we consider directions also, that would be called Mean Bias Error (MBE), which is a sum of residuals/errors). The range is also 0 to ?àû.
+Mean Absolute Error (MAE) is another loss function used for regression models. MAE is the sum of absolute differences between our target and predicted variables. So it measures the average magnitude of errors in a set of predictions, without considering their directions. (If we consider directions also, that would be called Mean Bias Error (MBE), which is a sum of residuals/errors). The range is also 0 to ???.
 
 $$ MAE = \sum_{i=1}^{n} \frac{|\hat{y}_{i}-y_{i}|}{n}$$
 
@@ -183,11 +183,11 @@ $$ MAE = \sum_{i=1}^{n} \frac{|\hat{y}_{i}-y_{i}|}{n}$$
 
 * Huber Loss / smooth Mean Absolute Error
 
-Huber loss is less sensitive to outliers in data than the squared error loss. It?Äôs also differentiable at 0. It?Äôs basically absolute error, which becomes quadratic when error is small. How small that error has to be to make it quadratic depends on a hyperparameter, ?ùõ? (delta), which can be tuned. Huber loss approaches MAE when ?ùõ? ~ 0 and MSE when ?ùõ? ~ ?àû (large numbers.)
+Huber loss is less sensitive to outliers in data than the squared error loss. It???s also differentiable at 0. It???s basically absolute error, which becomes quadratic when error is small. How small that error has to be to make it quadratic depends on a hyperparameter, ???? (delta), which can be tuned. Huber loss approaches MAE when ???? ~ 0 and MSE when ???? ~ ??? (large numbers.)
 
 * Log-cosh Loss
 
-Log-cosh is another function used in regression tasks that?Äôs smoother than L2. Log-cosh is the logarithm of the hyperbolic cosine of the prediction error.
+Log-cosh is another function used in regression tasks that???s smoother than L2. Log-cosh is the logarithm of the hyperbolic cosine of the prediction error.
 
 * Quantile Loss
 
@@ -427,7 +427,7 @@ $$
 
 
 
-(for proof, see https://www.amherst.edu/system/files/media/1287/SLR_Leastsquares.pdf)
+(for proof, see ttps://www.amherst.edu/system/files/media/1287/SLR_Leastsquares.pdfh)
 
 
 $$ \theta_{1} = \frac{\sum_{i=1}^{n} (X_{i} - \bar{X}) (Y_{i} - \bar{Y})} { \sum_{i=1}^{n} (X_{i}-\bar{X})^2}$$

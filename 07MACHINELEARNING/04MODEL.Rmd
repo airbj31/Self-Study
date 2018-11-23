@@ -7,7 +7,7 @@ output:
     toc_depth: 4
     toc_float: yes
     code_folding: hide
-    df_print: kable
+    df_print: paged
 ---
 
 ```{r setup, include=FALSE}
@@ -39,7 +39,7 @@ require(tidyverse)
   <h5><span>
       Chapter 4 : &nbsp; Modeling and its evaluation <br \>
       Author &nbsp; &nbsp; &nbsp; : &nbsp; Byungju Kim <br \>
-      Date &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : &nbsp; 2018-10-17
+      Date &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : &nbsp; 2018-11-21
   </span></h5>
   
  </div>
@@ -55,12 +55,18 @@ require(tidyverse)
     * Stochastic Gradient Descent
     
 * Understanding learning rate and curve. 
-
+    
 * Learn some regression models, such as
 
-    * Lienar Regression
+    * Linear Regression
     * Polynominal Regression
-    * biased regression, such as ridge, lasso and elastic net.
+    * regularized regression, such as ridge, lasso and elastic net.
+ 
+ 
+# How to fit t 
+
+
+---
 
 # Linear Regression
 
@@ -112,11 +118,9 @@ $$
 * $\theta_{0}$ is the intercept
 * $\theta_{1}$ is the coefficient for $x$ (slope of the line). if the predictor changes 1 point, the 
 * $\epsilon$ is the error of the prediction .
-* $\theta_{0} + \theta_{1} x$ : explained proportion.
+* $\theta_{0} + \theta_{1} x$ : our hypothesis.
 
-
-
-the equation is also written as follows :
+The equation is also written as follows :
 
 $$ 
 \begin{equation}
@@ -129,28 +133,371 @@ $$
 
 * $\Theta^{T}$ is transposed {\theta_{0} ... \theta_{n}$
 
-## Cost(Loss) function for Linear Regression
+# Cost(Loss) function for Linear Regression
 
-* **Mean Absolute Error** (=L1 Loss)
+## **Mean Absolute Error** (=L1 Loss)
 
-    Mean Absolute Error (MAE) is the sum of absolute differences between our prediction and ground truth. it measures average error in a set of prediction, by ignoring the direction of errors.
+* Mean Absolute Error (MAE) is the sum of absolute differences between our prediction and ground truth. it measures average error in a set of prediction, by ignoring the direction of errors.
 
 $$ MAE = \sum_{i=1}^{n} \frac{|\hat{y}_{i}-y_{i}|}{n}$$
 
-* **Mean Squared Error** (=L2 Loss)
+## **Mean Squared Error** (=L2 Loss)
 
-    Mean Square Error (MSE) is the sum of our prediction's squared error from the ground truth.
+* Mean Square Error (MSE) is the sum of our prediction's squared error from the ground truth.
 
 $$ MSE = \sum_{i=1}^{n} \frac{(\hat{y}_{i}-y_{i})^2}{n}$$
 
 the equation is written in the matrix form.
 
-$$ MSE= \frac{1}/n \sum_{i=1}{n} (\theta_{T} \cdot x{i} - y{i} )^2 $$
+$$ MSE= \frac{1}{n} \sum_{i=1}^{n} (\Theta^{T} \cdot x_{i} - y_{i} )^2 $$
+
+**MSE is more sensitive for the outliers.**
+
+e.g) dry weight vs eggs  
+
+* Absolute Error vs Squared Error
+```{r}
+ df<-df %>% select(weight,egg,pred_egg) %>% mutate(AE=abs(egg-pred_egg),SE=AE^2) %>% arrange(weight) 
+ df
+```
+
+* calculation
+```{r}
+ df %>% summarize(MAE=mean(AE)/2,MSE=mean(SE)/2,)
+```
 
 
-* Gradient descent
+# how to choose it ?
 
-$$ \frac{\theta}{d \theta} = 
+![figure 4-1. What is a good model ?](./images/whatisgoodSLR.JPG)
+
+<span class="redwine">**Sum of Squared Error (SSE)**</span>
+
+* The model is better as lower the total error. this is sum of errors. so, model is estimated by <span class="redwine">least square criterion which minimize the sum of squared residuals/errors</span> written as :
 
 
-* batch graident descent
+$$
+\begin{equation}
+\begin{aligned}
+ SSE &= \sum_{i=1}^{n} (y_{i}-\hat{y}_{i})^2 \; \; \; \; \; \; \; \text{in the case of one explanatory variable.}
+\end{aligned}
+(\#eq:SSE)
+\end{equation}
+$$
+
+## Least Square for $\theta$ optimization
+
+The least square finds the optimal parameter value by minimizing the SSE.
+
+<!--
+https://medium.com/@andrew.chamberlain/the-linear-algebra-view-of-least-squares-regression-f67044b7f39b
+$$ 
+\begin{equation}
+\begin{aligned}
+ SSE &= \sum_{i=1}^{n} (y_{i}-\hat{y}_{i})^2 \\
+     &= \sum_{i=1}^{n} (y_{i}-\theta_{0}-\theta_{1}x_{i})^2 \\
+     &= \sum_{i=1}^{n} ((y_{i} + \bar{y}_{i} - \bar{y}_{i} ) -\theta_{0}-\theta_{1} ( x_{i} + \bar{x}_{i} - \bar{x}_{i})^2 \\
+     &= ... \\
+     &= n(\bar{y}-\theta_{0} - \theta_{1} \bar{x})^2 + \sum_{i=1}^{n}(\theta_{1}x_{i} - \theta_{1} \bar{x} - y_{i}+ \bar{y} )^2 \\
+     &= n(\bar{y}-\theta_{0} - \theta_{1} \bar{x})^2 + \sum_{i=1}^{n}(\theta_{1}(x_{i} - \bar{x}) - (y_{i} - \bar{y}) )^2 \\
+     &= ... 
+\end{aligned}
+(\#eq:prrof_OLS_for)
+\end{equation}
+$$
+
+-->
+
+$$ \theta_{1} = \frac{\sum_{i=1}^{n} (X_{i} - \bar{X}) (Y_{i} - \bar{Y})} { \sum_{i=1}^{n} (X_{i}-\bar{X})^2}$$
+
+$$ \theta_{0} = \bar{Y} - \theta_{1} \bar{x} $$
+
+* Linear algebra form
+
+$$
+\begin{equation}
+\begin{aligned}
+ \hat{\theta} = (X^T \cdot X)^{-1} \cdot X^T \cdot y
+\end{aligned}
+(\#eq:LeastSquare)
+\end{equation}
+$$
+
+* $\hat{\theta}$ is the $\theta$ value which minimize the cost function
+
+## Gradient Descent
+
+* adjust the parameter step by step to find minimum cost function.
+
+![Gradient Descent](./images/gradient-descent.JPG)
+
+## Learning rate/step and learning
+
+<table>
+<tr>
+<td>
+![Gradient Descent](./images/gradient-descent_small_learning_rate.JPG)
+</td>
+<td>
+![Gradient Descent](./images/gradient-descent_with_big_learning_rate.JPG)
+</td>
+</table>
+
+## batch graident descent
+
+batch gradient descent method calculate the gradient of the cost function with regards for each given parameter $\theta_{j}$.
+the gradient is calculated by applying derivative to the MSE formula.
+
+
+\begin{equation}
+\begin{aligned}
+MSE(\theta) &= \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_{i}-y_{i})^2 \\
+\frac{d \cdot MSE(\theta)}{d \cdot \theta_{j}} &= \frac{2}{n} \sum_{i=1}^{n}(\theta^T \cdot x^{i} - y^{i})x_{j}^{i}
+\end{aligned}
+(\#eq:bGD)
+\end{equation}
+
+* Partial derivatives for whole $\theta$
+
+$$ \nabla_{\theta} MSE(\theta) =\frac{2}{m} X^T \cdot (X \cdot \theta - y) $$
+
+$$ \theta^{(\text{next step})} = \theta - \eta \nabla_{\theta} MSE(\theta) $$
+
+
+![learning_rate_and_learning](./images/learning_rate_and_learning.png)
+
+
+## Stochastic Gradient Descent and grid search
+
+Batch Gradient descent should use all training set to compute the gradient at every step. if we use large training set, then the calculation could be very slow. to evade these situation, stochastic gradient descent picks a random sample in the training set at every step and compute the gradients based only on the single instance
+
+![grid_search vs random search](images/gridsearch+stochasticGD.PNG)
+
+## Mini-batch gradient Descent
+
+* calculate gradient using mini set of samples, named as mini-batch.
+
+## Polynomial Regression
+
+the real data are actually complex and has many variables. we can use <span class="redwind">power</span> to fit the `algebra formulat` to the data.
+
+**example** dry weight vs egg
+
+```{r}
+        attach(df)
+        pm.fit<-lm(egg ~ poly(weight,3))
+        pm.fit10<-lm(egg ~ poly(weight,15))
+ #       summary(pm.fit)
+        
+        lm.fit<-lm(egg ~ weight)
+ #       summary(lm.fit)
+
+ #       plot(df$weight,df$egg,xlab="dry weight",ylab="number of eggs")
+ #       points(df$weight,fitted(lm.fit),col='red',pch=20)
+ #       lines(sort(df$weight), fitted(lm.fit)[order(df$weight)], col='red', type='b') 
+ #       points(df$weight,fitted(pm.fit),col='blue',pch=20)
+ #       lines(sort(df$weight), fitted(pm.fit)[order(df$weight)], col='blue', type='b') 
+ #       points(df$weight,fitted(pm.fit10),col='green',pch=20)
+ #       lines(sort(df$weight), fitted(pm.fit10)[order(df$weight)], col='blue', type='b') 
+
+
+```
+
+![](images/poly_vs_linear.JPG)
+
+## Learning Curves
+
+* high-degee polynomial regression shows much better than with plain linear model. however, these high-degree complexity is severly overfitting the training data.
+
+* Learning curve is one another approach to optimize parameters. it shows the relationship between `E` and `P`.
+
+![](./images/learningcuve.JPG)
+
+
+
+# Regression Shrinkage methods.
+
+We are hoping to make a model which is also generalized in the unseen data. 
+
+However, our model is always under the `Bias-variance tradeoff` rule. if the model underfits to the data (**underfitting**), then we can solve it by adding some more features and/or increaes the complexity. however, if the model has high variance and low bias (**overfitting**) then, we can solve it by reducing complexcity, increasing the sample size anding add some penalty.
+
+
+**more on simple regression : analysis of the variance**
+
+the total variance of `Y` has two components
+
+* Regression sum of squares : regression sum of square. the error is gained by 
+
+$$SSR = \sum_{i=1}^{n} (\hat{y}_{i}-\bar{y}_{i})^2$$
+
+* Random error : error sum of squares
+
+* Sum or squared residual (SSE)
+
+$$SSE = \sum_{i=1}^{n} (y_{i}-\hat{y}_{i})^2$$
+
+it measures overall errors.
+
+
+* 
+
+$$ SSTo = \sum (Y_{i}-\bar{Y})  (Y_{n}-\bar{Y}) $$
+
+**Understanding the Errors, Variance and Bias**
+
+
+$$ Error(x) = Bias^2 + Variance + \epsilon $$
+
+
+
+L1 error
+
+$$ MAE = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_{i}-y_{i})$$
+
+
+$$ MSE = \frac{1}{n} \sum_{i=1}^{n} (\hat{y}_{i}-y_{i})^2$$
+
+
+
+**Bias**
+
+**Variance**
+
+
+
+
+$$ Error = (\hat{Y}-Y)^2 + (\hat{Y} - \bar{Y}})^2 + \epsilon$$
+![](./images/bias-and-variance.jpg)
+
+![](./images/biasvariance.png)
+
+The Shrinkage methods add penalty (regularization) to the **loss function** to control bias to get lower variance.
+
+
+the `penalty term` 
+
+--- 
+
+## Bias-variance tradeff and L1/L2 regularization comparison
+
+
+from https://courses.cs.washington.edu/courses/cse546/13au/code/oct8_recitation.html
+
+
+let's assume that pair of data $(x_i, y_i) \in (\mathbb{R}, \mathbb{R})$ are generated from a model $y_i = f^\ast (x_i) + \epsilon_i $. Each $\epsilon_i$ is independently drawn from a Gaussian distribution with mean 0 and standard deviation $\sigma$.
+
+For these examples, we will fix $\sigma = 0.1$ and $f^*(x) = 3 x^3 - x$, and we assume each $x_i$ is drawn from a uniform distribution between 0 and 1.
+
+
+```{r}
+
+sigma = 0.1
+
+f_star <- function(x)
+{
+  return(3 * x**3 -x)
+}
+
+make_data <-function(x,seed=1234)
+{
+  x=rnorm(x)
+  noise = sigma * x
+  y= f_star(x) + noise
+  return(matrix(c(x,y),ncol=2))
+        
+}
+
+exampleData = make_data(10)
+
+p<- ggplot(as.data.frame(exampleData),aes(x,y))+geom_point() + theme_bw()
+p<- p +  stat_function(fun=f_star,geom="line")
+p
+#plot f_star
+plot(exampleData)
+
+
+
+```
+
+----
+
+
+## Understanding the penalty.
+
+srinkage
+
+**Motivations**
+
+* Bias-Variance Trade off
+
+* case of high bias, low variance (underfitting).
+    * add features into the model and increases the complexity.
+
+* case of high variance, low bias (over-fitting),
+    * reduces the model complexity.
+    * regularization.
+
+
+<!--
+| Least Sqares Regression (L2) | Reast Absolute Deviations Regression (L1) |
+| :--- | :--- |
+| Not very robust | robust |
+| stable solution | unstable solution |
+| always one solution | possibly multiple solution |
+| no feature selection | built-in feature selection |
+| non-spare output | sparse output |
+| computational efficient due to having analytic solutions | computational inefficient on non-sparse casese |
+-->
+
+### Ridge regression (L2 regularization)
+
+if $\theta_j$'s are freely determined.  
+
+* They could be any number...
+
+* showing high variance
+
+Ridge regression regularized the coefficients to control variance by minimizing the coefficients (but not zero).
+
+$$ J(\theta) = MSE(\theta) + \alpha \frac{1}{2} \sum_{i=1}^n \theta_{i}^2 $$
+* $\alpha$ is a hyperparamter, meaning the amount of regularization. when $\alpha=0$, it is same as original regression (lineal or polynominal)
+
+* the coefficients for intercept is not regularized since it stats from i=1.
+
+![](./images/ridge_alpha.JPG)
+
+* how to choose best $\theta$ ?.
+
+$$ \hat{\theta} = (X^T \cdot X +aA)^{-1} \cdot X^T \cdot y $$
+
+## Lasso regression ( L1 regularization)
+
+<span class="redwine">Least Absolute Shrinkage and Selection Operator</span> performed **regularization** and **feature selection**. it puts a constraint on the Loss function (L1).
+
+* generally used p > n since it has automatically does feature selection.
+
+
+$$ J(\theta) = MAE(\theta) + \alpha \sum_{i=1}^n |\theta_{i}| $$
+
+![](./images/lasso_alpha.JPG)
+
+
+
+
+
+## $L_{1}$ and $L_{2}$ penalty
+
+![](./images/L1vsL2.JPG)
+
+## Elastic Net. 
+
+* Elastic Net uses the mixure of L_{1} and L_{2} penalty.
+
+$$ J(\theta) = MSE(\theta) + r\alpha \sum_{i=1}^{n} |\theta_{i}| + \frac{1-r}{2}\alpha \sum_{i=1}{n} \theta_{i}^2 $$
+
+## Early stopping
+
+![](./images/early_stopping.JPG)
+
+
+
