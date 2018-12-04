@@ -152,7 +152,11 @@ Windows and Mac users most likely want to download the precompiled binaries list
     setwd("/home/bjkim")
     ```
 
+## update R packages
 
+```{r  updates}
+update.packages(ask = FALSE, dependencies = c('Suggests'))
+```
     
 3. 
 
